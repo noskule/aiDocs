@@ -77,8 +77,7 @@
 - [x] All internal links work
 - [x] Relative paths used
 - [x] "See X for details" pattern consistent
-- [x] Quick Reference sections exist
-- [x] No duplicate content
+- [x] Structure diagram exists and is current
 - [x] Clear navigation context
 
 ## 6. Single Source of Truth

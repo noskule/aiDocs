@@ -141,15 +141,4 @@ PROJECT_ROOT/
 
 ---
 
-## Quick Reference
-
-- **What does the software do?** → [documentation.md](documentation.md)
-- **How does it work?** → [architecture.md](architecture.md)
-- **How to install?** → [installation.md](installation.md)
-- **How to use?** → [usage.md](usage.md)
-- **Development rules?** → [CODING_GUIDELINES.md](CODING_GUIDELINES.md)
-- **Testing?** → [testing.md](testing.md)
-
----
-
-**Last Updated:** 2025-11-06
+**Last Updated:** 2025-11-08
