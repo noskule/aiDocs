@@ -29,30 +29,17 @@ PLANNING → APPROVAL → EXECUTION → DELIVERY → DOCUMENTATION
 **DON'T be annoying - only help if user seems confused or asks.**
 
 ---
-
 ## Your Mandatory Workflow
 
-```
-FOR EVERY SIGNIFICANT CHANGE:
+**Follow the complete workflow in [CODING_GUIDELINES.md](CODING_GUIDELINES.md#development-workflow)**
 
-1. Check existing solutions (search codebase, read docs)
-2. Create branch: git checkout -b feature/descriptive-name
-3. Write code (follow existing patterns)
-4. Write tests (risk-driven - see CODING_GUIDELINES)
-5. Run tests: poetry run pytest (all must pass)
-6. Report to user: "✅ Code implemented, ✅ Tests written, ✅ All passing - Ready for review"
-7. WAIT for user approval (DO NOT proceed automatically)
-8. Write documentation (only after approval)
-9. Create PR with summarized prompts
-10. WAIT for user to merge
-11. Continue only after user confirms merge
-
-NEVER SKIP STEPS
-NEVER COMMIT WITHOUT TESTS
-NEVER PROCEED WITHOUT USER APPROVAL
-```
-
-**Complete workflow details:** [Development Workflow](docs/CODING_GUIDELINES.md#development-workflow)
+**Critical LLM constraints:**
+- ❌ NEVER skip steps (no shortcuts)
+- ❌ NEVER commit without passing tests
+- ❌ NEVER proceed without user approval at checkpoints
+- ✅ ALWAYS report and wait after code/tests ready
+- ✅ ALWAYS check for existing solutions first
+- ✅ ALWAYS include summarized prompts in PRs
 
 ---
 
