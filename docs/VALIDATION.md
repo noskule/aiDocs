@@ -38,9 +38,9 @@
 
 **Target:** <200 lines, <1,000 words per file
 
-- [x] `docs/README.md` - 155 lines, 728 words ✅
+- [x] `docs/README.md` - 144 lines, 688 words ✅
 - [x] `docs/AGENTS.md` - 205 lines, 927 words ✅
-- [x] `docs/CODING_GUIDELINES.md` - 195 lines, 986 words ✅
+- [x] `docs/CODING_GUIDELINES.md` - 219 lines, 1091 words ⚠️ (Over target but justified - includes decision framework)
 - [x] `docs/CONTENT_OWNERSHIP.md` - 128 lines, 800 words ✅
 - [x] `docs/documentation.md` - 54 lines, 169 words ✅
 - [x] `docs/features/README.md` - 91 lines, 349 words ✅
@@ -121,7 +121,7 @@
 ## 10. Documentation Standards
 
 - [x] References Google Developer Style Guide
-- [x] Information Minimalism principle stated
+- [x] Information Minimalism Test provided (3-question framework)
 - [x] Arc42 architecture approach mentioned
 - [x] Reconstruction-ready principle included
 - [x] Writing style guidance provided
