@@ -19,12 +19,9 @@
 
 ### `docs/documentation.md`
 
-- **Main documentation entry point** - Curated, logically organized overview
-- Project overview (what problem it solves, main capabilities)
-- High-level architecture narrative (how pieces fit together)
-- Functional organization (features grouped by logical areas, not code structure)
-- Brief explanations with links to detailed features/ and fundamentals/ docs
-- Common workflows and quick reference
+- **Main documentation entry point** - Brief overview of what software does
+- Organized functionally (by UI: screens/components/sections, or logical areas)
+- Links to corresponding features/ and fundamentals/ for detailed documentation
 
 ### `docs/installation.md`
 

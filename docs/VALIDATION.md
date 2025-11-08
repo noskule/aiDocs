@@ -68,7 +68,7 @@ Check that your documentation contains actual information for each item.
 - [x] `docs/AGENTS.md` - 144 lines, 897 words ✅
 - [x] `docs/CODING_GUIDELINES.md` - 136 lines, 987 words ✅
 - [x] `docs/CONTENT_OWNERSHIP.md` - 82 lines, 752 words ✅ (Reference file)
-- [x] `docs/documentation.md` - 140 lines, 538 words ✅
+- [x] `docs/documentation.md` - 68 lines, 244 words ✅
 - [x] `docs/features/README.md` - 91 lines, 349 words ✅
 - [x] `docs/features/TEMPLATE.md` - 39 lines, 217 words ✅ (Template, concise)
 - [x] `docs/fundamentals/README.md` - 106 lines, 472 words ✅
