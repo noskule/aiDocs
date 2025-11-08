@@ -57,7 +57,7 @@ Document anything that would take measurable time for an experienced engineer to
 git checkout -b feature/descriptive-name
 ```
 
-###2. **Implement Code**
+### 2. **Implement Code**
 
 - Write the feature/fix implementation
 - Follow existing code patterns and project conventions
@@ -80,7 +80,7 @@ git checkout -b feature/descriptive-name
 - ❌ Trivial changes - Typos, comments, simple formatting
 - ❌ Documentation-only changes - No code tests needed
 
-###4. **Run Tests**
+### 4. **Run Tests**
 
 ```bash
 poetry run pytest
@@ -89,7 +89,7 @@ poetry run pytest --cov=src --cov-report=html
 
 Verify all tests pass and coverage is appropriate for the risk level.
 
-###5. **Report to User for Review**
+### 5. **Report to User for Review**
 
 **LLM Behavior:** Inform the user that code and tests are ready:
 
@@ -101,13 +101,13 @@ Verify all tests pass and coverage is appropriate for the risk level.
 Ready for your review and testing. Please verify functionality.
 ```
 
-###6. **User Reviews and Tests**
+### 6. **User Reviews and Tests**
 
 - User manually tests the functionality
 - User reviews code quality and approach
 - User provides feedback or approval
 
-###7. **Write Documentation** (After User Approval)
+### 7. **Write Documentation** (After User Approval)
 
 **Only after user confirms the implementation is correct:**
 
@@ -117,7 +117,7 @@ Ready for your review and testing. Please verify functionality.
 - Update changelog.md with changes
 - Update "Last Updated" dates
 
-###8. **Create Pull Request**
+### 8. **Create Pull Request**
 
 **LLM Behavior:** Create PR using GitHub CLI:
 
@@ -142,13 +142,13 @@ EOF
 )"
 ```
 
-###9. **User Merges PR**
+### 9. **User Merges PR**
 
 - User reviews PR on GitHub
 - User merges when satisfied
 - **User informs LLM:** "PR merged, continue"
 
-###10. **Continue**
+### 10. **Continue**
 
 - LLM can proceed with next tasks
 - Branch is merged and cleaned up
