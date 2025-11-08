@@ -6,29 +6,40 @@
 
 ---
 
+## Project Workflow Awareness
+
+**Know where you are in the process and gently guide if user seems confused:**
+
+```
+PLANNING → APPROVAL → EXECUTION → DELIVERY → DOCUMENTATION
+
+1. PLANNING: User has idea → Discuss → Add to roadmap.md (if strategic)
+2. APPROVAL: Break down → Add to tasks.md → WAIT for user confirmation
+3. EXECUTION: Create branch → Code → Test → Log progress in worklog.md
+4. DELIVERY: Create PR → User reviews → Merge
+5. DOCUMENTATION: Remove from tasks.md → Add to changelog.md → Document in features/ (if complex)
+```
+
+**Gentle guidance (when user seems unclear):**
+- User wants to implement without approval? → "Should we add this to tasks.md first?"
+- User discusses big idea? → "Should this go in roadmap.md?"
+- User jumps steps? → "We're at [step], next would be [step]. Want to proceed?"
+- User asks "what now?" → Show current step and next step
+
+**DON'T be annoying - only help if user seems confused or asks.**
+
+---
 ## Your Mandatory Workflow
 
-```
-FOR EVERY SIGNIFICANT CHANGE:
+**Follow the complete workflow in [CODING_GUIDELINES.md](CODING_GUIDELINES.md#development-workflow)**
 
-1. Check existing solutions (search codebase, read docs)
-2. Create branch: git checkout -b feature/descriptive-name
-3. Write code (follow existing patterns)
-4. Write tests (risk-driven - see CODING_GUIDELINES)
-5. Run tests: poetry run pytest (all must pass)
-6. Report to user: "✅ Code implemented, ✅ Tests written, ✅ All passing - Ready for review"
-7. WAIT for user approval (DO NOT proceed automatically)
-8. Write documentation (only after approval)
-9. Create PR with summarized prompts
-10. WAIT for user to merge
-11. Continue only after user confirms merge
-
-NEVER SKIP STEPS
-NEVER COMMIT WITHOUT TESTS
-NEVER PROCEED WITHOUT USER APPROVAL
-```
-
-**Complete workflow details:** [Development Workflow](docs/CODING_GUIDELINES.md#development-workflow)
+**Critical LLM constraints:**
+- ❌ NEVER skip steps (no shortcuts)
+- ❌ NEVER commit without passing tests
+- ❌ NEVER proceed without user approval at checkpoints
+- ✅ ALWAYS report and wait after code/tests ready
+- ✅ ALWAYS check for existing solutions first
+- ✅ ALWAYS include summarized prompts in PRs
 
 ---
 
@@ -115,14 +126,14 @@ MANDATORY SEQUENCE:
 
 **For "How to write code":**
 - [Coding Guidelines - Complete Rules](docs/CODING_GUIDELINES.md)
-- [Architecture - System Design](docs/ARCHITECTURE.md)
+- [Architecture - System Design](docs/architecture.md)
 
 **For "What exists in codebase":**
-- [README - Documentation Structure](README.md#documentation-structure)
-- [Architecture - Components](docs/ARCHITECTURE.md#core-components)
+- [README - Documentation Structure](README.md#documentation-structure) *(example section - update for your project)*
+- [Architecture - Components](docs/architecture.md#core-components) *(example section - update for your project)*
 
 **For testing:**
-- [Testing Quick Start](docs/testing/QUICK_START.md)
+- [Testing Guide](docs/testing.md)
 
 ---
 
@@ -131,12 +142,12 @@ MANDATORY SEQUENCE:
 ### Git Versioning
 - ❌ **NEVER manually update version numbers**
 - ✅ Version controlled by git tags only: `git tag -a v1.0.0 -m "Release"`
-- See: [Architecture - Git Versioning](docs/ARCHITECTURE.md#git-versioning-workflow)
+- See: [Architecture - Git Versioning](docs/architecture.md#git-versioning-workflow) *(example section - update for your project)*
 
-### Translation Service
+### Translation Service *(example - update for your project)*
 - Use OpenAI GPT (`gpt-3.5-turbo`) for translations
 - Always use glossary: `EINSTELLUNGEN/GLOSSARY.md` in wiki
-- See: [Architecture - Translation Strategy](docs/ARCHITECTURE.md#translation-strategy)
+- See: [Architecture - Translation Strategy](docs/architecture.md#translation-strategy) *(example section - update for your project)*
 
 ### Dependency Management
 ```bash
@@ -166,10 +177,10 @@ poetry shell         # Activate environment
 
 - [README](README.md) - Project overview and documentation structure
 - [Coding Guidelines](docs/CODING_GUIDELINES.md) - When/where/how to document and test
-- [Architecture](docs/ARCHITECTURE.md) - System design, tech stack, decisions
-- [Installation Guide](docs/INSTALLATION.md) - Setup and configuration
-- [Usage Guide](docs/USAGE.md) - How to use the tool
-- [Testing Quick Start](docs/testing/QUICK_START.md) - How to run/write tests
+- [Architecture](docs/architecture.md) - System design, tech stack, decisions
+- [Installation Guide](docs/installation.md) - Setup and configuration
+- [Usage Guide](docs/usage.md) - How to use the tool
+- [Testing Guide](docs/testing.md) - How to run/write tests
 
 ---
 
