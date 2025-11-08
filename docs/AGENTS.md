@@ -115,14 +115,14 @@ MANDATORY SEQUENCE:
 
 **For "How to write code":**
 - [Coding Guidelines - Complete Rules](docs/CODING_GUIDELINES.md)
-- [Architecture - System Design](docs/ARCHITECTURE.md)
+- [Architecture - System Design](docs/architecture.md)
 
 **For "What exists in codebase":**
-- [README - Documentation Structure](README.md#documentation-structure)
-- [Architecture - Components](docs/ARCHITECTURE.md#core-components)
+- [README - Documentation Structure](README.md#documentation-structure) *(example section - update for your project)*
+- [Architecture - Components](docs/architecture.md#core-components) *(example section - update for your project)*
 
 **For testing:**
-- [Testing Quick Start](docs/testing/QUICK_START.md)
+- [Testing Guide](docs/testing.md)
 
 ---
 
@@ -131,12 +131,12 @@ MANDATORY SEQUENCE:
 ### Git Versioning
 - ❌ **NEVER manually update version numbers**
 - ✅ Version controlled by git tags only: `git tag -a v1.0.0 -m "Release"`
-- See: [Architecture - Git Versioning](docs/ARCHITECTURE.md#git-versioning-workflow)
+- See: [Architecture - Git Versioning](docs/architecture.md#git-versioning-workflow) *(example section - update for your project)*
 
-### Translation Service
+### Translation Service *(example - update for your project)*
 - Use OpenAI GPT (`gpt-3.5-turbo`) for translations
 - Always use glossary: `EINSTELLUNGEN/GLOSSARY.md` in wiki
-- See: [Architecture - Translation Strategy](docs/ARCHITECTURE.md#translation-strategy)
+- See: [Architecture - Translation Strategy](docs/architecture.md#translation-strategy) *(example section - update for your project)*
 
 ### Dependency Management
 ```bash
@@ -166,10 +166,10 @@ poetry shell         # Activate environment
 
 - [README](README.md) - Project overview and documentation structure
 - [Coding Guidelines](docs/CODING_GUIDELINES.md) - When/where/how to document and test
-- [Architecture](docs/ARCHITECTURE.md) - System design, tech stack, decisions
-- [Installation Guide](docs/INSTALLATION.md) - Setup and configuration
-- [Usage Guide](docs/USAGE.md) - How to use the tool
-- [Testing Quick Start](docs/testing/QUICK_START.md) - How to run/write tests
+- [Architecture](docs/architecture.md) - System design, tech stack, decisions
+- [Installation Guide](docs/installation.md) - Setup and configuration
+- [Usage Guide](docs/usage.md) - How to use the tool
+- [Testing Guide](docs/testing.md) - How to run/write tests
 
 ---
 
