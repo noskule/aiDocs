@@ -17,6 +17,15 @@
 - **Contains:** Project workflow awareness, mandatory workflow reference, critical constraints, LLM-specific behaviors
 - **Note:** Does NOT duplicate content from other docs, only LLM interaction patterns and behavioral instructions
 
+### `docs/documentation.md`
+
+- **Main documentation entry point** - Curated, logically organized overview
+- Project overview (what problem it solves, main capabilities)
+- High-level architecture narrative (how pieces fit together)
+- Functional organization (features grouped by logical areas, not code structure)
+- Brief explanations with links to detailed features/ and fundamentals/ docs
+- Common workflows and quick reference
+
 ### `docs/installation.md`
 
 - Prerequisites, installation steps, configuration, verification, troubleshooting, updating
@@ -78,6 +87,7 @@
 | --------------------------------- | ------------------------- | ------------------------------------------------------------ |
 | **Project description**           | `README.md`               | "Automated multilingual manual generation pipeline" |
 | **Documentation structure**       | `docs/README.md`          | "Complete directory tree showing all docs folders"           |
+| **What software does (overview)** | `documentation.md`        | "High-level overview: features organized by function" |
 | **Technology choice & rationale** | `architecture.md`         | "Chose OpenAI over DeepL because..." |
 | **Component architecture**        | `architecture.md`         | "TranslationService handles all translation operations" |
 | **Data pipeline flow**            | `architecture.md`         | "Pipeline: Git pull → Copy → Translate → Merge → PDF" |

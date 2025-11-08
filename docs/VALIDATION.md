@@ -68,6 +68,7 @@ Check that your documentation contains actual information for each item.
 - [x] `docs/AGENTS.md` - 144 lines, 897 words ✅
 - [x] `docs/CODING_GUIDELINES.md` - 136 lines, 987 words ✅
 - [x] `docs/CONTENT_OWNERSHIP.md` - 82 lines, 752 words ✅ (Reference file)
+- [x] `docs/documentation.md` - 140 lines, 538 words ✅
 - [x] `docs/features/README.md` - 91 lines, 349 words ✅
 - [x] `docs/features/TEMPLATE.md` - 39 lines, 217 words ✅ (Template, concise)
 - [x] `docs/fundamentals/README.md` - 106 lines, 472 words ✅
@@ -157,6 +158,7 @@ Check that your documentation contains actual information for each item.
 - [x] AGENTS.md addresses LLMs directly
 - [x] CODING_GUIDELINES.md explains when/how to document
 - [x] CONTENT_OWNERSHIP.md clarifies what goes where
+- [x] documentation.md provides curated overview of what software does
 - [x] project/README.md explains folder purpose (meta)
 - [x] features/README.md explains folder purpose (meta)
 - [x] features/TEMPLATE.md guides feature documentation

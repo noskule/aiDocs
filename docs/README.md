@@ -19,6 +19,7 @@ A **documentation template** optimized for AI-assisted development:
 - `features/TEMPLATE.md` - Feature structure guide
 
 **lowercase** = Content files (actual project data):
+- `documentation.md` - Curated overview of what software does
 - `architecture.md`, `installation.md`, `usage.md`, `testing.md`
 - `project/roadmap.md`, `project/tasks.md`, `project/worklog.md`, `project/changelog.md`
 - `features/[name].md`, `fundamentals/[topic].md`
@@ -55,6 +56,7 @@ PROJECT_ROOT/
     ├── CODING_GUIDELINES.md      # Development and documentation rules
     ├── CONTENT_OWNERSHIP.md      # Detailed ownership reference
     ├── VALIDATION.md             # Quality validation checklist (run regularly)
+    ├── documentation.md          # Curated overview - what software does
     ├── architecture.md           # System design & tech stack
     ├── installation.md           # Setup and prerequisites
     ├── usage.md                  # Usage guide and key files
@@ -120,9 +122,10 @@ PROJECT_ROOT/
 
 ## Quick Reference
 
-- **Installation issues?** → [installation.md](installation.md#troubleshooting)
-- **How to use?** → [usage.md](usage.md)
+- **What does the software do?** → [documentation.md](documentation.md)
 - **How does it work?** → [architecture.md](architecture.md)
+- **How to install?** → [installation.md](installation.md)
+- **How to use?** → [usage.md](usage.md)
 - **Development rules?** → [CODING_GUIDELINES.md](CODING_GUIDELINES.md)
 - **Testing?** → [testing.md](testing.md)
 
