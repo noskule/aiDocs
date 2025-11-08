@@ -114,11 +114,32 @@ PROJECT_ROOT/
 ## Principles
 
 1. **Single Source of Truth** - Each fact lives in ONE place
-2. **Mandatory Documentation** - Features/architecture changes require doc updates
-3. **Updated with Code** - Documentation in same commit, not afterthought
-4. **Simple Structure** - Clear names, flat hierarchy, good cross-linking
+2. **Reconstruction-Ready** - Document only what skilled developers need to rebuild (skip obvious details)
+3. **Mandatory Documentation** - Features/architecture changes require doc updates
+4. **Updated with Code** - Documentation in same commit, not afterthought
+5. **Simple Structure** - Clear names, flat hierarchy, good cross-linking
 
+---
 
+## Documentation Standards
+
+**Writing Style:** Follow [Google Developer Documentation Style Guide](https://developers.google.com/style)
+- Clear, concise, active voice
+- Present tense, second person ("you")
+- Avoid jargon unless project-specific
+
+**Content Scope:** Information Minimalism
+- Document only what skilled developers need to reconstruct the project
+- Skip obvious details any experienced engineer would know
+- Focus on project-specific decisions and tribal knowledge
+- See [CODING_GUIDELINES.md - Core Principle](CODING_GUIDELINES.md#core-principle)
+
+**Architecture:** Inspired by [Arc42](https://arc42.org/) structure
+- Technology decisions with rationale
+- System architecture and data flow
+- Business rules and design decisions
+
+---
 
 ## Quick Reference
 

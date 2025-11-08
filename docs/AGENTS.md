@@ -121,6 +121,11 @@ MANDATORY SEQUENCE:
 - [Coding Guidelines - When to Document](docs/CODING_GUIDELINES.md#when-to-document)
 - [Coding Guidelines - Core Principle](docs/CODING_GUIDELINES.md#core-principle)
 
+**For "How to write documentation":**
+- [README - Documentation Standards](docs/README.md#documentation-standards)
+- Follow Google Developer Style Guide (linked in README)
+- Apply Information Minimalism: Skip obvious details, focus on project-specific decisions
+
 **For "Where to update docs":**
 - [Coding Guidelines - Where to Update](docs/CODING_GUIDELINES.md#where-to-update)
 
