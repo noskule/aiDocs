@@ -17,6 +17,13 @@
 - **Contains:** Project workflow awareness, mandatory workflow reference, critical constraints, LLM-specific behaviors
 - **Note:** Does NOT duplicate content from other docs, only LLM interaction patterns and behavioral instructions
 
+### `docs/INFO_MIN_TEST.md`
+
+- **Shareable standalone resource** - 3-question framework for deciding what to document
+- Practical decision tree with examples
+- Can be linked/referenced independently
+- Part of Information Minimalism principle
+
 ### `docs/documentation.md`
 
 - **Main documentation entry point** - Brief overview of what software does

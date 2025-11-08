@@ -42,6 +42,7 @@
 - [x] `docs/AGENTS.md` - 205 lines, 927 words ✅
 - [x] `docs/CODING_GUIDELINES.md` - 219 lines, 1091 words ⚠️ (Over target but justified - includes decision framework)
 - [x] `docs/CONTENT_OWNERSHIP.md` - 128 lines, 800 words ✅
+- [x] `docs/INFO_MIN_TEST.md` - 118 lines, 562 words ✅
 - [x] `docs/documentation.md` - 54 lines, 169 words ✅
 - [x] `docs/features/README.md` - 91 lines, 349 words ✅
 - [x] `docs/features/TEMPLATE.md` - 39 lines, 217 words ✅

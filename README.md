@@ -5,6 +5,7 @@ A **documentation template** optimized for AI-assisted development. This structu
 ## Features
 
 - **LLM-Friendly:** Structured for AI coding assistants with dedicated behavioral instructions
+- **Information Minimalism:** 3-question test to decide what to document ([see test](docs/INFO_MIN_TEST.md))
 - **Feature-First:** Organized by what software does, not how code is structured
 - **AI-Documented:** Designed for human + LLM collaboration
 - **Portable:** Copy the entire `docs/` folder to any project for instant consistency

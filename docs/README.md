@@ -15,6 +15,7 @@ A **documentation template** optimized for AI-assisted development:
 - `README.md` - Meta descriptions (what something IS FOR)
 - `AGENTS.md`, `CODING_GUIDELINES.md` - Templates for all projects
 - `CONTENT_OWNERSHIP.md` - Reference guide
+- `INFO_MIN_TEST.md` - Decision framework (shareable)
 - `VALIDATION.md` - Quality validation checklist
 - `features/TEMPLATE.md` - Feature structure guide
 
@@ -55,6 +56,7 @@ PROJECT_ROOT/
     ├── AGENTS.md                 # LLM behavioral instructions
     ├── CODING_GUIDELINES.md      # Development and documentation rules
     ├── CONTENT_OWNERSHIP.md      # Detailed ownership reference
+    ├── INFO_MIN_TEST.md          # 3-question test for what to document
     ├── VALIDATION.md             # Quality validation checklist (run regularly)
     ├── documentation.md          # Curated overview - what software does
     ├── architecture.md           # System design & tech stack
