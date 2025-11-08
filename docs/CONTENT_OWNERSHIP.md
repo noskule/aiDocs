@@ -14,8 +14,8 @@
 ### `docs/AGENTS.md`
 
 - **Audience:** AI coding assistants (LLM-addressed)
-- **Contains:** Mandatory workflow for AI assistants, critical constraints, LLM-specific behaviors
-- **Note:** Does NOT duplicate content from other docs, only LLM interaction patterns
+- **Contains:** Project workflow awareness, mandatory workflow reference, critical constraints, LLM-specific behaviors
+- **Note:** Does NOT duplicate content from other docs, only LLM interaction patterns and behavioral instructions
 
 ### `docs/installation.md`
 
@@ -54,18 +54,23 @@
 
 - Meta description: what this folder is FOR (not current status)
 
-### `docs/project/worklog.md`
-
-- Current status, session-by-session progress, blockers, next steps
-- Tracks progress between PRs (multi-day work, interruptions, decisions-in-progress)
-
 ### `docs/project/roadmap.md`
 
-- Future strategic milestones, planned features, technical debt
+- Strategic planning, quarterly goals, major initiatives (planning phase)
+
+### `docs/project/tasks.md`
+
+- Approved work queue, concrete tasks ready to start (approval checkpoint)
+- Features, bugs, enhancements, tech debt awaiting execution
+
+### `docs/project/worklog.md`
+
+- Daily execution, session-by-session progress, blockers, next steps
+- Tracks progress between PRs (multi-day work, interruptions, decisions-in-progress)
 
 ### `docs/project/changelog.md`
 
-- Official release history, breaking changes, version notes (after PR merge)
+- Release history, shipped features, breaking changes (after PR merge and delivery)
 
 ## Content Type Mapping
 
@@ -80,11 +85,12 @@
 | **Setup steps**                   | `installation.md`         | "1. Clone repo, 2. Install Poetry, 3. Run poetry install..." |
 | **Configuration**                 | `usage.md`                | "config.json structure, environment variables, settings"     |
 | **How to run/use**                | `usage.md`                | "poetry shell && python scripts/run.py"      |
-| **LLM behavioral instructions**   | `AGENTS.md`               | "Mandatory workflow for AI assistants" |
+| **LLM behavioral instructions**   | `AGENTS.md`               | "Project workflow awareness, mandatory constraints" |
 | **Test strategy**                 | `testing.md`              | "Current coverage: 18%, target: 70%, pytest with markers"    |
+| **Strategic planning**            | `project/roadmap.md`      | "Q2 2025: 70% coverage, Q3 2025: Performance optimization"   |
+| **Approved work queue**           | `project/tasks.md`        | "Dark Mode Toggle - Approved 2025-01-08 (ready to start)"   |
 | **Work sessions & blockers**      | `project/worklog.md`      | "2025-01-08: Implemented toggle, stuck on Safari CSS vars"   |
 | **Current progress**              | `project/worklog.md`      | "Active: Dark mode (50%), Blocker: CSS naming convention"    |
-| **Future milestones**             | `project/roadmap.md`      | "Q2 2025: 70% coverage, Q3 2025: Performance optimization"   |
 | **Release history**               | `project/changelog.md`    | "v1.0.0 - Initial release with translation pipeline"         |
 | **Feature deep-dive**             | `features/[name].md`      | "How the translation pipeline works end-to-end" |
 | **Core concepts**                 | `fundamentals/[topic].md` | "Understanding manual types: Superadmin, Technician, User" |
