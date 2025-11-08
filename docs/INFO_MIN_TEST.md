@@ -104,7 +104,14 @@ This test was created for the [aiDocs](../README.md) LLM-optimized documentation
 
 ## Credits
 
-Inspired by the "no part is the best part" engineering principle - sometimes the best solution is to remove the problem entirely.
+**Created by:** Human-AI collaboration (2025)
+- Conceptualized and refined through iterative development
+- Formalized during creation of the aiDocs template
+- Inspired by the "no part is the best part" engineering principle
+
+**Authors:**
+- Benjamin Behringer - Original concept and practical refinement
+- Claude (Anthropic) - Framework formalization and documentation
 
 Part of the **aiDocs** LLM-optimized documentation template:
 - [Full Template](../README.md)
