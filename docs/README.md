@@ -20,7 +20,7 @@ A **documentation template** optimized for AI-assisted development:
 
 **lowercase** = Content files (actual project data):
 - `architecture.md`, `installation.md`, `usage.md`, `testing.md`
-- `project/worklog.md`, `project/roadmap.md`, `project/changelog.md`
+- `project/roadmap.md`, `project/tasks.md`, `project/worklog.md`, `project/changelog.md`
 - `features/[name].md`, `fundamentals/[topic].md`
 
 **Rule:** UPPERCASE = describes structure/process, lowercase = actual content
@@ -71,11 +71,12 @@ PROJECT_ROOT/
     ├── fundamentals/             # Core concepts
     │   └── [topic].md            # Fundamental topics
     │
-    ├── project/                  # Project management
+    └── project/                  # Project management
         ├── README.md             # Meta: what this folder is FOR
-        ├── worklog.md            # Current status + session history
-        ├── roadmap.md            # Future milestones
-        └── changelog.md          # Release history
+        ├── roadmap.md            # Strategic planning (quarters/years)
+        ├── tasks.md              # Approved work (ready to start)
+        ├── worklog.md            # Daily execution (session logs)
+        └── changelog.md          # Release history (shipped features)
 ```
 
 ## Content Ownership
@@ -88,13 +89,23 @@ PROJECT_ROOT/
 
 ## Using with GitHub
 
-**docs/project tracks progress between PRs:**
+**docs/project tracks the complete workflow:**
 
-- `worklog.md` - Daily sessions, blockers, current progress (fills gap between commits and PRs)
-- `roadmap.md` - Strategic milestones (GitHub Projects for task planning)
-- `changelog.md` - Official release history (after PR merge, follows Keep a Changelog format)
+**Workflow:** PLAN → APPROVE → EXECUTE → DELIVER → DOCUMENT
 
-**Use for:** Multi-day features, interruptions, technical blockers, decisions-in-progress
+- `roadmap.md` - Strategic planning (quarterly goals, major initiatives)
+- `tasks.md` - Approved work queue (concrete tasks ready to start)
+- `worklog.md` - Daily execution (session logs, blockers, progress)
+- `changelog.md` - Release history (shipped features after PR merge)
+
+**Process:**
+1. Plan → Add to roadmap.md
+2. Approve → Discuss → Add to tasks.md
+3. Execute → Work → Log in worklog.md
+4. Deliver → PR → Merge
+5. Document → Remove from tasks.md → Add to changelog.md
+
+**Complements GitHub:** Issues for bugs, Projects for sprint planning, PRs for review
 
 ---
 

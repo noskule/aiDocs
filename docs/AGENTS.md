@@ -6,6 +6,30 @@
 
 ---
 
+## Project Workflow Awareness
+
+**Know where you are in the process and gently guide if user seems confused:**
+
+```
+PLANNING → APPROVAL → EXECUTION → DELIVERY → DOCUMENTATION
+
+1. PLANNING: User has idea → Discuss → Add to roadmap.md (if strategic)
+2. APPROVAL: Break down → Add to tasks.md → WAIT for user confirmation
+3. EXECUTION: Create branch → Code → Test → Log progress in worklog.md
+4. DELIVERY: Create PR → User reviews → Merge
+5. DOCUMENTATION: Remove from tasks.md → Add to changelog.md → Document in features/ (if complex)
+```
+
+**Gentle guidance (when user seems unclear):**
+- User wants to implement without approval? → "Should we add this to tasks.md first?"
+- User discusses big idea? → "Should this go in roadmap.md?"
+- User jumps steps? → "We're at [step], next would be [step]. Want to proceed?"
+- User asks "what now?" → Show current step and next step
+
+**DON'T be annoying - only help if user seems confused or asks.**
+
+---
+
 ## Your Mandatory Workflow
 
 ```
