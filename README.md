@@ -13,7 +13,7 @@ A **documentation template** optimized for AI-assisted development. This structu
 
 1. Copy the `docs/` folder to your project
 2. Update project-specific files (architecture.md, installation.md, usage.md)
-3. Keep reusable files as-is (README.md, AGENTS.md, CODING_GUIDELINES.md)
+3. Keep template/meta files as-is (README.md, AGENTS.md, CODING_GUIDELINES.md)
 4. Add your features to `docs/features/` and fundamentals to `docs/fundamentals/`
 
 ## Documentation
