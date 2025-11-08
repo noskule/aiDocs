@@ -8,6 +8,30 @@ Enable a seasoned developer to reconstruct the project quickly without tribal kn
 
 Document anything that would take measurable time for an experienced engineer to rediscover — configuration logic, architectural decisions, workflow setup — but skip details that are obvious or easily re-derived.
 
+### Information Minimalism Test
+
+**Before adding any documentation, ask:**
+
+1. **Would a skilled developer need this?**
+   - NO → Don't document it
+   - YES → Continue to next question
+
+2. **Is it obvious from structure/code/naming?**
+   - YES → Don't document it
+   - NO → Continue to next question
+
+3. **Does it duplicate existing content?**
+   - YES → Reference instead, don't duplicate
+   - NO → Document it
+
+**Examples:**
+- ❌ Quick Reference section → NO (structure diagram exists)
+- ✅ Why JWT over sessions → YES (design rationale)
+- ❌ How to run `pytest` → NO (obvious)
+- ✅ Custom timing model → YES (project-specific)
+
+---
+
 ## When to Document
 
 ### ✅ Requires Documentation
