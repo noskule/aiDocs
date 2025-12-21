@@ -172,7 +172,19 @@ EOF
 - User merges when satisfied
 - **User informs LLM:** "PR merged, continue"
 
-### 10. **Continue**
+### 10. **Capture Technical Discoveries**
+
+Review the development session for reusable technical knowledge:
+
+- **Platform-specific findings** - Build quirks, API behaviors, workarounds
+- **Integration details** - How external systems actually work vs documentation
+- **Tribal knowledge** - Non-obvious solutions that would take time to rediscover
+
+**If discoveries exist:** Add to platform-specific dev guide or relevant documentation.
+
+**Apply Information Minimalism Test** - Only document what a developer would need to rediscover.
+
+### 11. **Continue**
 
 - LLM can proceed with next tasks
 - Branch is merged and cleaned up
@@ -216,4 +228,4 @@ EOF
 
 ---
 
-**Last Updated:** 2025-11-06 **Maintained By:** Project Team
+**Last Updated:** 2025-12-21 **Maintained By:** Project Team

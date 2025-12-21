@@ -53,11 +53,19 @@ PROJECT_ROOT/
 │
 └── docs/
     ├── README.md                 # This file - documentation guide
+    │
+    │   # Templates (project-independent, portable)
     ├── AGENTS.md                 # LLM behavioral instructions
     ├── CODING_GUIDELINES.md      # Development and documentation rules
     ├── CONTENT_OWNERSHIP.md      # Detailed ownership reference
     ├── INFO_MIN_TEST.md          # 3-question test for what to document
-    ├── VALIDATION.md             # Quality validation checklist (run regularly)
+    ├── VALIDATION.md             # Quality validation checklist
+    │
+    │   # Platform-specific (add per project)
+    ├── [platform]-development.md # Platform build, test, patterns
+    │   # Examples: android-development.md, ios-development.md, python-development.md
+    │
+    │   # Content files (project-specific)
     ├── documentation.md          # Curated overview - what software does
     ├── architecture.md           # System design & tech stack
     ├── installation.md           # Setup and prerequisites
@@ -82,6 +90,15 @@ PROJECT_ROOT/
         ├── worklog.md            # Daily execution (session logs)
         └── changelog.md          # Release history (shipped features)
 ```
+
+### File Types
+
+| Type | Files | Purpose |
+|------|-------|---------|
+| **Templates** (UPPERCASE) | AGENTS.md, CODING_GUIDELINES.md, etc. | Project-independent, reusable across projects |
+| **Platform-specific** (lowercase) | `[platform]-development.md` | Build commands, patterns for specific platform |
+| **Content** (lowercase) | architecture.md, features/*.md | Project-specific documentation |
+| **Project management** | project/*.md | Planning, tracking, changelog |
 
 ## Content Ownership
 
@@ -143,4 +160,4 @@ PROJECT_ROOT/
 
 ---
 
-**Last Updated:** 2025-11-08
+**Last Updated:** 2025-12-21

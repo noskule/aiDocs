@@ -49,6 +49,16 @@
 
 - When to document, what goes where, documentation workflow, code examples
 
+### `docs/[platform]-development.md`
+
+- **Platform-specific development guides** (e.g., `android-development.md`, `python-development.md`)
+- Build commands, test commands for that platform
+- Architecture patterns specific to that platform
+- File organization and naming conventions
+- Common development tasks
+- Troubleshooting for that platform
+- **Keeps templates portable:** Platform-specific content stays here, not in UPPERCASE template files
+
 ### `docs/features/`
 
 - Individual feature deep-dives, feature architecture, feature usage, feature decisions
@@ -108,6 +118,8 @@
 | **Release history**               | `project/changelog.md`    | "v1.0.0 - Initial release with translation pipeline"         |
 | **Feature deep-dive**             | `features/[name].md`      | "How the translation pipeline works end-to-end" |
 | **Core concepts**                 | `fundamentals/[topic].md` | "Understanding manual types: Superadmin, Technician, User" |
+| **Platform build/test commands**  | `[platform]-development.md` | "gradlew.bat :app:testDebugUnitTest", "poetry run pytest"  |
+| **Platform-specific patterns**    | `[platform]-development.md` | "Hilt injection, MVVM pattern, async/await usage"          |
 
 ## What to Include in Documentation
 
@@ -132,4 +144,4 @@
 
 ---
 
-**Last Updated:** 2025-11-08
+**Last Updated:** 2025-12-21
