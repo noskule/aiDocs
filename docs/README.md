@@ -9,6 +9,75 @@ A **documentation template** optimized for AI-assisted development:
 - **AI-Documented:** Designed for human + LLM collaboration
 - **Portable:** Copy entire `docs/` folder to any project
 
+## Core Principles
+
+| Principle | Purpose | Implementation |
+|-----------|---------|----------------|
+| **Information Minimalism** | WHAT to document | 3-question test before adding any documentation |
+| **Single Source of Truth** | WHERE to put it | Each fact lives in ONE place, reference don't duplicate |
+| **Just-in-Time Reading** | WHEN to read it | Minimal upfront, situational references |
+| **Template Portability** | HOW to organize | UPPERCASE = reusable templates, lowercase = project content |
+| **Feature-First** | HOW to structure | Organize by what software does, not code structure |
+
+### Information Minimalism Decision Flow
+
+```mermaid
+flowchart TD
+    START([Need to document something?]) --> Q1{Q1: Would skilled<br/>developer need this?}
+    Q1 -->|NO| SKIP[❌ Don't document]
+    Q1 -->|YES| Q2{Q2: Obvious from<br/>code/structure/naming?}
+    Q2 -->|YES| SKIP
+    Q2 -->|NO| Q3{Q3: Does it duplicate<br/>existing content?}
+    Q3 -->|YES| REF[🔗 Reference instead]
+    Q3 -->|NO| DOC[✅ Document it]
+
+    DOC --> WHERE{Where does it go?}
+    WHERE -->|"Technology decisions"| ARCH[(architecture.md)]
+    WHERE -->|"Setup steps"| INSTALL[(installation.md)]
+    WHERE -->|"How to use"| USAGE[(usage.md)]
+    WHERE -->|"Feature deep-dive"| FEAT[(features/*.md)]
+    WHERE -->|"Core concept"| FUND[(fundamentals/*.md)]
+    WHERE -->|"Platform-specific"| PLAT[([platform]-development.md)]
+    WHERE -->|"Release notes"| CHANGE[(changelog.md)]
+```
+
+### Structure Overview
+
+```mermaid
+flowchart TB
+    subgraph Templates["📋 TEMPLATES (UPPERCASE)<br/>Project-independent, portable"]
+        AGENTS[AGENTS.md<br/>LLM instructions]
+        CODING[CODING_GUIDELINES.md<br/>Dev workflow]
+        CONTENT[CONTENT_OWNERSHIP.md<br/>Where content belongs]
+        INFO[INFO_MIN_TEST.md<br/>3-question framework]
+    end
+
+    subgraph Platform["🔧 PLATFORM-SPECIFIC<br/>Add per project"]
+        PLAT_DEV["[platform]-development.md<br/>Build, test, patterns"]
+    end
+
+    subgraph Content["📄 CONTENT (lowercase)<br/>Project-specific"]
+        DOC[documentation.md]
+        ARCH[architecture.md]
+        INSTALL[installation.md]
+        USAGE[usage.md]
+    end
+
+    subgraph Features["✨ FEATURES"]
+        FEAT[features/*.md]
+        FUND[fundamentals/*.md]
+    end
+
+    subgraph Project["📊 PROJECT"]
+        direction LR
+        ROAD[roadmap] --> TASKS[tasks] --> WORK[worklog] --> CHANGE[changelog]
+    end
+
+    Templates -.->|"Copy to new project"| NewProject((New Project))
+    Platform -.->|"Add as needed"| NewProject
+    Content -.->|"Fill per project"| NewProject
+```
+
 ## File Naming Convention
 
 **UPPERCASE** = Template/meta/reference files (describe structure, not content):
@@ -127,16 +196,6 @@ PROJECT_ROOT/
 5. Document → Remove from tasks.md → Add to changelog.md
 
 **Complements GitHub:** Issues for bugs, Projects for sprint planning, PRs for review
-
----
-
-## Principles
-
-1. **Single Source of Truth** - Each fact lives in ONE place
-2. **Reconstruction-Ready** - Document only what skilled developers need to rebuild (skip obvious details)
-3. **Mandatory Documentation** - Features/architecture changes require doc updates
-4. **Updated with Code** - Documentation in same commit, not afterthought
-5. **Simple Structure** - Clear names, flat hierarchy, good cross-linking
 
 ---
 
