@@ -52,6 +52,13 @@ Quick navigation to all docs. Read only what you need, when you need it.
 **`[platform]-release.md`** - Publishing
 
 
+## Templates
+
+**[templates/](templates/)** - Starter files for new projects
+- `PLATFORM-DEVELOPMENT.template.md` - Platform development guide structure
+- `changelog.template.md` - Keep a Changelog format
+
+
 ## Project Management
 
 **[project/](project/README.md)** - Working area (cleaned after iteration)
