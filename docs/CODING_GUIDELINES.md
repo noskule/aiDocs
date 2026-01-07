@@ -1,77 +1,9 @@
-# Coding and Documentation Guidelines
+# Coding Guidelines
 
-## Core Principle
+Documentation guidance lives in `DOCUMENTATION_GUIDELINES.md`.
 
-Enable a seasoned developer to reconstruct the project quickly without tribal knowledge.
+Scope: Applies to all code changes in this repository.
 
-**Document what a seasoned developer would want to know - skip trivial fixes.**
-
-Document anything that would take measurable time for an experienced engineer to rediscover — configuration logic, architectural decisions, workflow setup — but skip details that are obvious or easily re-derived.
-
-### Information Minimalism Test
-
-**Before adding any documentation, ask:**
-
-1. **Would a skilled developer need this?**
-   - NO → Don't document it
-   - YES → Continue to next question
-
-2. **Is it obvious from structure/code/naming?**
-   - YES → Don't document it
-   - NO → Continue to next question
-
-3. **Does it duplicate existing content?**
-   - YES → Reference instead, don't duplicate
-   - NO → Document it
-
-**Examples:**
-- ❌ Quick Reference section → NO (structure diagram exists)
-- ✅ Why JWT over sessions → YES (design rationale)
-- ❌ How to run `pytest` → NO (obvious)
-- ✅ Custom timing model → YES (project-specific)
-
----
-
-## When to Document
-
-### ✅ Requires Documentation
-
-- **Architectural/structural changes** - New modules, refactoring, async conversions
-- **Technology/library decisions** - Choosing libraries, switching dependencies
-- **Performance optimizations** - Refactoring for efficiency, caching strategies
-- **Security vulnerabilities and fixes** - Any security-related changes
-- **Complex logic bugs** - Hard to figure out or fix
-- **Database/schema changes** - Any data structure modifications
-- **New features or behavior changes** - Anything that changes user-facing behavior
-- **Configuration changes** - New config options, changed defaults
-
-### ❌ Does NOT Require Documentation
-
-- **Typo fixes** - Error messages, comments, variable names
-- **Simple bug fixes** - Off-by-one errors, null checks, obvious logic fixes
-- **Code formatting** - Linting, whitespace, style adjustments
-- **Trivial refactoring** - Renaming variables, extracting simple functions (no behavior change)
-
-### Examples
-
-| Change                                        | Document? | Why                            |
-| --------------------------------------------- | --------- | ------------------------------ |
-| Fix typo in error message                     | ❌ No      | Trivial                        |
-| Fix off-by-one error in loop                  | ❌ No      | Simple bug                     |
-| Fix logic bug that changes behavior (complex) | ✅ Yes     | Complex, affects understanding |
-| Fix security vulnerability                    | ✅ Yes     | Important for security history |
-| Refactor function to be more efficient        | ✅ Yes     | Performance decision           |
-| Switching translation provider                | ✅ Yes     | Architectural decision         |
-| Adding a new caching layer                    | ✅ Yes     | Structural change              |
-
-## What Goes Where
-
-**See [CONTENT_OWNERSHIP.md](CONTENT_OWNERSHIP.md) for detailed breakdown.**
-
-**Quick summary:**
-
-- **Documentation (docs/)** - Information to rebuild the project (architecture, installation, usage, features, fundamentals)
-- **Code (docstrings, comments)** - Implementation details for developers working with the code
 
 ## Development Workflow
 
@@ -87,61 +19,65 @@ git checkout -b feature/descriptive-name
 - Follow existing code patterns and project conventions
 - Keep changes focused and atomic
 
-###3. **Write Tests**
+### 3. **Write Tests**
 
-**Test Coverage Requirements:**
-
-- **Use common sense, risk-driven approach** - Not everything needs exhaustive tests
-- **Consult "When to Document"** - If it requires documentation, it requires tests
-- **Consult "Core Principle"** - Would a seasoned developer need tests to understand this?
+Test coverage is risk-driven. Use judgment—new behavior or complex changes should be tested. If a change requires documentation per `DOCUMENTATION_GUIDELINES.md`, it requires tests too.
 
 **What Requires Tests:**
 
-- ✅ New features - Core functionality must be tested
-- ✅ Bug fixes (complex) - Test the fix and prevent regression
-- ✅ Refactoring - Ensure behavior hasn't changed
-- ✅ Public APIs - All public interfaces need tests
-- ❌ Trivial changes - Typos, comments, simple formatting
-- ❌ Documentation-only changes - No code tests needed
+- New features - Core functionality must be tested
+- Bug fixes (complex) - Test the fix and prevent regression
+- Refactoring - Ensure behavior hasn't changed
+- Public APIs - All public interfaces need tests
+- Trivial changes - Typos, comments, simple formatting
+- Documentation-only changes - No code tests needed
 
 ### 4. **Run Tests**
 
-```bash
-poetry run pytest
-poetry run pytest --cov=src --cov-report=html
-```
+See `[platform]-testing.md` for test commands.
 
 Verify all tests pass and coverage is appropriate for the risk level.
 
 ### 5. **Report to User for Review**
 
-**LLM Behavior:** Inform the user that code and tests are ready:
+**LLM Behavior:** Inform user that code is ready with testing instructions:
 
 ```
-✅ Code implemented: [brief description]
-✅ Tests written: [test coverage summary]
-✅ All tests passing: [test results]
+- Code implemented: [brief description]
+- Tests passing: [results]
 
-Ready for your review and testing. Please verify functionality.
+Manual testing:
+- [What to test - specific to changes made]
+- [Expected behavior]
+
+How to install/run: see [platform]-testing.md
 ```
 
-### 6. **User Reviews and Tests**
+### 6. **User Manually Tests and Reviews**
 
-- User manually tests the functionality
+- User tests the functionality (LLM provided what to test)
 - User reviews code quality and approach
 - User provides feedback or approval
 
-### 7. **Write Documentation** (After User Approval)
+### 7. **Capture Technical Discoveries**
 
-**Only after user confirms the implementation is correct:**
+Review the development session for reusable technical knowledge:
 
-- Update relevant documentation (see "Where to Update" below)
-- Add feature documentation if complex (see `docs/features/`)
-- Include **summarized prompts** used during development
+- Platform-specific findings (sensor types, API quirks, device behaviors)
+- Workarounds for undocumented issues
+- Integration details (how external systems actually work)
+
+**If discoveries exist:** Add to wiki under appropriate section.
+
+### 8. **Write Documentation**
+
+Update documentation per `DOCUMENTATION_GUIDELINES.md`:
+
 - Update changelog.md with changes
-- Update "Last Updated" dates
+- Update wiki if feature-related
+- Apply Information Minimalism test
 
-### 8. **Create Pull Request**
+### 9. **Create Pull Request**
 
 **LLM Behavior:** Create PR using GitHub CLI:
 
@@ -161,71 +97,26 @@ gh pr create --title "Feature: descriptive title" --body "$(cat <<'EOF'
 ## Prompts Used
 - [Summarized prompts that led to this implementation]
 
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
+-- Generated with [Claude Code](https://claude.com/claude-code)
 EOF
 )"
 ```
 
-### 9. **User Merges PR**
+### 10. **User Merges PR**
 
 - User reviews PR on GitHub
 - User merges when satisfied
 - **User informs LLM:** "PR merged, continue"
-
-### 10. **Capture Technical Discoveries**
-
-Review the development session for reusable technical knowledge:
-
-- **Platform-specific findings** - Build quirks, API behaviors, workarounds
-- **Integration details** - How external systems actually work vs documentation
-- **Tribal knowledge** - Non-obvious solutions that would take time to rediscover
-
-**If discoveries exist:** Add to platform-specific dev guide or relevant documentation.
-
-**Apply Information Minimalism Test** - Only document what a developer would need to rediscover.
 
 ### 11. **Continue**
 
 - LLM can proceed with next tasks
 - Branch is merged and cleaned up
 
----
 
-## Where to Update
+## Data Persistence
 
-| Change Type              | Update These Docs                                            |
-| ------------------------ | ------------------------------------------------------------ |
-| New feature              | `architecture.md` (component), `usage.md` (how to use), `changelog.md` (release notes), optionally `features/[name].md` (deep-dive) |
-| Architecture change      | `architecture.md` (design section), `changelog.md` if breaking |
-| Bug fix (complex)        | `architecture.md` (if design flaw), `changelog.md`           |
-| Performance optimization | `architecture.md` (decision rationale)                       |
-| New dependency           | `architecture.md` (tech stack + why), `installation.md` (setup) |
-| Config option            | `usage.md` (configuration section), `architecture.md` (if affects design) |
-| Breaking change          | `changelog.md` (migration guide), relevant doc with new behavior |
-| Complex feature          | `features/[feature].md` (detailed explanation of how it works across modules) |
-| New core concept         | `fundamentals/[concept].md` (explain the concept, why it matters, how it's used) |
+**Persistence changes:** Follow platform-specific data retention rules in `[platform]-development.md`.
 
-## Pull Request Requirements
 
-**All PRs must follow the "Complete Feature Development Process" above.**
-
-**PRs must include:**
-
-- ✅ Code changes (implemented and reviewed)
-- ✅ Tests for new functionality (all passing)
-- ✅ Updated documentation (if required by "When to Document" guidelines)
-- ✅ Summarized prompts used during development (in PR description)
-- ✅ Updated "Last Updated" dates
-
-**PRs will be rejected if:**
-
-- ❌ New features lack tests (unless trivial per "When to Document")
-- ❌ Tests are not passing
-- ❌ Significant changes lack documentation updates
-- ❌ Architecture changes not explained in architecture.md
-- ❌ Breaking changes not documented in changelog.md
-- ❌ Code not reviewed by user before PR creation
-
----
-
-**Last Updated:** 2025-12-21 **Maintained By:** Project Team
+**Last Updated:** 2026-01-07

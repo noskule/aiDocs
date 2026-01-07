@@ -4,7 +4,6 @@
 
 Inspired by "no part is the best part" - the best documentation is often no documentation.
 
----
 
 ## The Test
 
@@ -25,22 +24,20 @@ Before adding any documentation, ask these 3 questions in order:
 - **YES** → Reference instead, don't duplicate
 - **NO** → Document it ✅
 
----
 
 ## Examples
 
-| Documentation Candidate | Q1: Need? | Q2: Obvious? | Q3: Duplicate? | Decision |
-|------------------------|-----------|--------------|----------------|----------|
-| Quick Reference section linking to files | NO | - | - | ❌ Don't document |
-| Why JWT over sessions | YES | NO | NO | ✅ Document |
-| How to run `pytest` | NO | - | - | ❌ Don't document |
-| Custom timing model rationale | YES | NO | NO | ✅ Document |
-| Installation prerequisites | YES | NO | NO | ✅ Document |
-| Git commit command syntax | NO | - | - | ❌ Don't document |
-| Architecture decision (Arc42) | YES | NO | NO | ✅ Document |
-| File naming pattern already in README | YES | - | YES | 🔗 Reference |
+| Documentation Candidate                  | Q1: Need? | Q2: Obvious? | Q3: Duplicate? | Decision           |
+|------------------------------------------|-----------|--------------|----------------|--------------------|
+| Quick Reference section linking to files | NO        | -            | -              | ❌ Don't document  |
+| Why JWT over sessions                    | YES       | NO           | NO             | ✅ Document        |
+| How to run `pytest`                      | NO        | -            | -              | ❌ Don't document  |
+| Custom timing model rationale            | YES       | NO           | NO             | ✅ Document        |
+| Installation prerequisites               | YES       | NO           | NO             | ✅ Document        |
+| Git commit command syntax                | NO        | -            | -              | ❌ Don't document  |
+| Architecture decision (Arc42)            | YES       | NO           | NO             | ✅ Document        |
+| File naming pattern already in README    | YES       | -            | YES            | 🔗 Reference       |
 
----
 
 ## When to Document
 
@@ -58,7 +55,6 @@ Before adding any documentation, ask these 3 questions in order:
 - Details any experienced engineer would know
 - Duplicate content (reference instead)
 
----
 
 ## Underlying Principle
 
@@ -66,7 +62,6 @@ Before adding any documentation, ask these 3 questions in order:
 
 This test operationalizes **Information Minimalism**: each piece of documentation must earn its place by adding unique, non-obvious value.
 
----
 
 ## Benefits
 
@@ -76,17 +71,6 @@ This test operationalizes **Information Minimalism**: each piece of documentatio
 ✅ **LLM-friendly** - Simple yes/no decision tree
 ✅ **Actionable** - Clear framework, not vague "be minimal"
 
----
-
-## Real-World Usage
-
-This test was created for the [aiDocs](../README.md) LLM-optimized documentation template and has been used to:
-- Remove Quick Reference sections (duplicated structure diagrams)
-- Eliminate verbose installation steps (obvious to skilled developers)
-- Condense validation checklists (removed explanatory prose)
-- Reduce file sizes by 50%+ while improving clarity
-
----
 
 ## Integration
 
@@ -100,26 +84,6 @@ This test was created for the [aiDocs](../README.md) LLM-optimized documentation
 - Apply during validation passes
 - Use as decision framework for what to generate
 
----
 
-## Credits
-
-**Created by:** Human-AI collaboration (2025)
-- Conceptualized and refined through iterative development
-- Formalized during creation of the aiDocs template
-- Inspired by the "no part is the best part" engineering principle
-
-**Authors:**
-- Benjamin Behringer - Original concept and practical refinement
-- Claude (Anthropic) - Framework formalization and documentation
-
-Part of the **aiDocs** LLM-optimized documentation template:
-- [Full Template](../README.md)
-- [Documentation Standards](README.md#documentation-standards)
-- [Coding Guidelines](CODING_GUIDELINES.md#information-minimalism-test)
-
----
-
-**Version:** 1.0
-**Last Updated:** 2025-11-08
 **License:** Public Domain (CC0) - use freely
+**Last Updated:** 2026-01-07

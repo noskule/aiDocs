@@ -1,31 +1,26 @@
 # aiDocs
 
-A **documentation template** optimized for AI-assisted development. This structure helps teams work effectively with AI coding assistants like Claude, Copilot, and ChatGPT.
+A **documentation template** optimized for AI-assisted development for LLMs and Humans.
 
 ## Features
 
 - **LLM-Friendly:** Structured for AI coding assistants with dedicated behavioral instructions
-- **Information Minimalism:** 3-question test to decide what to document ([see test](docs/INFO_MIN_TEST.md))
-- **Feature-First:** Organized by what software does, not how code is structured
-- **AI-Documented:** Designed for human + LLM collaboration
-- **Portable:** Copy the entire `docs/` folder to any project for instant consistency
+- **Information Minimalism:** Only document what a skilled developer needs ([see test](docs/INFORMATION_MINIMALISM.md))
+- **Just-in-Time:** Read docs when you reach that situation, not upfront
+- **Portable:** Copy entire `docs/` folder to any project
 
 ## Quick Start
 
 1. Copy the `docs/` folder to your project
-2. Update project-specific files (architecture.md, installation.md, usage.md)
-3. Keep template/meta files as-is (README.md, AGENTS.md, CODING_GUIDELINES.md)
-4. Add your features to `docs/features/` and fundamentals to `docs/fundamentals/`
+2. Create `[platform]-development.md`, `[platform]-testing.md`, etc. for your platform
+3. Keep UPPERCASE template files as-is
+4. Use wiki for feature documentation
 
 ## Documentation
 
-**For AI Assistants:** Read [docs/AGENTS.md](docs/AGENTS.md) for behavioral instructions, workflow requirements, and development constraints.
+**For AI Assistants:** Start at [docs/AGENTS.md](docs/AGENTS.md)
 
-**Documentation Structure:** This project follows a feature-driven documentation approach. See [docs/README.md](docs/README.md) for:
-- Complete structure overview
-- Feature-driven approach guidelines
-- Content ownership rules
-- Documentation standards
+**Navigation:** See [docs/INDEX.md](docs/INDEX.md) for full contents
 
 ## License
 
