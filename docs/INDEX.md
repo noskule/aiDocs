@@ -43,7 +43,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 **`[platform]-installation.md`** - First time setup
 
-**`[platform]-development.md`** - Writing code
+**`[platform]-development.md`** - Writing code (template: `platform-development.template.md`)
 - Tech Stack, Architecture, Code Patterns, File Organization
 - Data Retention, Build Commands, Common Tasks
 
@@ -56,7 +56,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 **[project/](project/README.md)** - Working area (cleaned after iteration)
 - `worklog.md` - Scratch pad during development
-- `changelog.md` - Release history → GitHub Releases
+- `changelog.md` - Release history → GitHub Releases (template: `changelog.template.md`)
 - `tasks/` - Temporary milestone docs
 
 
