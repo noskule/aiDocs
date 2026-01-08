@@ -14,21 +14,17 @@ Additional reading ([INFORMATION_MINIMALISM.md](INFORMATION_MINIMALISM.md))
 
 Before adding any documentation, ask these 3 questions in order:
 
-#### 1. Would a skilled developer need this?
+1. **Would a skilled developer need this?**
+   - NO → Don't document it
+   - YES → Continue to question 2
 
-- **NO** → Don't document it
-- **YES** → Continue to question 2
+2. **Is it obvious from structure/code/naming?**
+   - YES → Don't document it
+   - NO → Continue to question 3
 
-#### 2. Is it obvious from structure/code/naming?
-
-- **YES** → Don't document it
-- **NO** → Continue to question 3
-
-#### 3. Does it duplicate existing content?
-
-- **YES** → Reference instead, don't duplicate
-- **NO** → Document it ✅
-
+3. **Does it duplicate existing content?**
+   - YES → Reference instead, don't duplicate
+   - NO → Document it ✅
 
 
 ## Documentation Levels
@@ -83,39 +79,32 @@ Apply Information Minimalism. Document only what isn't obvious from reading the 
 
 ## Documenting in /docs
 
-### Index Maintenance
-
-When adding/removing sections in any doc, update [INDEX.md](INDEX.md).
-
-### Platform Index Maintenance
-
-When adding/removing sections in platform files, update `[platform]-index.md`.
-
 ### File Naming Convention
 
-**UPPERCASE** = Template/meta/reference files (describe structure, not content)
+**UPPERCASE**
+* Template/meta/reference files (describe structure, not content)
+* See [INDEX.md](INDEX.md) for complete file list with contents.
 
-**lowercase** = Content files (actual project data)
+**lowercase**
+* Content files (actual project data)
+* See `[platform]-index.md` for complete file list with contents.
 
-### File Structure
+### Platform Docs
 
-See [INDEX.md](INDEX.md) for complete file list with contents.
+docs/ documents platform-specific setup, development, and testing guides.
+
+- Before writing, check `[platform]-index.md` to avoid duplication
+- After adding/removing sections, update the index
+
 
 ## Documenting in Wiki
 
-Wiki documents **what the software does** - behavior, concepts, architecture, device findings.
+Wiki documents how the software **functions** (user perspective), not how code **works** (implementation).
 
-### Structure
+- Before writing, check `_Sidebar.md` to avoid duplication
+- After adding/removing pages, update the sidebar
 
-| Section          | Content                      | Example                            |
-| ---------------- | ---------------------------- | ---------------------------------- |
-| **Fundamentals** | Domain concepts, terminology | HRV calculation, Doze mode         |
-| **Architecture** | System design, data flow     | Multi-device architecture          |
-| **Features**     | User-facing functionality    | Heart rate zones, template sharing |
-| **Devices**      | Hardware-specific findings   | TicWatch sensors, Polar quirks     |
-| **UI**           | Design concepts, patterns    | UI concept                         |
-
-### File Naming
+### File Naming Convention
 
 Use section prefix + descriptive name:
 
@@ -128,20 +117,6 @@ devices-wearos-ticwatch.md
 devices-ble-polar.md
 ```
 
-### When to Update Wiki
-
-| Trigger                 | Action                      |
-| ----------------------- | --------------------------- |
-| New feature implemented | Add to Features section     |
-| Architecture decision   | Add to Architecture section |
-| Device/sensor discovery | Add to Devices section      |
-| New domain concept      | Add to Fundamentals section |
-
-### Sidebar Maintenance
-
-`_Sidebar.md` is the wiki's index. Update when adding/removing pages.
-
-(Parallel to `INDEX.md` for docs/)
 
 
 ## Periodic Validation

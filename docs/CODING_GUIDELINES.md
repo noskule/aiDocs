@@ -1,7 +1,5 @@
 # Coding Guidelines
 
-Documentation guidance lives in `DOCUMENTATION_GUIDELINES.md`.
-
 Scope: Applies to all code changes in this repository.
 
 
@@ -15,9 +13,30 @@ git checkout -b feature/descriptive-name
 
 ### 2. **Implement Code**
 
+### DO:
 - Write the feature/fix implementation
-- Follow existing code patterns and project conventions
+- Read existing code before writing new code
+- Follow existing patterns and conventions
+- Flag problematic patterns in existing code to the user
 - Keep changes focused and atomic
+
+### DON'T:
+- Commit directly to main/master
+- Guess when you should ask
+
+### When to Ask the User
+
+Ask before proceeding when:
+- Architecture decision needed (which pattern, which layer)
+- Multiple valid implementation approaches exist
+- Requirements are unclear or ambiguous
+- Breaking changes are required
+- Significant refactoring needed
+- Adding new dependencies
+- Changing existing APIs
+- Unsure about expected behavior
+
+
 
 ### 3. **Write Tests**
 
@@ -44,6 +63,7 @@ Verify all tests pass and coverage is appropriate for the risk level.
 
 ```
 - Code implemented: [brief description]
+- Tests written: [coverage summary]
 - Tests passing: [results]
 
 Manual testing:
@@ -51,6 +71,9 @@ Manual testing:
 - [Expected behavior]
 
 How to install/run: see [platform]-testing.md
+
+Ready for your review and testing.
+
 ```
 
 ### 6. **User Manually Tests and Reviews**
