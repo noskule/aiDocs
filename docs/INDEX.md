@@ -9,9 +9,6 @@ Quick navigation to all docs. Read only what you need, when you need it.
 - Navigation
 - Situational References
 - Workflow Overview
-- LLM Behavioral Instructions
-- Best Practices
-
 
 ## Development Process
 

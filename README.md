@@ -12,9 +12,10 @@ A **documentation template** optimized for AI-assisted development for LLMs and 
 ## Quick Start
 
 1. Copy the `docs/` folder to your project
-2. Create `[platform]-development.md`, `[platform]-testing.md`, etc. for your platform
-3. Keep UPPERCASE template files as-is
-4. Use wiki for feature documentation
+2. Configure `docs/project.md` with wiki location and access (e.g., GitHub Wiki via `gh`)
+3. Create `[platform]-development.md`, `[platform]-index.md`, etc. for your platform
+4. Keep UPPERCASE template files as-is
+5. Use wiki for feature documentation
 
 ## Documentation
 
@@ -24,4 +25,4 @@ A **documentation template** optimized for AI-assisted development for LLMs and 
 
 ## License
 
-[Add your license here]
+MIT

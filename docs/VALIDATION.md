@@ -43,6 +43,10 @@ Run before major releases or quarterly. Apply to docs/ or wiki/.
 - [ ] References used instead of copying
 - [ ] Content ownership clear (one topic = one location)
 
+## Index Cross-Check
+Verify indexes reflect actual content:
+- [ ] `[platform]-index.md` matches platform file sections
+- [ ] Wiki index matches wiki pages (see `project.md` for wiki location)
 
 ## LLM Optimization
 
