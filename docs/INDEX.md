@@ -1,6 +1,6 @@
 # Documentation Index
 
-Quick navigation to all docs. Read only what you need, when you need it.
+Documentation map. LLMs: read upfront for context, then situational docs as needed.
 
 
 ## LLM Entry Point

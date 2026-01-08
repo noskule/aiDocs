@@ -27,14 +27,14 @@ Verify indexes reflect actual content:
 ## File Organization
 
 - [ ] Each file has single, clear purpose
-- [ ] File length < 200 lines (docs/) or < 300 lines (wiki/)
+- [ ] File length < 200 lines (docs/) or < 600 lines (wiki/)
 - [ ] UPPERCASE = templates, lowercase = content
 - [ ] Related content grouped logically
 
 
 ## Structure & Scannability
 
-- [ ] Max 3 heading levels (H1 → H2 → H3)
+- [ ] Max 4 heading levels (H1 → H2 → H3 → H4)
 - [ ] Clear, descriptive headers
 - [ ] Bullet points for lists
 - [ ] Tables for comparisons
@@ -52,9 +52,15 @@ Verify indexes reflect actual content:
 
 ## Single Source of Truth
 
-- [ ] No duplicated information
-- [ ] References used instead of copying
-- [ ] Content ownership clear (one topic = one location)
+Detection:
+- [ ] Search key terms (feature names, concepts) - each explained in one place only
+- [ ] Compare section headers across files for topic overlap
+- [ ] Check for copy-pasted paragraphs or near-identical explanations
+
+Resolution:
+- [ ] Primary location owns full explanation
+- [ ] Other locations use "See [X] for details" pattern
+- [ ] When merging duplicates: keep most complete version, redirect others
 
 
 ## LLM Optimization

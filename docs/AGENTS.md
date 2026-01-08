@@ -5,9 +5,12 @@
 Behavioral instructions and workflow for AI assistants. This is a project-independent template.
 
 
-## Navigation
+## Memorize for Session
 
-**[INDEX.md](INDEX.md)** - Full contents of all docs (consult to find what you need)
+Retain these for orientation throughout the session:
+- This file (AGENTS.md) - workflow and situational references
+- [INDEX.md](INDEX.md) - documentation map
+- `[platform]-index.md` - platform documentation map (if exists)
 
 
 ## Situational References
@@ -47,4 +50,4 @@ Follow the complete workflow in [CODING_GUIDELINES.md](CODING_GUIDELINES.md). Su
 ```
 
 
-**Last Updated:** 2026-01-07
+**Last Updated:** 2026-01-08
