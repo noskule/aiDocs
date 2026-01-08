@@ -31,7 +31,11 @@ git clone https://github.com/[org]/[repo].wiki.git
 
 **Index file:** `_Sidebar.md` (GitHub Wiki) or platform-specific
 
-Alternative locations:
+**File organization:**
+- File naming: `[section]-[topic].md` (e.g., `architecture-overview.md`, `features-authentication.md`)
+- Sidebar uses H2 (`##`) for sections, links for pages
+
+**Alternative locations:**
 - GitHub Wiki: `../../wiki` or `https://github.com/[org]/[repo]/wiki`
 - Confluence: `https://[company].atlassian.net/wiki/spaces/[space]`
 - Notion: `https://notion.so/[workspace]/[page]`

@@ -76,7 +76,6 @@ Apply Information Minimalism. Document only what isn't obvious from reading the 
 - Commented-out code (delete it)
 
 
-
 ## Documenting in /docs
 
 ### File Naming Convention
@@ -101,7 +100,7 @@ docs/ documents platform-specific setup, development, and testing guides.
 
 Wiki documents how the software **functions** (user perspective), not how code **works** (implementation).
 
-- Before writing, check `_Sidebar.md` to avoid duplication
+- Before writing, check wiki index to avoid duplication (see `README.md` for location)
 - After adding/removing pages, update the sidebar
 
 ### File Naming Convention
