@@ -6,9 +6,30 @@ Run before major releases or quarterly. Apply to docs/ or wiki/.
 ## How to Use
 
 1. Choose scope: `docs/` or `wiki/`
-2. Check each criterion
-3. Fix issues found
-4. No need to save results - validation is a process, not a document
+2. Update index files first (`[platform]-index.md`, wiki index per `README.md`)
+3. Check each criterion
+4. Report issues found (CLI summary)
+5. Fix or track: fix immediately, save report, or create GitHub issues
+
+**LLM Behavior:** After validation, ask user:
+- Fix issues now?
+- Save report to `docs/project/validation-report.md`?
+- Create GitHub issues for each problem?
+
+
+## Index Cross-Check
+
+Verify indexes reflect actual content:
+- [ ] `[platform]-index.md` matches platform file sections
+- [ ] Wiki index matches wiki pages (see `README.md` for wiki location)
+
+
+## File Organization
+
+- [ ] Each file has single, clear purpose
+- [ ] File length < 200 lines (docs/) or < 300 lines (wiki/)
+- [ ] UPPERCASE = templates, lowercase = content
+- [ ] Related content grouped logically
 
 
 ## Structure & Scannability
@@ -21,18 +42,10 @@ Run before major releases or quarterly. Apply to docs/ or wiki/.
 - [ ] Code blocks properly formatted
 
 
-## File Organization
-
-- [ ] Each file has single, clear purpose
-- [ ] File length < 200 lines (docs/) or < 300 lines (wiki/)
-- [ ] UPPERCASE = templates, lowercase = content
-- [ ] Related content grouped logically
-
-
 ## Navigation
 
 - [ ] All internal links work
-- [ ] Index file current (INDEX.md or _Sidebar.md)
+- [ ] Index file current (see `README.md` for wiki index)
 - [ ] "See X for details" pattern used consistently
 - [ ] No orphan pages (unreachable from navigation)
 
@@ -43,10 +56,6 @@ Run before major releases or quarterly. Apply to docs/ or wiki/.
 - [ ] References used instead of copying
 - [ ] Content ownership clear (one topic = one location)
 
-## Index Cross-Check
-Verify indexes reflect actual content:
-- [ ] `[platform]-index.md` matches platform file sections
-- [ ] Wiki index matches wiki pages (see `README.md` for wiki location)
 
 ## LLM Optimization
 
@@ -72,4 +81,4 @@ Verify indexes reflect actual content:
 - [ ] Platform-specific content in platform files
 
 
-**Last Updated:** 2026-01-07
+**Last Updated:** 2026-01-08
