@@ -5,7 +5,7 @@ Run before major releases or quarterly. Apply to docs/ or wiki/.
 
 ## How to Use
 
-1. Choose scope: `docs/` or `wiki/`
+1. Choose scope: `docs/` or `wiki`
 2. Update index files first (`[platform]-index.md`, wiki index per `README.md`)
 3. Check each criterion
 4. Report issues found (CLI summary)

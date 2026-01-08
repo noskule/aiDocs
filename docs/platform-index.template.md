@@ -1,23 +1,48 @@
 # [Platform] Index
 
-Overview and navigation for [platform] documentation.
+Overview and navigation for [platform] documentation. Check here before writing to avoid duplication.
 
 
-## Platform Docs
+## [platform]-installation.md
 
-| Doc | Purpose |
-|-----|---------|
-| `[platform]-index.md` | This file |
-| `[platform]-installation.md` | Setup and installation |
-| `[platform]-development.md` | Development guide |
-| `[platform]-testing.md` | Testing guide |
+Setup and first-time configuration.
+
+- Prerequisites
+- Installation steps
+- Environment setup
+- Verification
 
 
-## Quick Links
+## [platform]-development.md
 
-- **Setup:** [platform]-installation.md
-- **Development:** [platform]-development.md
-- **Testing:** [platform]-testing.md
+Development workflow, patterns, and commands.
+
+- Tech Stack
+- Architecture
+- Build Commands
+- Code Patterns
+- File Organization
+- Common Tasks
+- Troubleshooting
+
+
+## [platform]-testing.md
+
+Running and writing tests.
+
+- Test commands
+- Test structure
+- Writing tests
+- Coverage
+
+
+## [platform]-release.md
+
+Publishing and deployment.
+
+- Release process
+- Versioning
+- Distribution
 
 
 **Last Updated:** [date]
