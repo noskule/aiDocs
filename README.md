@@ -5,7 +5,7 @@ A **documentation template** optimized for AI-assisted development for LLMs and 
 ## Features
 
 - **LLM-Friendly:** Structured for AI coding assistants with dedicated behavioral instructions
-- **Information Minimalism:** Only document what a skilled developer needs ([see test](docs/INFORMATION_MINIMALISM.md))
+- **Information Minimalism:** Only document what a skilled developer or a LLM needs ([see test](docs/INFORMATION_MINIMALISM.md))
 - **Just-in-Time:** Read docs when you reach that situation, not upfront
 - **Portable:** Copy entire `docs/` folder to any project
 
