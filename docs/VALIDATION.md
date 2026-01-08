@@ -46,7 +46,7 @@ Run before major releases or quarterly. Apply to docs/ or wiki/.
 ## Index Cross-Check
 Verify indexes reflect actual content:
 - [ ] `[platform]-index.md` matches platform file sections
-- [ ] Wiki index matches wiki pages (see `project.md` for wiki location)
+- [ ] Wiki index matches wiki pages (see `README.md` for wiki location)
 
 ## LLM Optimization
 
