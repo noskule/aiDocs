@@ -1,0 +1,3 @@
+# Claude Instructions
+
+**MUST read [docs/AGENTS.md](docs/AGENTS.md) before starting any task. Memorize what it specifies.**
