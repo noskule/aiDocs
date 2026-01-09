@@ -35,7 +35,7 @@ Ask before proceeding when:
 - Adding new dependencies
 - Changing existing APIs
 - Unsure about expected behavior
-
+![img.png](img.png)
 
 
 ### 3. **Write Tests**
