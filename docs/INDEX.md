@@ -9,6 +9,7 @@ Documentation map. LLMs: read upfront for context, then situational docs as need
 - Navigation
 - Situational References
 - Workflow Overview
+- Sub-Agents (specialized task agents in `.claude/agents/`)
 
 ## Development Process
 
@@ -25,6 +26,11 @@ Documentation map. LLMs: read upfront for context, then situational docs as need
 
 
 ## Reference
+
+**[SUBAGENTS.md](SUBAGENTS.md)** - Creating specialized AI agents
+- File Structure
+- Agent File Format
+- Integrating with AGENTS.md
 
 **[INFORMATION_MINIMALISM.md](INFORMATION_MINIMALISM.md)** - 3-question test
 - The Test (3 questions)

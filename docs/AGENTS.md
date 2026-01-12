@@ -11,7 +11,7 @@ Retain these for orientation throughout the session:
 - This file (AGENTS.md) - workflow and situational references
 - [INDEX.md](INDEX.md) - documentation map
 - `[platform]-index.md` - platform documentation map (if exists)
-
+- [CODING_GUIDELINES.md](CODING_GUIDELINES.md) - The Coding workflow you have to follow
 
 ## Situational References
 
@@ -26,6 +26,7 @@ Read these **when you reach that situation**, not upfront:
 | Writing documentation   | `DOCUMENTATION_GUIDELINES.md` |
 | Validating docs         | `VALIDATION.md`               |
 | Starting a task         | `CODING_GUIDELINES.md`        |
+| Creating sub-agents     | `SUBAGENTS.md`                |
 | Unsure about approach   | Ask the user                  |
 
 **Don't know which doc?** Check [INDEX.md](INDEX.md) for section headers.
@@ -50,4 +51,19 @@ Follow the complete workflow in [CODING_GUIDELINES.md](CODING_GUIDELINES.md). Su
 ```
 
 
-**Last Updated:** 2026-01-08
+## Sub-Agents
+
+Specialized agents for complex domain-specific tasks. Located in `.claude/agents/`.
+
+Use these when the task matches the agent's specialty. Invoke via Task tool.
+
+| Agent | Use When... |
+|-------|-------------|
+| `example-agent` | Example: describe when to use this agent |
+
+> **Setup:** See [SUBAGENTS.md](SUBAGENTS.md) for how to create and integrate agents.
+
+**Read agent file before use** - contains patterns, examples, and checklists.
+
+
+**Last Updated:** 2026-01-12
