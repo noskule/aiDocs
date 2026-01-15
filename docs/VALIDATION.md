@@ -5,7 +5,9 @@ Run before major releases or quarterly. Apply to docs/ or wiki/.
 
 ## How to Use
 
-1. Choose scope: `docs/` or `wiki`
+1. Choose scope:
+    1. `docs/`
+    2. `wiki`
 2. Update index files first (`[platform]-index.md`, wiki index per `README.md`)
 3. Check each criterion
 4. Report issues found (CLI summary)
@@ -52,15 +54,9 @@ Verify indexes reflect actual content:
 
 ## Single Source of Truth
 
-Detection:
-- [ ] Search key terms (feature names, concepts) - each explained in one place only
-- [ ] Compare section headers across files for topic overlap
-- [ ] Check for copy-pasted paragraphs or near-identical explanations
-
-Resolution:
-- [ ] Primary location owns full explanation
-- [ ] Other locations use "See [X] for details" pattern
-- [ ] When merging duplicates: keep most complete version, redirect others
+- [ ] No duplicated information
+- [ ] References used instead of copying
+- [ ] Content ownership clear (one topic = one location)
 
 
 ## LLM Optimization
