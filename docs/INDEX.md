@@ -9,7 +9,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 - Navigation
 - Situational References
 - Workflow Overview
-- Sub-Agents (specialized task agents in `.claude/agents/`)
+- Sub-Agents (specialized task agents in `docs/subagents/`)
 
 ## Development Process
 

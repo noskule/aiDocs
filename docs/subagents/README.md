@@ -17,8 +17,8 @@ Sub-agents are specialized instruction sets for complex domain-specific tasks. I
 ## File Structure
 
 ```
-.claude/
-└── agents/
+docs/
+└── subagents/
     ├── db-expert.md
     ├── unit-test.md
     ├── ui-component.md
@@ -73,7 +73,7 @@ Add a Sub-Agents section to `docs/AGENTS.md`:
 ```markdown
 ## Sub-Agents
 
-Specialized agents for complex domain-specific tasks. Located in `.claude/agents/`.
+Specialized agents for complex domain-specific tasks. Located in `docs/subagents/`.
 
 | Agent | Use When... |
 |-------|-------------|
@@ -92,7 +92,7 @@ This gives the LLM:
 ## Creating a New Agent
 
 1. Identify a complex, repeatable task area
-2. Create `.claude/agents/agent-name.md`
+2. Create `docs/subagents/agent-name.md`
 3. Document: purpose, patterns, key files, checklist
 4. Add entry to AGENTS.md Sub-Agents table
 5. Test by invoking on a real task

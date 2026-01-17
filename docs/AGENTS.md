@@ -54,7 +54,7 @@ Follow the complete workflow in [CODING_GUIDELINES.md](CODING_GUIDELINES.md). Su
 
 ## Sub-Agents
 
-Specialized agents for complex domain-specific tasks. Located in `.claude/agents/`.
+Specialized agents for complex domain-specific tasks. Located in `docs/subagents/`.
 
 Use these when the task matches the agent's specialty. Invoke via Task tool.
 
