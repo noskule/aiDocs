@@ -27,7 +27,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 ## Reference
 
-**[SUBAGENTS.md](SUBAGENTS.md)** - Creating specialized AI agents
+**[subagents/README.md](subagents/README.md)** - Creating specialized AI agents
 - File Structure
 - Agent File Format
 - Integrating with AGENTS.md
@@ -37,8 +37,6 @@ Quick navigation to all docs. Read only what you need, when you need it.
 - Examples
 - When to Document
 
-**[VALIDATION.md](VALIDATION.md)** - Quality checklist (run when needed)
-
 
 ## Platform Specific
 
@@ -46,7 +44,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 **`[platform]-installation.md`** - First time setup
 
-**`[platform]-development.md`** - Writing code (template: `platform-development.template.md`)
+**`[platform]-development.md`** - Writing code
 - Tech Stack, Architecture, Code Patterns, File Organization
 - Data Retention, Build Commands, Common Tasks
 

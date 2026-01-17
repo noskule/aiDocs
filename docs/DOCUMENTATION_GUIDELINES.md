@@ -223,7 +223,7 @@ delay(500)
 
 ## Periodic Validation
 
-Run [VALIDATION.md](VALIDATION.md) checklist before major releases or quarterly.
+Invoke the [validation](subagents/validation.md) agent before major releases or quarterly.
 Applies to both docs/ and wiki/.
 
 ---
