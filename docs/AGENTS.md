@@ -35,25 +35,6 @@ Read these **when you reach that situation**, not upfront:
 **Don't know which doc?** Check [INDEX.md](INDEX.md) for section headers.
 
 
-## Workflow Overview
-
-Follow the complete workflow in [CODING_GUIDELINES.md](CODING_GUIDELINES.md). Summary:
-
-```
-1. Create branch
-2. Implement code
-3. Write tests (if required)
-4. Run tests - ALL must pass
-5. Report to user (what to test + how via platform guide)
-6. User manually tests and reviews
-7. Capture technical discoveries
-8. Write documentation
-9. Create pull request
-10. User merges PR
-11. Continue
-```
-
-
 ## Sub-Agents
 
 Specialized agents for complex domain-specific tasks. Located in `docs/subagents/`.
