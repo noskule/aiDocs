@@ -12,6 +12,7 @@ Retain these for orientation throughout the session:
 - [INDEX.md](INDEX.md) - documentation map
 - `[platform]-index.md` - platform documentation map (if exists)
 - [CODING_GUIDELINES.md](CODING_GUIDELINES.md) - The Coding workflow you have to follow
+- Wiki index (if exists) - see [wiki.md](wiki.md) for location
 
 ## Situational References
 
