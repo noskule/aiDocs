@@ -112,7 +112,24 @@ For wiki/: warn if > 600 lines
 - [platform]-*.md = platform-specific
 
 
-### Step 7: Staleness Check
+### Step 7: Wiki Structure Check
+
+**Verify behavior-first structure (wiki only):**
+
+For each wiki page (except Home, README, _Sidebar):
+1. Check for "## What It Does" section near top
+2. Check for "## Why It Matters" section
+3. Check for "## Android Implementation" section (if platform content exists)
+4. Check for "## iOS Implementation" section (placeholder if Android exists)
+5. Grep for `INTENT:` or `PLATFORM:` in headings — should not exist
+
+**Report issues:**
+- Missing required sections
+- INTENT/PLATFORM markers still in headings
+- Platform content outside implementation sections
+
+
+### Step 8: Staleness Check
 
 **Check Last Updated dates:**
 ```
@@ -164,4 +181,4 @@ Ask user:
 | `docs/wiki.md` | Wiki location reference |
 
 
-**Last Updated:** 2026-01-17
+**Last Updated:** 2026-02-06
