@@ -50,12 +50,12 @@ Use these when the task matches the agent's specialty. Invoke via Task tool.
 
 Quick lookup for when to invoke agents during workflow:
 
-| If you're doing... | Invoke... |
-|--------------------|-----------|
-| `<domain-task>` | `<agent-name>` |
-| Writing tests | `test-writer-*` |
-| Running tests | `test-runner` |
-| Validating documentation | `validation` |
+| If you're doing...       | Invoke...       |
+|--------------------------|-----------------|
+| `<domain-task>`          | `<agent-name>`  |
+| Writing tests            | `test-writer-*` |
+| Running tests            | `test-runner`   |
+| Validating documentation | `validation`    |
 
 > **Customize:** Replace examples with your project's agents from `docs/subagents/`.
 
