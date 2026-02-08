@@ -6,7 +6,7 @@
 
 This serves two audiences equally:
 - **Reconstruction:** A new developer joining the project
-- **Translation:** An LLM porting functionality to another platform (e.g., Platform A → Platform B)
+- **Translation:** An LLM porting functionality to another platform
 
 Both need the same information: intent, constraints, and rationale — not mechanics.
 
@@ -46,18 +46,15 @@ Before adding documentation, ask in order:
 - Standard patterns the platform expects (ViewModel lifecycle, Composable structure)
 - Commented-out code (delete it)
 
-### Portability Markers
+### Platform-Specific Marker
 
-When documenting, flag platform-specific items:
+Use one marker for platform-specific quirks that need evaluation when porting:
+
 ```kotlin
-// PLATFORM: [description] — may not apply on other platforms
-// PLATFORM: Platform A BLE stack requires explicit disconnect before reconnect
-
-// INTENT: [description] — must work identically on any platform  
-// INTENT: Heart rate zones must update within 1 second of sensor data
+// PLATFORM: Coospo BLE requires 500ms post-connect delay before notifications work
 ```
 
-This helps during porting: INTENT items are requirements, PLATFORM items need evaluation.
+Everything *without* this marker is implicitly cross-platform intent. No separate INTENT marker needed — if it's not platform-specific, it's a requirement.
 
 ## Documentation Levels
 
@@ -102,85 +99,75 @@ devices-ble-polar.md
 **Before writing:** Check wiki index to avoid duplication
 **After writing:** Update the sidebar
 
-#### Architecture vs Implementation Separation
+#### Structure: Behavior First, Then Platform
 
-Wiki documentation should clearly separate **architecture** (platform-agnostic design) from **implementation** (platform-specific code). This enables:
-- Clear understanding of what's required vs. how it's done
-- Easier porting to new platforms
-- Better AI assistant comprehension
-
-**Structure Pattern:**
+Wiki pages separate **what the feature does** (platform-agnostic) from **how it's implemented** (platform-specific). The structure itself conveys intent — no inline markers needed.
 
 ```markdown
-## Overview
-Platform-agnostic explanation of what this feature does and why.
+# Feature Name
 
-## Architecture
-Design decisions, state machines, algorithms, data flow.
-Use INTENT markers for requirements that must work identically everywhere.
+## What It Does
+Platform-agnostic description of behavior. Any implementation on any
+platform must achieve this. This section IS the cross-platform requirement.
 
-### [Specific Concept]
-**INTENT:** [What must happen, regardless of platform]
-[Explanation of the concept/algorithm/pattern]
+## Why It Matters
+Rationale, constraints, domain knowledge. Explains decisions that aren't
+obvious from the behavior description.
 
-## Platform A Implementation
-**PLATFORM:** [How it's implemented on Platform A]
-- Specific classes, APIs, patterns used
-- Platform-specific quirks and workarounds
+## Android Implementation
+How it's built on Android: classes, APIs, patterns, quirks.
+Use `// PLATFORM:` comments for code-level quirks.
 
-## Platform B Implementation
-*To be documented when Platform B development begins.*
+## iOS Implementation
+*Placeholder until iOS development begins.*
 ```
 
-**Example Page Structure:**
+**Example:**
 
 ```markdown
 # Device Connection Management
 
-## Overview
-Users connect heart rate devices and expect automatic reconnection.
+## What It Does
+Users pair heart rate devices once. The app remembers paired devices and
+reconnects automatically on launch. Manual disconnect prevents auto-reconnect
+until user explicitly reconnects.
 
-## Architecture
+Connection states: Disconnected → Connecting → Connected → Disconnected
 
-### Connection States
-**INTENT:** Clear state machine for connection lifecycle.
-[Diagram showing: Disconnected → Connecting → Connected]
+## Why It Matters
+- Auto-reconnect saves time for daily workouts
+- Respecting manual disconnect prevents unwanted battery drain
+- Clear states let UI show accurate feedback
 
-### Auto-Reconnect Rules
-**INTENT:** Respect user's connection choices across restarts.
-1. On app start: connect to devices marked "enabled"
-2. On user disconnect: mark as "disabled", no auto-reconnect
-
-## Platform A Implementation
+## Android Implementation
 
 ### Key Components
 | Component | Responsibility |
 |-----------|---------------|
-| `DeviceManager` | Facade coordinating sources |
-| `BleDeviceSource` | BLE connection |
+| `DeviceManager` | Coordinates BLE and WearOS sources |
+| `BleDeviceSource` | Android BLE scanning and GATT connections |
 
-### PLATFORM: BLE Specifics
-- Platform-specific BLE scanning API
-- Connection priority settings for power management
+### Quirks
+- BLE scanning requires location permission (Android platform requirement)
+- Some devices (Coospo) need post-connect delay before notifications work
+
+## iOS Implementation
+*To be documented when iOS development begins.*
 ```
 
-**Key Rules:**
-1. Architecture sections should be understandable without knowing any specific platform
-2. Implementation sections reference actual code, classes, and APIs
-3. Use INTENT for cross-platform requirements
-4. Use PLATFORM for platform-specific details
+**Key principle:** If someone reads only "What It Does" and "Why It Matters", they have everything needed to implement the feature on any platform. The platform sections are reference for existing implementations.
 
 ## Examples
 
-### Good: Intent + Rationale
+### Good: Behavior + Rationale
 ```kotlin
 /**
  * Manages heart rate session state.
- * 
- * INTENT: Emits Loading → Success/Error states. UI binds directly to these.
- * Sessions must survive configuration changes (rotation, theme switch).
- * 
- * Uses 500ms debounce on sensor readings — faster updates cause visible 
+ *
+ * Emits Loading → Success/Error states. UI binds directly to these.
+ * Sessions survive configuration changes (rotation, theme switch).
+ *
+ * Uses 500ms debounce on sensor readings — faster updates cause visible
  * UI jank on mid-range devices (tested on Pixel 4a, Galaxy A52).
  */
 class HeartRateViewModel(...) : ViewModel()
@@ -190,14 +177,13 @@ class HeartRateViewModel(...) : ViewModel()
 ```kotlin
 // PLATFORM: Coospo H808S requires 500ms delay after BLE connect
 // before enabling notifications. Without this, first 2-3 readings
-// are zeros. Other tested devices (Polar H10, Garmin HRM) work
-// immediately. May not apply on other platforms.
+// are zeros. Other tested devices (Polar H10, Garmin HRM) work immediately.
 delay(500)
 ```
 
 ### Good: Domain Knowledge
 ```kotlin
-// RMSSD (Root Mean Square of Successive Differences) measures 
+// RMSSD (Root Mean Square of Successive Differences) measures
 // heart rate variability. Typical range: 20-200ms for healthy adults.
 // Values outside this range may indicate sensor noise or artifacts.
 // Reference: Shaffer & Ginsberg, 2017
@@ -229,4 +215,4 @@ Applies to both docs/ and wiki/.
 
 ---
 
-**Last Updated:** 2026-01-14
+**Last Updated:** 2026-02-06
