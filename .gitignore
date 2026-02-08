@@ -1,2 +1,14 @@
-# JetBrains IDE
-.idea/tmpclaude-*
+# IDE
+.idea/
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# AI tool configs (use .template versions to set up)
+CLAUDE.md
+CODEX.md
+.cursorrules
+.github/copilot-instructions.md
+
+# Temp files
+tmpclaude-*
