@@ -2,6 +2,8 @@
 
 A **documentation and coding workflow framework** for AI-assisted development.
 
+For developers and teams using AI coding assistants. Works with any language, platform, or AI tool.
+
 AI coding assistants produce inconsistent results when documentation is bloated, scattered, or structured for human-only consumption. aiDocs provides a minimal, navigable structure that both LLMs and developers can work with effectively.
 
 
@@ -45,6 +47,30 @@ What to document, where, and how much.
 **Validation** — Two built-in validation agents keep the system healthy:
 - `VALIDATION_DOCS` — Structural checks: broken links, orphan pages, stale content, index consistency
 - `VALIDATION_LLM` — Effectiveness test: can a fresh LLM navigate the docs and correctly understand the project?
+
+
+## What's Inside
+
+```
+docs/
+├── AGENTS.md                       # LLM entry point and workflow router
+├── CODING_GUIDELINES.md            # 11-step development process
+├── DOCUMENTATION_GUIDELINES.md     # What/where/how much to document
+├── INDEX.md                        # Navigation map
+├── INFORMATION_MINIMALISM.md       # 3-question test
+├── wiki.md                         # Wiki setup and configuration
+├── features/                       # Feature documentation
+│   └── feature.template.md
+├── project/                        # Worklog, changelog, tasks
+│   └── changelog.template.md
+├── subagents/                      # Specialized AI agents
+│   ├── VALIDATION_DOCS.md
+│   └── VALIDATION_LLM.md
+├── platform-development.template.md
+└── platform-index.template.md
+```
+
+UPPERCASE = framework files (keep as-is) / lowercase = your project content
 
 
 ## Quick Start
