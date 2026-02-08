@@ -1,6 +1,6 @@
-# validation
+# VALIDATION_DOCS
 
-Validates documentation quality and consistency across docs/ and wiki/.
+Validates documentation structure and consistency across docs/ and wiki/.
 
 
 ## Purpose

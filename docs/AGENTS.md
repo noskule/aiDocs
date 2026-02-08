@@ -27,7 +27,8 @@ Read these **when you reach that situation**, not upfront:
 | Writing code            | `[platform]-development.md`   |
 | Writing tests           | `[platform]-testing.md`       |
 | Writing documentation   | `DOCUMENTATION_GUIDELINES.md` |
-| Validating docs         | `subagents/validation.md`     |
+| Validating docs         | `subagents/VALIDATION_DOCS.md`|
+| Testing docs for LLMs   | `subagents/VALIDATION_LLM.md` |
 | Starting a task         | `CODING_GUIDELINES.md`        |
 | Creating sub-agents     | `subagents/README.md`         |
 | Unsure about approach   | Ask the user                  |
@@ -55,9 +56,10 @@ Quick lookup for when to invoke agents during workflow:
 | `<domain-task>` | `<agent-name>` |
 | Writing tests | `test-writer-*` |
 | Running tests | `test-runner` |
-| Validating documentation | `validation` |
+| Validating documentation | `VALIDATION_DOCS` |
+| Testing LLM readiness   | `VALIDATION_LLM` |
 
 > **Customize:** Replace examples with your project's agents from `docs/subagents/`.
 
 
-**Last Updated:** 2026-01-17
+**Last Updated:** 2026-02-08

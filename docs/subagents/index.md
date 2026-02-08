@@ -26,7 +26,13 @@ Available specialized agents for this project. Read the agent file before use.
 | Agent | Purpose |
 |-------|---------|
 | [`documentation`](documentation.md) | Write docs following project guidelines |
-| [`validation`](validation.md) | Validate docs quality and consistency |
+
+## Validation Agents
+
+| Agent | Purpose |
+|-------|---------|
+| [`VALIDATION_DOCS`](VALIDATION_DOCS.md) | Validate docs structure and consistency |
+| [`VALIDATION_LLM`](VALIDATION_LLM.md) | Test docs effectiveness via LLM knowledge test |
 
 
-**Last Updated:** 2026-01-17
+**Last Updated:** 2026-02-08

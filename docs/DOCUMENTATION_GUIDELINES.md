@@ -223,7 +223,8 @@ delay(500)
 
 ## Periodic Validation
 
-Invoke the [validation](subagents/validation.md) agent before major releases or quarterly.
+Invoke the [VALIDATION_DOCS](subagents/VALIDATION_DOCS.md) agent before major releases or quarterly.
+Invoke the [VALIDATION_LLM](subagents/VALIDATION_LLM.md) agent after major restructuring or new project setup.
 Applies to both docs/ and wiki/.
 
 ---
