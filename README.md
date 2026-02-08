@@ -1,13 +1,77 @@
 # aiDocs
 
-A **documentation template** optimized for AI-assisted development for LLMs and Humans.
+A **documentation and coding workflow framework** for AI-assisted development.
 
-## Features
+For developers and teams using AI coding assistants. Works with any language, platform, or AI tool.
 
-- **LLM-Friendly:** Structured for AI coding assistants with dedicated behavioral instructions
-- **Information Minimalism:** Only document what a skilled developer or a LLM needs ([see test](docs/INFORMATION_MINIMALISM.md))
-- **Just-in-Time:** Read docs when you reach that situation, not upfront
-- **Portable:** Copy entire `docs/` folder to any project
+AI coding assistants produce inconsistent results when documentation is bloated, scattered, or structured for human-only consumption. aiDocs provides a minimal, navigable structure that both LLMs and developers can work with effectively.
+
+
+## Principle: Just-in-Time
+
+Read indexes upfront, read content only when you reach that situation. Documentation is organized by situation, not by hierarchy — `AGENTS.md` routes you to the right file at the right time.
+
+
+## Pillar 1: LLM Coding Workflow
+
+A structured development process designed for AI-assisted coding.
+
+**11-Step Development Process** — From feature branch to merged PR: implement, test, review, document, ship. Each step has clear LLM behavioral instructions. See [CODING_GUIDELINES.md](docs/CODING_GUIDELINES.md).
+
+**Sub-Agents** — Specialized instruction sets for complex domain-specific tasks. Instead of one general-purpose AI handling everything, sub-agents provide focused expertise (testing, documentation, validation). See [subagents/](docs/subagents/index.md).
+
+
+## Pillar 2: Documentation
+
+What to document, where, and how much.
+
+**3 Documentation Levels:**
+
+| Level | Contains | Examples |
+|-------|----------|----------|
+| **Code** | Intent, rationale, edge cases | Docstrings, inline "why" comments |
+| **/docs** | Developer operations, platform guides | Build, test, run, release |
+| **Wiki** | How software functions, architecture, domain concepts | Features, behavior, system design |
+
+**Information Minimalism** — Before documenting, pass the 3-question test: Would a skilled developer need this? Is it obvious from the code? Does it duplicate existing content? If it fails any question, don't write it. See [INFORMATION_MINIMALISM.md](docs/INFORMATION_MINIMALISM.md).
+
+**Behavior vs. Platform** — Documentation separates what the software does (cross-platform requirement) from how it's built on a specific platform. Platform-specific quirks are marked with `// PLATFORM:` — everything else is implicitly a requirement for any implementation. See [DOCUMENTATION_GUIDELINES.md](docs/DOCUMENTATION_GUIDELINES.md).
+
+
+## Structure and Conventions
+
+**AI-Tool Independent** — Entry points for Claude, Copilot, Cursor, and Codex all funnel into a single [AGENTS.md](docs/AGENTS.md). Write the workflow once, every AI tool follows it.
+
+**Template Convention** — UPPERCASE files (`AGENTS.md`, `CODING_GUIDELINES.md`) are framework files that stay as-is. Lowercase files (`android-development.md`) are project-specific content you create. Copy the `docs/` folder to any project and start filling in.
+
+**Validation** — Two built-in validation agents keep the system healthy:
+- `VALIDATION_DOCS` — Structural checks: broken links, orphan pages, stale content, index consistency
+- `VALIDATION_LLM` — Effectiveness test: can a fresh LLM navigate the docs and correctly understand the project?
+
+
+## What's Inside
+
+```
+docs/
+├── AGENTS.md                       # LLM entry point and workflow router
+├── CODING_GUIDELINES.md            # 11-step development process
+├── DOCUMENTATION_GUIDELINES.md     # What/where/how much to document
+├── INDEX.md                        # Navigation map
+├── INFORMATION_MINIMALISM.md       # 3-question test
+├── wiki.md                         # Wiki setup and configuration
+├── features/                       # Feature documentation
+│   └── feature.template.md
+├── project/                        # Worklog, changelog, tasks
+│   └── changelog.template.md
+├── subagents/                      # Specialized AI agents
+│   ├── VALIDATION_DOCS.md
+│   └── VALIDATION_LLM.md
+├── platform-development.template.md
+└── platform-index.template.md
+```
+
+UPPERCASE = framework files (keep as-is) / lowercase = your project content
+
 
 ## Quick Start
 
@@ -17,11 +81,10 @@ A **documentation template** optimized for AI-assisted development for LLMs and 
 4. Keep UPPERCASE template files as-is
 5. Use wiki for feature documentation
 
-## Documentation
-
 **For AI Assistants:** Start at [docs/AGENTS.md](docs/AGENTS.md)
 
-**Navigation:** See [docs/INDEX.md](docs/INDEX.md) for full contents
+**Full Navigation:** See [docs/INDEX.md](docs/INDEX.md)
+
 
 ## License
 
