@@ -4,9 +4,17 @@ A **documentation and coding workflow framework** for AI-assisted development.
 
 For developers and teams using AI coding assistants. Works with any language, platform, or AI tool.
 
-AI coding assistants produce inconsistent results when documentation is bloated, scattered, or structured for human-only consumption. aiDocs provides a minimal, navigable structure that both LLMs and developers can work with effectively.
-
-Entry points for Claude, Copilot, Cursor, and Codex all funnel into a single [AGENTS.md](docs/AGENTS.md). Write the workflow once, every AI tool follows it.
+- **AI-tool independent** — One workflow for Claude, Copilot, Cursor, and Codex via a single [AGENTS.md](docs/AGENTS.md)
+- **11-step coding workflow** — Structured process from feature branch to merged PR with clear LLM instructions
+- **Just-in-time documentation** — Read indexes upfront, load details only when needed
+- **Sub-agents** — Specialized instruction sets for testing, documentation, and validation
+- **3 documentation levels**
+  - **Code** — Intent, rationale, edge cases (docstrings, inline "why" comments)
+  - **/docs** — Developer operations (build, test, run, release)
+  - **Wiki** — How the software works (features, architecture, domain concepts)
+- **Information minimalism** — Only document what a seasoned developer or LLM couldn't figure out from the code alone
+- **Built-in validation** — Structural checks and LLM effectiveness testing
+- **Drop-in templates** — Copy `docs/` into any project and start working
 
 
 ## Quick Start
