@@ -2,19 +2,17 @@
 
 A **documentation and coding workflow framework** for AI-assisted development.
 
-For developers and teams using AI coding assistants. Works with any language, platform, or AI tool.
+For developers using AI coding assistants. Works with any language, platform, or AI tool.
 
-- **AI-tool independent** — One workflow for Claude, Copilot, Cursor, and Codex via a single [AGENTS.md](docs/AGENTS.md)
 - **11-step coding workflow** — Structured process from feature branch to merged PR with clear LLM instructions
-- **Just-in-time documentation** — Read indexes upfront, load details only when needed
-- **Sub-agents** — Specialized instruction sets for testing, documentation, and validation
+- **Information minimalism** — Only document what a seasoned developer or LLM couldn't figure out from the code alone
+- **Just-in-time information** — Read indexes upfront, load details only when needed
 - **3 documentation levels**
   - **Code** — Intent, rationale, edge cases (docstrings, inline "why" comments)
   - **/docs** — Developer operations (build, test, run, release)
   - **Wiki** — How the software works (features, architecture, domain concepts)
-- **Information minimalism** — Only document what a seasoned developer or LLM couldn't figure out from the code alone
-- **Built-in validation** — Structural checks and LLM effectiveness testing
-- **Drop-in templates** — Copy `docs/` into any project and start working
+- **Sub-agents** — Specialized instruction sets for testing, documentation, and validation
+ **AI-tool independent** — One workflow for Claude, Copilot, Cursor, and Codex via a single [AGENTS.md](docs/AGENTS.md)
 
 
 ## Quick Start
@@ -45,11 +43,11 @@ A structured development process designed for AI-assisted coding.
 
 ### Documentation Levels
 
-| Level | Contains | Examples |
-|-------|----------|----------|
-| **Code** | Intent, rationale, edge cases | Docstrings, inline "why" comments |
-| **/docs** | Developer operations, platform guides | Build, test, run, release |
-| **Wiki** | How software functions, architecture, domain concepts | Features, behavior, system design |
+| Level     | Contains                                              | Examples                          |
+|-----------|-------------------------------------------------------|-----------------------------------|
+| **Code**  | Intent, rationale, edge cases                         | Docstrings, inline "why" comments |
+| **/docs** | Developer operations, platform guides                 | Build, test, run, release         |
+| **Wiki**  | How software functions, architecture, domain concepts | Features, behavior, system design |
 
 - **Information Minimalism** — Before documenting, pass the 3-question test: Would a skilled developer need this? Is it obvious from the code? Does it duplicate existing content? If it fails any question, don't write it. See [INFORMATION_MINIMALISM.md](docs/INFORMATION_MINIMALISM.md).
 - **Behavior vs. Platform** — Documentation separates what the software does (cross-platform requirement) from how it's built on a specific platform. Platform-specific quirks are marked with `// PLATFORM:` — everything else is implicitly a requirement for any implementation. See [DOCUMENTATION_GUIDELINES.md](docs/DOCUMENTATION_GUIDELINES.md).
