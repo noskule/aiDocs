@@ -207,6 +207,19 @@ for (item in items) { ... }
 delay(500)
 ```
 
+## Code Index
+
+If the project uses the [code-index](tools/code-index/) tool, the generated index (`docs/code-index/`) is an additional documentation level — a machine-readable map of public APIs.
+
+**Dual update strategy:** When you change public APIs (add/rename/remove classes, functions, or properties), regenerate the index as part of the same commit:
+
+```bash
+python docs/tools/code-index/generate.py --config aidocs.yaml
+```
+
+The code index is auto-generated — never edit `docs/code-index/` files manually.
+
+
 ## Periodic Validation
 
 Invoke the [VALIDATION_DOCS](subagents/VALIDATION_DOCS.md) agent before major releases or quarterly.

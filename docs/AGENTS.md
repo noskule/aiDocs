@@ -27,6 +27,7 @@ Read these **when you reach that situation**, not upfront:
 | Writing code            | `[platform]-development.md`   |
 | Writing tests           | `[platform]-testing.md`       |
 | Writing documentation   | `DOCUMENTATION_GUIDELINES.md` |
+| Updating code index     | `tools/code-index/README.md`  |
 | Validating docs         | `subagents/VALIDATION_DOCS.md`|
 | Testing docs for LLMs   | `subagents/VALIDATION_LLM.md` |
 | Starting a task         | `CODING_GUIDELINES.md`        |
@@ -62,4 +63,15 @@ Quick lookup for when to invoke agents during workflow:
 > **Customize:** Replace examples with your project's agents from `docs/subagents/`.
 
 
-**Last Updated:** 2026-02-08
+## Code Index
+
+If the project uses [code-index](tools/code-index/), regenerate the index after modifying public APIs:
+
+```bash
+python docs/tools/code-index/generate.py --config aidocs.yaml
+```
+
+Review and commit the updated `docs/code-index/` files with your change.
+
+
+**Last Updated:** 2026-02-11
