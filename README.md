@@ -13,6 +13,8 @@ For developers using AI coding assistants. Works with any language, platform, or
   - **Wiki** — How the software works (features, architecture, domain concepts)
 - **Sub-agents** — Specialized instruction sets for testing, documentation, and validation
 - **Code index** — Auto-generated AST-based index of public APIs for fast LLM orientation
+- **Code analysis** — Structural health analyzers that flag god classes, layer violations, and complexity issues
+- **Jobs registry** — Central list of runnable tasks with triggers for when to run each
 - **AI-tool independent** — One workflow for Claude, Copilot, Cursor, and Codex via a single [AGENTS.md](docs/AGENTS.md)
 
 
@@ -53,6 +55,20 @@ A structured development process designed for AI-assisted coding.
 - **Information Minimalism** — Before documenting, pass the 3-question test: Would a skilled developer need this? Is it obvious from the code? Does it duplicate existing content? If it fails any question, don't write it. See [INFORMATION_MINIMALISM.md](docs/INFORMATION_MINIMALISM.md).
 - **Behavior vs. Platform** — Documentation separates what the software does (cross-platform requirement) from how it's built on a specific platform. Platform-specific quirks are marked with `// PLATFORM:` — everything else is implicitly a requirement for any implementation. See [DOCUMENTATION_GUIDELINES.md](docs/DOCUMENTATION_GUIDELINES.md).
 
+### Code Analysis
+
+Python analyzers consume the same AST declarations as the code index and produce structured findings reports. An LLM subagent (`CODE_ANALYSIS`) then interprets those findings qualitatively — hybrid approach: deterministic metrics from Python, judgment from LLM.
+
+- **Structural health analyzer** — 8 checks: god classes, parameter bloat, data class explosion, fat/thin interfaces, layer violations, documentation gaps, package imbalance
+- **Configurable thresholds** — All defaults can be overridden in `aidocs.yaml`
+- **Extensible** — Add new analyzers by implementing the `Analyzer` ABC
+
+See [tools/code-index/README.md](docs/tools/code-index/README.md) for analyzer details.
+
+### Jobs Registry
+
+A central registry of all runnable tasks — code generation, analysis, validation — with clear triggers for when to run each. LLMs check [tools/JOBS.md](docs/tools/JOBS.md) to discover what's available.
+
 ### Validation
 
 Two built-in validation agents keep the system healthy:
@@ -76,13 +92,18 @@ docs/
 ├── project/                        # Worklog, changelog, tasks
 │   └── changelog.template.md
 ├── subagents/                      # Specialized AI agents
+│   ├── CODE_ANALYSIS.md
 │   ├── VALIDATION_DOCS.md
 │   └── VALIDATION_LLM.md
 ├── tools/
-│   └── code-index/                 # AST-based code index generator
+│   ├── JOBS.md                     # Runnable jobs registry
+│   └── code-index/                 # AST-based code index + analyzers
 │       ├── generate.py
+│       ├── analyze.py
+│       ├── pipeline.py
 │       ├── generator.py
 │       ├── grouping.py
+│       ├── analyzers/
 │       └── languages/
 ├── platform-development.template.md
 └── platform-index.template.md

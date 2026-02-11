@@ -18,26 +18,7 @@ from pathlib import Path
 import yaml
 
 from generator import generate_module_index, generate_package_file, generate_root_index
-from grouping import group_declarations
-from languages.kotlin import KotlinAdapter
-
-
-def get_adapter(language: str):
-    """Get the language adapter for the given language."""
-    if language == "kotlin":
-        return KotlinAdapter()
-    raise ValueError(f"Unsupported language: {language}")
-
-
-def discover_files(source_dirs: list[Path], extension: str) -> list[Path]:
-    """Discover all source files with the given extension."""
-    files = []
-    for src_dir in source_dirs:
-        if not src_dir.exists():
-            print(f"  Warning: source directory not found: {src_dir}", file=sys.stderr)
-            continue
-        files.extend(sorted(src_dir.rglob(f"*{extension}")))
-    return files
+from pipeline import load_module
 
 
 def process_module(
@@ -53,52 +34,23 @@ def process_module(
 
     Returns module info dict for the root index, or None if no files found.
     """
-    adapter = get_adapter(language)
-    extension = adapter.file_extension()
-
-    # Discover files
-    files = discover_files(source_dirs, extension)
-    if not files:
-        print(f"  No {extension} files found in {source_dirs}")
+    module_data = load_module(name, source_dirs, prefix, language, merge_threshold)
+    if module_data is None:
         return None
 
-    print(f"  Found {len(files)} {extension} files")
-
-    # Parse all files
-    all_declarations = []
-    errors = 0
-    for file_path in files:
-        # Use first source dir as the root for relative paths
-        src_root = source_dirs[0]
-        try:
-            decls = adapter.parse_file(file_path, src_root)
-            all_declarations.extend(decls)
-        except Exception as e:
-            errors += 1
-            print(f"  Error parsing {file_path}: {e}", file=sys.stderr)
-
-    if errors:
-        print(f"  {errors} files had parse errors")
-
-    print(f"  Extracted {len(all_declarations)} top-level declarations")
-
-    # Group by package
-    groups = group_declarations(all_declarations, prefix, merge_threshold)
-    print(f"  Grouped into {len(groups)} packages")
-
     # Count total declarations (top-level only)
-    decl_count = sum(len(g.declarations) for g in groups)
+    decl_count = sum(len(g.declarations) for g in module_data.groups)
 
     # Generate module index
-    generate_module_index(name, groups, output_dir)
+    generate_module_index(name, module_data.groups, output_dir)
 
     # Generate per-package files
-    for group in groups:
+    for group in module_data.groups:
         generate_package_file(name, group, output_dir)
 
     return {
         "name": name,
-        "groups": groups,
+        "groups": module_data.groups,
         "decl_count": decl_count,
     }
 

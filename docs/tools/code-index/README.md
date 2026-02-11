@@ -72,10 +72,45 @@ Controls how deep packages are grouped. With `merge_threshold: 2`:
 - `data.db.converters` and `data.db.dao` merge into `data/db.md`
 - `core.hrv` stays as `core/hrv.md` (depth 2, not merged)
 
+## Analyzers
+
+Analyzers consume the same parsed declarations and produce structured findings reports.
+
+### Running Analysis
+
+```bash
+python docs/tools/code-index/analyze.py --config aidocs.yaml
+python docs/tools/code-index/analyze.py --config aidocs.yaml --analyzer structural_health
+python docs/tools/code-index/analyze.py --config aidocs.yaml --out custom-report.md
+```
+
+Output: `docs/code-index/analysis.md` (default, sibling to generated index).
+
+### Available Analyzers
+
+| Analyzer | Checks | Findings |
+|----------|--------|----------|
+| `structural_health` | God classes, parameter bloat, data class explosion, fat/thin interfaces, layer violations, documentation gaps, package imbalance | error, warning, info |
+
+### Configuration
+
+Add an optional `analysis` section to `aidocs.yaml` (see `aidocs.yaml.template`). All thresholds have defaults in code — config only overrides.
+
+### Adding an Analyzer
+
+1. Create `analyzers/<name>.py` implementing `Analyzer` from `analyzers/base.py`
+2. Register it in `analyze.py:AVAILABLE_ANALYZERS`
+3. Add config section to `aidocs.yaml` if needed
+
 ## Architecture
 
 ```
-generate.py          # CLI entry point + orchestration
+generate.py          # CLI entry point + index generation
+analyze.py           # CLI entry point + analysis
+pipeline.py          # Shared parse pipeline (discover, parse, group)
+analyzers/
+  base.py            # Finding dataclass + Analyzer ABC
+  structural_health.py  # 8 structural checks
 languages/
   base.py            # Declaration dataclass + LanguageAdapter ABC
   kotlin.py          # Kotlin tree-sitter extraction
@@ -103,3 +138,7 @@ generator.py         # Markdown rendering
 - Function bodies and initializers
 - `@Preview` composables
 - Default parameter values
+
+## When to Run
+
+See [JOBS.md](../JOBS.md) for the full jobs registry with triggers for when to run generation and analysis.

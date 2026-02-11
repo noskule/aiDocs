@@ -28,6 +28,8 @@ Read these **when you reach that situation**, not upfront:
 | Writing tests           | `[platform]-testing.md`       |
 | Writing documentation   | `DOCUMENTATION_GUIDELINES.md` |
 | Updating code index     | `tools/code-index/README.md`  |
+| Reviewing code health   | `subagents/CODE_ANALYSIS.md`  |
+| Running a job           | `tools/JOBS.md`               |
 | Validating docs         | `subagents/VALIDATION_DOCS.md`|
 | Testing docs for LLMs   | `subagents/VALIDATION_LLM.md` |
 | Starting a task         | `CODING_GUIDELINES.md`        |
@@ -57,6 +59,7 @@ Quick lookup for when to invoke agents during workflow:
 | `<domain-task>`          | `<agent-name>`   |
 | Writing tests            | `test-writer-*`  |
 | Running tests            | `test-runner`    |
+| Reviewing code health    | `CODE_ANALYSIS`  |
 | Validating documentation | `VALIDATION_DOCS`|
 | Testing LLM readiness   | `VALIDATION_LLM` |
 

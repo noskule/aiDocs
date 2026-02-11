@@ -21,6 +21,12 @@ Available specialized agents for this project. Read the agent file before use.
 > Add test-writer agents as needed for your project.
 
 
+## Analysis Agents
+
+| Agent | Purpose |
+|-------|---------|
+| [`CODE_ANALYSIS`](CODE_ANALYSIS.md) | Interpret code analysis findings and recommend improvements |
+
 ## Documentation Agents
 
 | Agent | Purpose |
