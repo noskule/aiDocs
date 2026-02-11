@@ -12,7 +12,8 @@ For developers using AI coding assistants. Works with any language, platform, or
   - **/docs** — Developer operations (build, test, run, release)
   - **Wiki** — How the software works (features, architecture, domain concepts)
 - **Sub-agents** — Specialized instruction sets for testing, documentation, and validation
- **AI-tool independent** — One workflow for Claude, Copilot, Cursor, and Codex via a single [AGENTS.md](docs/AGENTS.md)
+- **Code index** — Auto-generated AST-based index of public APIs for fast LLM orientation
+- **AI-tool independent** — One workflow for Claude, Copilot, Cursor, and Codex via a single [AGENTS.md](docs/AGENTS.md)
 
 
 ## Quick Start
@@ -77,8 +78,15 @@ docs/
 ├── subagents/                      # Specialized AI agents
 │   ├── VALIDATION_DOCS.md
 │   └── VALIDATION_LLM.md
+├── tools/
+│   └── code-index/                 # AST-based code index generator
+│       ├── generate.py
+│       ├── generator.py
+│       ├── grouping.py
+│       └── languages/
 ├── platform-development.template.md
 └── platform-index.template.md
+aidocs.yaml.template                # Code-index config template
 ```
 
 UPPERCASE = framework files (keep as-is) / lowercase = your project content

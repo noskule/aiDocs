@@ -38,6 +38,18 @@ Quick navigation to all docs. Read only what you need, when you need it.
 - When to Document
 
 
+## Tools
+
+**[tools/code-index/README.md](tools/code-index/README.md)** - AST-based code index generator
+- Setup and usage
+- Configuration (`aidocs.yaml`)
+- Architecture and extension (adding languages)
+
+**[code-index/](../docs/code-index/)** - Generated output (if project uses code-index)
+- Module indexes with declaration summaries
+- Per-package files with full signatures
+
+
 ## Platform Specific
 
 **`[platform]-index.md`** - Platform documentation index (sections per file)
