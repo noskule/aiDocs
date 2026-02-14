@@ -74,10 +74,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 ## Project Management
 
-**[project/](project/README.md)** - Working area (cleaned after iteration)
-- `worklog.md` - Scratch pad during development
-- `changelog.md` - Release history → GitHub Releases (template: `changelog.template.md`)
-- `tasks/` - Temporary milestone docs
+**[changelog.md](changelog.md)** - Release history → GitHub Releases (template: `changelog.template.md`)
 
 
 ## Wiki (External)

@@ -167,7 +167,7 @@ Grep pattern: \*\*Last Updated:\*\* (\d{4}-\d{2}-\d{2})
 
 Ask user:
 1. Fix issues now?
-2. Save report to `docs/project/validation-report.md`?
+2. Save report to `docs/validation-report.md`?
 3. Create GitHub issues for each problem?
 
 

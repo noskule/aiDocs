@@ -141,7 +141,7 @@ For each failed question, trace the navigation path:
 
 Ask user:
 1. Fix navigation gaps now?
-2. Save report to `docs/project/validation-llm-report.md`?
+2. Save report to `docs/validation-llm-report.md`?
 3. Re-run after fixes to verify improvement?
 
 
