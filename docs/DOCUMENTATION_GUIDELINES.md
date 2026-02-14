@@ -4,12 +4,6 @@
 
 > Document what a seasoned developer or LLM would need to **reconstruct** the project on the same platform, or **translate** it to another platform — skip what they already know.
 
-This serves two audiences equally:
-- **Reconstruction:** A new developer joining the project
-- **Translation:** An LLM porting functionality to another platform
-
-Both need the same information: intent, constraints, and rationale — not mechanics.
-
 ## Information Minimalism
 
 ### The Test
@@ -101,28 +95,7 @@ devices-ble-polar.md
 
 #### Structure: Behavior First, Then Platform
 
-Wiki pages separate **what the feature does** (platform-agnostic) from **how it's implemented** (platform-specific). The structure itself conveys intent — no inline markers needed.
-
-```markdown
-# Feature Name
-
-## What It Does
-Platform-agnostic description of behavior. Any implementation on any
-platform must achieve this. This section IS the cross-platform requirement.
-
-## Why It Matters
-Rationale, constraints, domain knowledge. Explains decisions that aren't
-obvious from the behavior description.
-
-## Android Implementation
-How it's built on Android: classes, APIs, patterns, quirks.
-Use `// PLATFORM:` comments for code-level quirks.
-
-## iOS Implementation
-*Placeholder until iOS development begins.*
-```
-
-**Example:**
+Wiki pages separate **what the feature does** (platform-agnostic) from **how it's implemented** (platform-specific):
 
 ```markdown
 # Device Connection Management
@@ -155,56 +128,42 @@ Connection states: Disconnected → Connecting → Connected → Disconnected
 *To be documented when iOS development begins.*
 ```
 
-**Key principle:** If someone reads only "What It Does" and "Why It Matters", they have everything needed to implement the feature on any platform. The platform sections are reference for existing implementations.
+If someone reads only "What It Does" and "Why It Matters", they have everything needed to implement the feature on any platform.
+
+## Diagrams
+
+Use [Mermaid](https://mermaid.js.org/) fenced code blocks — GitHub renders these natively in repo markdown and wiki pages. Apply Information Minimalism: only add diagrams that pass the 3-question test.
+
+**Good fit:** state machines, multi-component interactions, data flow across layers, DB schema.
+
+| Mermaid type | Use for |
+|---|---|
+| `stateDiagram-v2` | Lifecycle, connection states |
+| `sequenceDiagram` | Component interactions over time |
+| `flowchart` | Decision logic, branching workflows |
+| `erDiagram` | Database schema |
+| `classDiagram` | Architecture overview (simplified) |
+
+**Conventions:**
+- Place inline in the markdown file where relevant
+- Add a brief caption sentence before each diagram
+- Keep under ~15 nodes — split or simplify if larger
+- **Fallback to SVG** in `docs/images/` for visuals Mermaid can't express
 
 ## Examples
 
-### Good: Behavior + Rationale
+**Good** — rationale, platform quirk, domain knowledge:
 ```kotlin
-/**
- * Manages heart rate session state.
- *
- * Emits Loading → Success/Error states. UI binds directly to these.
- * Sessions survive configuration changes (rotation, theme switch).
- *
- * Uses 500ms debounce on sensor readings — faster updates cause visible
- * UI jank on mid-range devices (tested on Pixel 4a, Galaxy A52).
- */
-class HeartRateViewModel(...) : ViewModel()
+// 500ms debounce — faster causes UI jank on mid-range devices (Pixel 4a, Galaxy A52)
+// PLATFORM: Coospo H808S requires 500ms post-connect delay; Polar H10/Garmin work immediately
+// RMSSD typically 20-200ms for healthy adults; outside range → likely sensor noise
 ```
 
-### Good: Platform Workaround
+**Bad** — obvious or mechanics-only:
 ```kotlin
-// PLATFORM: Coospo H808S requires 500ms delay after BLE connect
-// before enabling notifications. Without this, first 2-3 readings
-// are zeros. Other tested devices (Polar H10, Garmin HRM) work immediately.
-delay(500)
-```
-
-### Good: Domain Knowledge
-```kotlin
-// RMSSD (Root Mean Square of Successive Differences) measures
-// heart rate variability. Typical range: 20-200ms for healthy adults.
-// Values outside this range may indicate sensor noise or artifacts.
-// Reference: Shaffer & Ginsberg, 2017
-```
-
-### Bad: Obvious
-```kotlin
-// Get the heart rate (DON'T — obvious from name)
-fun getHeartRate(): Int
-
-// Loop through the list (DON'T — read the code)
-for (item in items) { ... }
-
-// The user ID (DON'T — obvious parameter)
-@param userId The user ID
-```
-
-### Bad: Mechanics Without Why
-```kotlin
-// Delays for 500 milliseconds (DON'T — says what, not why)
-delay(500)
+// Get the heart rate        → obvious from name
+// Delays for 500ms          → says what, not why
+// @param userId The user ID → obvious parameter
 ```
 
 ## Code Index
@@ -228,4 +187,4 @@ Applies to both docs/ and wiki/.
 
 ---
 
-**Last Updated:** 2026-02-06
+**Last Updated:** 2026-02-14

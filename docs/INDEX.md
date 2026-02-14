@@ -14,12 +14,13 @@ Quick navigation to all docs. Read only what you need, when you need it.
 ## Development Process
 
 **[CODING_GUIDELINES.md](CODING_GUIDELINES.md)** - Development workflow
-- Development Workflow (11 steps)
+- Development Workflow (10 steps)
 - Data Persistence
 
 **[DOCUMENTATION_GUIDELINES.md](DOCUMENTATION_GUIDELINES.md)** - What/where to document
 - Information Minimalism Test
 - Documentation Levels (Code, /docs, Wiki)
+- Diagrams (Mermaid conventions, when to use, placement)
 - Documenting in Code
 - Documenting in /docs (File Tree)
 - Documenting in Wiki

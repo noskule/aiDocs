@@ -13,43 +13,24 @@ git checkout -b feature/descriptive-name
 
 ### 2. **Implement Code**
 
-### DO:
-- Write the feature/fix implementation
-- Read existing code before writing new code
-- Follow existing patterns and conventions
 - Flag problematic patterns in existing code to the user
 - Keep changes focused and atomic
+- Never commit directly to main/master
 
-### DON'T:
-- Commit directly to main/master
-- Guess when you should ask
-
-### When to Ask the User
-
-Ask before proceeding when:
-- Architecture decision needed (which pattern, which layer)
-- Multiple valid implementation approaches exist
-- Requirements are unclear or ambiguous
-- Breaking changes are required
-- Significant refactoring needed
-- Adding new dependencies
-- Changing existing APIs
+**Ask before proceeding when:**
+- Architecture decision or multiple valid approaches
+- Requirements unclear or ambiguous
+- Breaking changes, new dependencies, or API changes
 - Unsure about expected behavior
 
 
 
 ### 3. **Write Tests**
 
-Test coverage is risk-driven. Use judgment—new behavior or complex changes should be tested. If a change requires documentation per `DOCUMENTATION_GUIDELINES.md`, it requires tests too.
+Test coverage is risk-driven. If a change requires documentation per `DOCUMENTATION_GUIDELINES.md`, it requires tests too.
 
-**What Requires Tests:**
-
-- New features - Core functionality must be tested
-- Bug fixes (complex) - Test the fix and prevent regression
-- Refactoring - Ensure behavior hasn't changed
-- Public APIs - All public interfaces need tests
-- Trivial changes - Typos, comments, simple formatting
-- Documentation-only changes - No code tests needed
+**Requires tests:** new features, complex bug fixes, refactoring, public API changes.
+**Skip tests:** trivial changes (typos, comments, formatting), documentation-only changes.
 
 ### 4. **Run Tests**
 
@@ -59,22 +40,7 @@ Verify all tests pass and coverage is appropriate for the risk level.
 
 ### 5. **Report to User for Review**
 
-**LLM Behavior:** Inform user that code is ready with testing instructions:
-
-```
-- Code implemented: [brief description]
-- Tests written: [coverage summary]
-- Tests passing: [results]
-
-Manual testing:
-- [What to test - specific to changes made]
-- [Expected behavior]
-
-How to install/run: see [platform]-testing.md
-
-Ready for your review and testing.
-
-```
+**LLM Behavior:** Inform user with: what was implemented, test results, what to manually test and expected behavior, link to `[platform]-testing.md`.
 
 ### 6. **User Manually Tests and Reviews**
 
@@ -131,15 +97,9 @@ EOF
 - User merges when satisfied
 - **User informs LLM:** "PR merged, continue"
 
-### 11. **Continue**
-
-- LLM can proceed with next tasks
-- Branch is merged and cleaned up
-
-
 ## Data Persistence
 
 **Persistence changes:** Follow platform-specific data retention rules in `[platform]-development.md`.
 
 
-**Last Updated:** 2026-01-07
+**Last Updated:** 2026-02-14
