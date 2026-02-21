@@ -31,21 +31,8 @@ Read these **when you reach that situation**, not upfront:
 | Testing docs for LLMs   | `subagents/VALIDATION_LLM.md` |
 | Starting a task         | `CODING_GUIDELINES.md`        |
 | Creating sub-agents     | `subagents/README.md`         |
-| Orienting in codebase   | `code-index/index.md`         |
-| Reviewing code health   | `subagents/CODE_ANALYSIS.md`  |
 | Running a job           | `tools/JOBS.md`               |
 | Unsure about approach   | Ask the user                  |
-
-## Code Index
-
-A compact two-level markdown index of all public declarations across the codebase, generated from source ASTs.
-
-**Usage:** Read [`code-index/index.md`](code-index/index.md) to orient in the codebase, then drill into per-package files for signatures and members.
-
-**Update after:** Modifying public APIs (adding/removing/renaming classes, interfaces, or public functions). Regenerate with:
-```
-cd docs/tools/code-index && .venv/Scripts/python generate.py --config ../../../aidocs.yaml
-```
 
 **Don't know which doc?** Check [INDEX.md](INDEX.md) for section headers.
 
@@ -58,10 +45,6 @@ Lightweight instructions that auto-trigger or can be invoked as slash commands. 
 
 | Skill | Purpose |
 |-------|---------|
-| `/generate-index` | Regenerate code-index after API changes |
-| `/run-analysis` | Run structural health analyzer |
-| `/review-analysis` | Classify analysis findings (forked) |
-| `/fix-analysis` | Fix mechanical findings (forked) |
 | `/validate-docs` | Validate doc structure (forked) |
 
 **Convention skills** (slash commands + auto-triggered):
@@ -98,7 +81,7 @@ Quick lookup for when to invoke agents during workflow:
 |--------------------------|------------------|
 | `<domain-task>`          | `<agent-name>`   |
 | Writing tests            | `test-writer-*`  |
-| Reviewing code health    | `/review-analysis` or `CODE_ANALYSIS` agent |
+| Reviewing code health    | `architecture-rules` skill (auto-triggered) |
 | Validating documentation | `/validate-docs` or `VALIDATION_DOCS` agent |
 | Testing LLM readiness   | `VALIDATION_LLM` |
 

@@ -45,19 +45,8 @@ Quick navigation to all docs. Read only what you need, when you need it.
 ## Tools
 
 **[tools/JOBS.md](tools/JOBS.md)** - Runnable jobs registry
-- Available jobs with commands, triggers, and skill shortcuts
+- Available jobs with commands and triggers
 - When to run each job
-
-**[tools/code-index/README.md](tools/code-index/README.md)** - AST-based code index generator and analyzer
-- Setup and usage
-- Configuration (`aidocs.yaml`)
-- Analyzers (structural health checks)
-- Architecture and extension (adding languages, analyzers)
-
-**[code-index/](../docs/code-index/)** - Generated output (if project uses code-index)
-- Module indexes with declaration summaries
-- Per-package files with full signatures
-- `analysis.md` — structural health findings report
 
 
 ## Platform Specific
