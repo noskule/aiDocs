@@ -23,12 +23,6 @@ Some subagents have companion **skills** (`.claude/skills/`) for auto-triggering
 > Add test-writer agents as needed for your project.
 
 
-## Analysis Agents
-
-| Agent | Purpose | Skill |
-|-------|---------|-------|
-| [`CODE_ANALYSIS`](CODE_ANALYSIS.md) | Interpret code analysis findings and recommend improvements | `/review-analysis`, `/fix-analysis` |
-
 ## Documentation Agents
 
 | Agent | Purpose | Skill |
