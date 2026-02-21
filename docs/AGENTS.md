@@ -24,30 +24,70 @@ Read these **when you reach that situation**, not upfront:
 |-------------------------|-------------------------------|
 | Finding platform docs   | `[platform]-index.md`         |
 | Setting up / installing | `[platform]-installation.md`  |
-| Writing code            | `[platform]-development.md`   |
+| Writing code            | `[platform]-architecture-rules.md`, `[platform]-development.md` |
 | Writing tests           | `[platform]-testing.md`       |
 | Writing documentation   | `DOCUMENTATION_GUIDELINES.md` |
-| Updating code index     | `tools/code-index/README.md`  |
-| Reviewing code health   | `subagents/CODE_ANALYSIS.md`  |
-| Running a job           | `tools/JOBS.md`               |
 | Validating docs         | `subagents/VALIDATION_DOCS.md`|
 | Testing docs for LLMs   | `subagents/VALIDATION_LLM.md` |
 | Starting a task         | `CODING_GUIDELINES.md`        |
 | Creating sub-agents     | `subagents/README.md`         |
+| Orienting in codebase   | `code-index/index.md`         |
+| Reviewing code health   | `subagents/CODE_ANALYSIS.md`  |
+| Running a job           | `tools/JOBS.md`               |
 | Unsure about approach   | Ask the user                  |
+
+## Code Index
+
+A compact two-level markdown index of all public declarations across the codebase, generated from source ASTs.
+
+**Usage:** Read [`code-index/index.md`](code-index/index.md) to orient in the codebase, then drill into per-package files for signatures and members.
+
+**Update after:** Modifying public APIs (adding/removing/renaming classes, interfaces, or public functions). Regenerate with:
+```
+cd docs/tools/code-index && .venv/Scripts/python generate.py --config ../../../aidocs.yaml
+```
 
 **Don't know which doc?** Check [INDEX.md](INDEX.md) for section headers.
 
 
+## Skills
+
+Lightweight instructions that auto-trigger or can be invoked as slash commands. Located in `.claude/skills/`.
+
+**Job skills** (slash commands for runnable tasks):
+
+| Skill | Purpose |
+|-------|---------|
+| `/generate-index` | Regenerate code-index after API changes |
+| `/run-analysis` | Run structural health analyzer |
+| `/review-analysis` | Classify analysis findings (forked) |
+| `/fix-analysis` | Fix mechanical findings (forked) |
+| `/validate-docs` | Validate doc structure (forked) |
+
+**Convention skills** (slash commands + auto-triggered):
+
+| Skill | Purpose |
+|-------|---------|
+| `/test-runner [category]` | Run tests by category |
+| `/test-recommender` | Analyze changes, recommend test category |
+| `/documentation` | Documentation writing rules |
+
+**Auto-triggered skills** (no slash command, Claude invokes automatically):
+
+| Skill | Triggers when... |
+|-------|-------------------|
+| `architecture-rules` | Implementing features or writing new code |
+
+> **Customize:** Convention and auto-triggered skills may need project-specific configuration. Check `.claude/skills/` for `.template` files.
+
+
 ## Sub-Agents
 
-Specialized agents for complex domain-specific tasks. Located in `docs/subagents/`.
+Specialized agents for heavy, self-contained tasks that produce verbose output. Located in `docs/subagents/` with optional Claude agent wrappers in `.claude/agents/`.
 
-Use these when the task matches the agent's specialty. Invoke via Task tool.
+Each agent reads its detailed instructions from `docs/subagents/` at invocation time.
 
 > **Setup:** See [subagents/README.md](subagents/README.md) for how to create and integrate agents.
-
-**Read agent file before use** - contains patterns, examples, and checklists.
 
 
 ## Agent Triggers
@@ -58,23 +98,11 @@ Quick lookup for when to invoke agents during workflow:
 |--------------------------|------------------|
 | `<domain-task>`          | `<agent-name>`   |
 | Writing tests            | `test-writer-*`  |
-| Running tests            | `test-runner`    |
-| Reviewing code health    | `CODE_ANALYSIS`  |
-| Validating documentation | `VALIDATION_DOCS`|
+| Reviewing code health    | `/review-analysis` or `CODE_ANALYSIS` agent |
+| Validating documentation | `/validate-docs` or `VALIDATION_DOCS` agent |
 | Testing LLM readiness   | `VALIDATION_LLM` |
 
 > **Customize:** Replace examples with your project's agents from `docs/subagents/`.
 
 
-## Code Index
-
-If the project uses [code-index](tools/code-index/), regenerate the index after modifying public APIs:
-
-```bash
-python docs/tools/code-index/generate.py --config aidocs.yaml
-```
-
-Review and commit the updated `docs/code-index/` files with your change.
-
-
-**Last Updated:** 2026-02-11
+**Last Updated:** 2026-02-21

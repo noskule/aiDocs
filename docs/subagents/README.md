@@ -14,6 +14,25 @@ Sub-agents are specialized instruction sets for complex domain-specific tasks. I
 - Reusable across conversations
 
 
+## Skills vs. Sub-Agents
+
+Both are specialized instructions. Choose based on weight and trigger style:
+
+| | Skills (`.claude/skills/`) | Sub-Agents (`docs/subagents/`) |
+|---|---|---|
+| **Context** | Runs inline in conversation | Runs in isolated context (forked) |
+| **Trigger** | Auto-triggered by description match, or slash command | Explicitly invoked via Task tool |
+| **Best for** | Lightweight rules, quick jobs, knowledge injection | Heavy computation, verbose output, multi-step workflows |
+| **Overhead** | Minimal (~description loaded into context) | ~20k tokens per invocation |
+
+**Coexistence pattern:** A subagent doc in `docs/subagents/` holds the full knowledge reference (readable by any AI tool). A companion skill in `.claude/skills/` embeds a subset for auto-triggering (Claude-specific). The skill points to the subagent doc for full details.
+
+**When to create a skill vs. a sub-agent:**
+- **Skill only** — simple rule enforcement, slash command for a tool, lightweight knowledge
+- **Sub-agent only** — produces long output, needs full isolation, requires many tool calls
+- **Both** — domain knowledge that should auto-trigger (skill) but also supports deep implementation work (sub-agent)
+
+
 ## File Structure
 
 ```
@@ -120,4 +139,4 @@ Use lowercase, hyphenated names:
 - `device-ble` not `BLEDevice`
 
 
-**Last Updated:** 2026-01-12
+**Last Updated:** 2026-02-21

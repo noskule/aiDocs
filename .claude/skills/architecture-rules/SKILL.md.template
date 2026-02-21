@@ -1,0 +1,14 @@
+---
+name: architecture-rules
+description: Enforces architecture principles when implementing features or writing new code. Prevents code duplication and layer violations.
+user-invocable: false
+---
+
+Before writing new code, follow these steps:
+
+1. **Read** `docs/[platform]-architecture-rules.md`
+2. **Search before implementing** — check the Reuse Rules tables for existing utilities. If the function you need exists, use it.
+3. **Verify layer boundaries** — ensure imports respect the documented dependency direction
+4. **Check extension points** — if adding a new type, metric, or protocol, use the documented extension mechanism
+5. **Check anti-patterns** — review the anti-patterns table to avoid common mistakes
+6. **Use constants** — never hard-code values that belong in a constants class
