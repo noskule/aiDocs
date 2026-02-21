@@ -11,6 +11,7 @@ For developers using AI coding assistants. Works with any language, platform, or
   - **Code** — Intent, rationale, edge cases (docstrings, inline "why" comments)
   - **/docs** — Developer operations (build, test, run, release)
   - **Wiki** — How the software works (features, architecture, domain concepts)
+- **Skills** — Lightweight auto-triggered and slash-command actions for Claude Code (job runners, architecture enforcement, documentation rules)
 - **Sub-agents** — Specialized instruction sets for testing, documentation, and validation
 - **Code index** — Auto-generated AST-based index of public APIs for fast LLM orientation
 - **Code analysis** — Structural health analyzers that flag god classes, layer violations, and complexity issues
@@ -21,10 +22,12 @@ For developers using AI coding assistants. Works with any language, platform, or
 ## Quick Start
 
 1. Copy the `docs/` folder to your project
-2. Configure `docs/README.md` with project info and wiki location
-3. Create `[platform]-development.md`, `[platform]-index.md`, etc. for your platform
-4. Keep UPPERCASE template files as-is
-5. Use wiki for feature documentation
+2. Copy `.claude/skills/` to your project (for Claude Code users)
+3. Configure `docs/README.md` with project info and wiki location
+4. Create `[platform]-development.md`, `[platform]-index.md`, etc. for your platform
+5. Rename `.template` files in `.claude/skills/` to `SKILL.md` and customize for your project
+6. Keep UPPERCASE template files as-is
+7. Use wiki for feature documentation
 
 **For AI Assistants:** Start at [docs/AGENTS.md](docs/AGENTS.md)
 
@@ -32,6 +35,16 @@ For developers using AI coding assistants. Works with any language, platform, or
 
 
 ## Features
+
+### Skills (Claude Code)
+
+Lightweight instructions in `.claude/skills/` that extend Claude Code with project-specific capabilities:
+
+- **Job skills** — Slash commands (`/generate-index`, `/run-analysis`, `/validate-docs`) that run tools with one command
+- **Convention skills** — Auto-triggered or invokable rules for testing (`/test-runner`), documentation (`/documentation`), and test recommendations (`/test-recommender`)
+- **Architecture enforcement** — Auto-triggered skill reads `[platform]-architecture-rules.md` before writing new code, preventing duplication and layer violations
+
+Skills coexist with sub-agents: skills handle lightweight auto-triggered actions, sub-agents handle heavy isolated computation. See [subagents/README.md](docs/subagents/README.md) for the distinction.
 
 ### Just-in-Time Documentation
 
@@ -80,6 +93,18 @@ Two built-in validation agents keep the system healthy:
 ## Project Structure
 
 ```
+.claude/
+└── skills/                             # Claude Code skills (auto-triggered + slash commands)
+    ├── generate-index/SKILL.md         # /generate-index — regenerate code-index
+    ├── run-analysis/SKILL.md           # /run-analysis — run structural health analyzer
+    ├── review-analysis/SKILL.md        # /review-analysis — classify findings (forked)
+    ├── fix-analysis/SKILL.md           # /fix-analysis — fix mechanical findings (forked)
+    ├── validate-docs/SKILL.md          # /validate-docs — validate doc structure (forked)
+    ├── documentation/SKILL.md          # /documentation — documentation writing rules
+    ├── test-runner/SKILL.md.template   # /test-runner — run tests by category
+    ├── test-recommender/SKILL.md.template  # /test-recommender — recommend test category
+    └── architecture-rules/SKILL.md.template  # auto-triggered — enforce architecture rules
+
 docs/
 ├── AGENTS.md                       # LLM entry point and workflow router
 ├── CODING_GUIDELINES.md            # 11-step development process
@@ -91,7 +116,7 @@ docs/
 │   └── feature.template.md
 ├── project/                        # Worklog, changelog, tasks
 │   └── changelog.template.md
-├── subagents/                      # Specialized AI agents
+├── subagents/                      # Specialized AI agents (knowledge reference)
 │   ├── CODE_ANALYSIS.md
 │   ├── VALIDATION_DOCS.md
 │   └── VALIDATION_LLM.md
@@ -105,6 +130,7 @@ docs/
 │       ├── grouping.py
 │       ├── analyzers/
 │       └── languages/
+├── platform-architecture-rules.template.md
 ├── platform-development.template.md
 └── platform-index.template.md
 aidocs.yaml.template                # Code-index config template

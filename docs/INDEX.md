@@ -8,8 +8,10 @@ Quick navigation to all docs. Read only what you need, when you need it.
 **[AGENTS.md](AGENTS.md)** - Start here
 - Navigation
 - Situational References
-- Workflow Overview
+- Skills (lightweight auto-triggered and slash-command actions)
 - Sub-Agents (specialized task agents in `docs/subagents/`)
+- Workflow Overview
+
 
 ## Development Process
 
@@ -28,9 +30,10 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 ## Reference
 
-**[subagents/README.md](subagents/README.md)** - Creating specialized AI agents
+**[subagents/README.md](subagents/README.md)** - Creating specialized AI agents and skills
 - File Structure
 - Agent File Format
+- Skills vs. Sub-Agents
 - Integrating with AGENTS.md
 
 **[INFORMATION_MINIMALISM.md](INFORMATION_MINIMALISM.md)** - 3-question test
@@ -42,7 +45,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 ## Tools
 
 **[tools/JOBS.md](tools/JOBS.md)** - Runnable jobs registry
-- Available jobs with commands and triggers
+- Available jobs with commands, triggers, and skill shortcuts
 - When to run each job
 
 **[tools/code-index/README.md](tools/code-index/README.md)** - AST-based code index generator and analyzer
@@ -62,6 +65,9 @@ Quick navigation to all docs. Read only what you need, when you need it.
 **`[platform]-index.md`** - Platform documentation index (sections per file)
 
 **`[platform]-installation.md`** - First time setup
+
+**`[platform]-architecture-rules.md`** - Enforceable design principles
+- Layer Boundaries, Reuse Rules, Anti-Patterns, Extension Points
 
 **`[platform]-development.md`** - Writing code
 - Tech Stack, Architecture, Code Patterns, File Organization
