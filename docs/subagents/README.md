@@ -36,18 +36,33 @@ Both are specialized instructions. Choose based on weight and trigger style:
 ## File Structure
 
 ```
-docs/
-└── subagents/
-    ├── db-expert.md
-    ├── unit-test.md
-    ├── ui-component.md
-    └── ...
+.claude/agents/                # Agent wrappers (auto-discovered by Claude Code)
+├── agent-name.template.md     #   Template for new agents
+├── validation-docs.md         #   Example wrapper
+└── ...
+
+docs/subagents/                # Detailed reference documentation
+├── VALIDATION_DOCS.md         #   Patterns, examples, checklists
+├── issue-writer.md
+└── ...
 ```
 
+**`.claude/agents/`** — Thin wrappers with YAML frontmatter (`name`, `description`, `tools`). Auto-discovered by Claude Code. Each points to its reference doc.
 
-## Agent File Format
+**`docs/subagents/`** — Full reference documentation read by agents at invocation time.
 
-Each agent is a markdown file with:
+## Agent Wrapper Format (`.claude/agents/`)
+
+See `agent-name.template.md` for the standard format. Key fields:
+
+- `name` — lowercase hyphenated
+- `description` — one line, matches AGENTS.md trigger
+- `tools` — comma-separated list of tools the agent needs
+- Body — role + pointer to `docs/subagents/` reference doc
+
+## Agent Reference Format (`docs/subagents/`)
+
+Each reference doc is a markdown file with:
 
 ```markdown
 # agent-name
@@ -111,10 +126,11 @@ This gives the LLM:
 ## Creating a New Agent
 
 1. Identify a complex, repeatable task area
-2. Create `docs/subagents/agent-name.md`
-3. Document: purpose, patterns, key files, checklist
-4. Add entry to AGENTS.md Sub-Agents table
-5. Test by invoking on a real task
+2. Create `docs/subagents/agent-name.md` — reference doc
+3. Create `.claude/agents/agent-name.md` — wrapper (copy from template)
+4. Add entry to AGENTS.md Agent Triggers table
+5. Add entry to `docs/subagents/index.md`
+6. Test by invoking on a real task
 
 
 ## When to Create a Sub-Agent
