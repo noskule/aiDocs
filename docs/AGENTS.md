@@ -31,6 +31,7 @@ Read these **when you reach that situation**, not upfront:
 | Testing docs for LLMs   | `subagents/VALIDATION_LLM.md` |
 | Starting a task         | `CODING_GUIDELINES.md`        |
 | Creating sub-agents     | `subagents/README.md`         |
+| Creating GitHub issues  | `issue-tracker.md`            |
 | Running a job           | `tools/JOBS.md`               |
 | Unsure about approach   | Ask the user                  |
 
@@ -81,6 +82,7 @@ Quick lookup for when to invoke agents during workflow:
 |--------------------------|------------------|
 | `<domain-task>`          | `<agent-name>`   |
 | Writing tests            | `test-writer-*`  |
+| Creating GitHub issues   | `issue-writer`   |
 | Reviewing code health    | `architecture-rules` skill (auto-triggered) |
 | Validating documentation | `/validate-docs` or `VALIDATION_DOCS` agent |
 | Testing LLM readiness   | `VALIDATION_LLM` |

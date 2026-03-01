@@ -69,6 +69,11 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 ## Project Management
 
+**[issue-tracker.md](issue-tracker.md)** - GitHub Issues and Projects v2
+- Conventions (types, labels, sub-issues, project, estimates)
+- Issue Structure (required sections per type)
+- Wiki Mapping
+
 **[changelog.md](changelog.md)** - Release history → GitHub Releases (template: `changelog.template.md`)
 
 
