@@ -33,6 +33,7 @@ Read these **when you reach that situation**, not upfront:
 | Creating sub-agents     | `subagents/README.md`         |
 | Creating GitHub issues  | `issue-tracker.md`            |
 | Running a job           | `tools/JOBS.md`               |
+| Syncing design ↔ code   | `design-sync.md`              |
 | Unsure about approach   | Ask the user                  |
 
 **Don't know which doc?** Check [INDEX.md](INDEX.md) for section headers.
