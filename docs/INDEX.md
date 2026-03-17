@@ -42,6 +42,15 @@ Quick navigation to all docs. Read only what you need, when you need it.
 - When to Document
 
 
+## Design
+
+**`design-sync.template.md`** - Bidirectional design ↔ code sync (template)
+- File Map (Pencil frames → source files)
+- Token Translation Tables (colors, typography, shapes)
+- Component Mapping (frame → UI element parameters)
+- Sync Rules (design→code, code→design, tokens)
+
+
 ## Tools
 
 **[tools/JOBS.md](tools/JOBS.md)** - Runnable jobs registry
