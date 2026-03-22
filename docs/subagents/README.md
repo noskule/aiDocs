@@ -27,6 +27,8 @@ Both are specialized instructions. Choose based on weight and trigger style:
 
 **Coexistence pattern:** A subagent doc in `docs/subagents/` holds the full knowledge reference (readable by any AI tool). A companion skill in `.claude/skills/` embeds a subset for auto-triggering (Claude-specific). The skill points to the subagent doc for full details.
 
+**The cardinal rule: skills say "when and what", docs say "how".** A skill should never inline detailed tables, mappings, or examples that exist in `docs/subagents/`. Instead, the skill tells the LLM *when to act* and *what to do*, then delegates to `docs/subagents/` for the *how*. This eliminates duplication and ensures a single source of truth. If a mapping table or checklist changes, only the subagent doc needs updating.
+
 **When to create a skill vs. a sub-agent:**
 - **Skill only** — simple rule enforcement, slash command for a tool, lightweight knowledge
 - **Sub-agent only** — produces long output, needs full isolation, requires many tool calls
