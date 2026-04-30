@@ -41,29 +41,34 @@ Read these **when you reach that situation**, not upfront:
 
 ## Skills
 
-Lightweight instructions that auto-trigger or can be invoked as slash commands. Located in `.claude/skills/`.
+Lightweight instructions that auto-trigger or can be invoked as slash commands.
+
+**Instructions:** `docs/skills/` (any LLM reads these directly)
+**Claude Code wrappers:** `.claude/skills/` (thin redirects with YAML frontmatter)
 
 **Job skills** (slash commands for runnable tasks):
 
-| Skill | Purpose |
-|-------|---------|
-| `/validate-docs` | Validate doc structure (forked) |
+| Skill | Instructions | Purpose |
+|-------|-------------|---------|
+| `/validate-docs` | [`docs/skills/validate-docs.md`](skills/validate-docs.md) | Validate doc structure (forked) |
 
 **Convention skills** (slash commands + auto-triggered):
 
-| Skill | Purpose |
-|-------|---------|
-| `/test-runner [category]` | Run tests by category |
-| `/test-recommender` | Analyze changes, recommend test category |
-| `/documentation` | Documentation writing rules |
+| Skill | Instructions | Purpose |
+|-------|-------------|---------|
+| `/test-runner [category]` | [`docs/skills/test-runner.md`](skills/test-runner.template.md) | Run tests by category |
+| `/test-recommender` | [`docs/skills/test-recommender.md`](skills/test-recommender.template.md) | Analyze changes, recommend test category |
+| `/documentation` | [`docs/skills/documentation.md`](skills/documentation.md) | Documentation writing rules |
 
 **Auto-triggered skills** (no slash command, Claude invokes automatically):
 
-| Skill | Triggers when... |
-|-------|-------------------|
-| `architecture-rules` | Implementing features or writing new code |
+| Skill | Instructions | Triggers when... |
+|-------|-------------|-------------------|
+| `architecture-rules` | [`docs/skills/architecture-rules.md`](skills/architecture-rules.md) | Implementing features or writing new code |
 
-> **Customize:** Convention and auto-triggered skills may need project-specific configuration. Check `.claude/skills/` for `.template` files.
+> **Customize:** Skills with `.template` suffix need project-specific configuration. Copy without the suffix and customize.
+>
+> **Non-Claude LLMs:** Read the instructions file directly when the situation calls for it.
 
 
 ## Sub-Agents

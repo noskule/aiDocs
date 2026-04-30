@@ -28,11 +28,24 @@ Quick navigation to all docs. Read only what you need, when you need it.
 - Documenting in Wiki
 
 
+## Skills
+
+**`docs/skills/`** — LLM-agnostic skill instructions (any LLM reads directly)
+
+| File | Purpose |
+|------|---------|
+| [`validate-docs.md`](skills/validate-docs.md) | Documentation validation steps |
+| [`documentation.md`](skills/documentation.md) | Writing rules and placement |
+| [`architecture-rules.md`](skills/architecture-rules.md) | Layer boundaries and reuse enforcement |
+| [`test-runner.template.md`](skills/test-runner.template.md) | Test execution (template) |
+| [`test-recommender.template.md`](skills/test-recommender.template.md) | Test category recommendation (template) |
+
+
 ## Reference
 
 **[subagents/README.md](subagents/README.md)** - Creating specialized AI agents and skills
 - File Structure
-- Agent File Format
+- The Cardinal Rule (wrappers point to docs)
 - Skills vs. Sub-Agents
 - Integrating with AGENTS.md
 

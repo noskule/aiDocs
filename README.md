@@ -81,33 +81,39 @@ Two built-in validation agents keep the system healthy:
 ## Project Structure
 
 ```
-.claude/
-└── skills/                             # Claude Code skills (auto-triggered + slash commands)
-    ├── validate-docs/SKILL.md          # /validate-docs — validate doc structure (forked)
-    ├── documentation/SKILL.md          # /documentation — documentation writing rules
-    ├── test-runner/SKILL.md.template   # /test-runner — run tests by category
-    ├── test-recommender/SKILL.md.template  # /test-recommender — recommend test category
-    └── architecture-rules/SKILL.md.template  # auto-triggered — enforce architecture rules
-
-docs/
-├── AGENTS.md                       # LLM entry point and workflow router
-├── CODING_GUIDELINES.md            # 11-step development process
-├── DOCUMENTATION_GUIDELINES.md     # What/where/how much to document
-├── INDEX.md                        # Navigation map
-├── INFORMATION_MINIMALISM.md       # 3-question test
-├── wiki.md                         # Wiki setup and configuration
-├── features/                       # Feature documentation
-│   └── feature.template.md
-├── project/                        # Worklog, changelog, tasks
-│   └── changelog.template.md
-├── subagents/                      # Specialized AI agents (knowledge reference)
+docs/                                   # LLM-agnostic documentation (any AI tool reads these)
+├── AGENTS.md                           # LLM entry point and workflow router
+├── CODING_GUIDELINES.md                # 10-step development process
+├── DOCUMENTATION_GUIDELINES.md         # What/where/how much to document
+├── INDEX.md                            # Navigation map
+├── INFORMATION_MINIMALISM.md           # 3-question test
+├── wiki.md                             # Wiki setup and configuration
+├── skills/                             # Skill instructions (any LLM)
+│   ├── validate-docs.md
+│   ├── documentation.md
+│   ├── architecture-rules.md
+│   ├── test-runner.template.md
+│   └── test-recommender.template.md
+├── subagents/                          # Sub-agent instructions (any LLM)
 │   ├── VALIDATION_DOCS.md
 │   └── VALIDATION_LLM.md
+├── features/                           # Feature documentation
+│   └── feature.template.md
 ├── tools/
-│   └── JOBS.md                     # Runnable jobs registry
+│   └── JOBS.md                         # Runnable jobs registry
 ├── platform-architecture-rules.template.md
 ├── platform-development.template.md
 └── platform-index.template.md
+
+.claude/                                # Claude Code wrappers (thin redirects)
+├── skills/                             # Slash commands + auto-triggers
+│   ├── validate-docs/SKILL.md
+│   ├── documentation/SKILL.md
+│   ├── test-runner/SKILL.md.template
+│   ├── test-recommender/SKILL.md.template
+│   └── architecture-rules/SKILL.md.template
+└── agents/                             # Sub-agent wrappers
+    └── agent-name.template.md
 ```
 
 UPPERCASE = framework files (keep as-is) / lowercase = your project content

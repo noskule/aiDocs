@@ -18,16 +18,12 @@ Sub-agents are specialized instruction sets for complex domain-specific tasks. I
 
 Both are specialized instructions. Choose based on weight and trigger style:
 
-| | Skills (`.claude/skills/`) | Sub-Agents (`docs/subagents/`) |
+| | Skills | Sub-Agents |
 |---|---|---|
 | **Context** | Runs inline in conversation | Runs in isolated context (forked) |
 | **Trigger** | Auto-triggered by description match, or slash command | Explicitly invoked via Task tool |
 | **Best for** | Lightweight rules, quick jobs, knowledge injection | Heavy computation, verbose output, multi-step workflows |
 | **Overhead** | Minimal (~description loaded into context) | ~20k tokens per invocation |
-
-**Coexistence pattern:** A subagent doc in `docs/subagents/` holds the full knowledge reference (readable by any AI tool). A companion skill in `.claude/skills/` embeds a subset for auto-triggering (Claude-specific). The skill points to the subagent doc for full details.
-
-**The cardinal rule: skills say "when and what", docs say "how".** A skill should never inline detailed tables, mappings, or examples that exist in `docs/subagents/`. Instead, the skill tells the LLM *when to act* and *what to do*, then delegates to `docs/subagents/` for the *how*. This eliminates duplication and ensures a single source of truth. If a mapping table or checklist changes, only the subagent doc needs updating.
 
 **When to create a skill vs. a sub-agent:**
 - **Skill only** — simple rule enforcement, slash command for a tool, lightweight knowledge
@@ -35,23 +31,60 @@ Both are specialized instructions. Choose based on weight and trigger style:
 - **Both** — domain knowledge that should auto-trigger (skill) but also supports deep implementation work (sub-agent)
 
 
+## The Cardinal Rule: Wrappers Point to Docs
+
+All detailed instructions live in `docs/` — accessible to any LLM, any tool:
+
+| Instructions for... | Live in | Readable by |
+|---|---|---|
+| Skills | `docs/skills/` | Any LLM |
+| Sub-agents | `docs/subagents/` | Any LLM |
+
+Claude Code-specific wrappers are **thin redirects** with YAML frontmatter:
+
+| Wrapper | Lives in | Contains |
+|---|---|---|
+| Skill wrapper | `.claude/skills/*/SKILL.md` | Frontmatter + "Follow instructions in `docs/skills/X.md`" |
+| Agent wrapper | `.claude/agents/*.md` | Frontmatter + "Read `docs/subagents/X.md`" |
+
+**A wrapper should never inline detailed instructions.** If a checklist, table, or workflow changes, only the doc in `docs/` needs updating. This ensures:
+- Single source of truth
+- Multi-LLM access (Cursor, Copilot, Codex read `docs/` directly via AGENTS.md)
+- Claude Code auto-triggers and slash commands still work
+
+
 ## File Structure
 
 ```
-.claude/agents/                # Agent wrappers (auto-discovered by Claude Code)
-├── agent-name.template.md     #   Template for new agents
-├── validation-docs.md         #   Example wrapper
-└── ...
+docs/skills/                   # Skill instructions (LLM-agnostic)
+├── architecture-rules.md      #   Enforcement checklist
+├── documentation.md           #   Writing rules
+├── validate-docs.md           #   Validation steps
+└── test-runner.template.md    #   Template — customize per project
 
-docs/subagents/                # Detailed reference documentation
+docs/subagents/                # Sub-agent instructions (LLM-agnostic)
 ├── VALIDATION_DOCS.md         #   Patterns, examples, checklists
-├── project-manager.md
+├── VALIDATION_LLM.md          #   LLM doc effectiveness test
+└── project-manager.template.md
+
+.claude/skills/                # Skill wrappers (Claude Code-specific)
+├── architecture-rules/SKILL.md
+├── documentation/SKILL.md
+├── validate-docs/SKILL.md
+└── test-runner/SKILL.md.template
+
+.claude/agents/                # Agent wrappers (Claude Code-specific)
+├── agent-name.template.md
 └── ...
 ```
 
-**`.claude/agents/`** — Thin wrappers with YAML frontmatter (`name`, `description`, `tools`). Auto-discovered by Claude Code. Each points to its reference doc.
+**`docs/skills/`** — Full skill instructions. Any LLM reads these directly.
 
-**`docs/subagents/`** — Full reference documentation read by agents at invocation time.
+**`docs/subagents/`** — Full sub-agent instructions. Any LLM reads these directly.
+
+**`.claude/skills/`** — Thin wrappers with YAML frontmatter. Auto-discovered by Claude Code. Body is just a redirect to `docs/skills/`.
+
+**`.claude/agents/`** — Thin wrappers with YAML frontmatter. Auto-discovered by Claude Code. Body is just a redirect to `docs/subagents/`.
 
 ## Agent Wrapper Format (`.claude/agents/`)
 
