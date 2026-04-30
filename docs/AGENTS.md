@@ -83,7 +83,7 @@ Quick lookup for when to invoke agents during workflow:
 |--------------------------|------------------|
 | `<domain-task>`          | `<agent-name>`   |
 | Writing tests            | `test-writer-*`  |
-| Creating GitHub issues   | `issue-writer`   |
+| Creating GitHub issues   | `project-manager` |
 | Reviewing code health    | `architecture-rules` skill (auto-triggered) |
 | Validating documentation | `/validate-docs` or `VALIDATION_DOCS` agent |
 | Testing LLM readiness   | `VALIDATION_LLM` |

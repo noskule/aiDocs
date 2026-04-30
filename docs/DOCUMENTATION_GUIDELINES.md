@@ -91,7 +91,7 @@ devices-ble-polar.md
 ```
 
 **Before writing:** Check wiki index to avoid duplication
-**After writing:** Update the sidebar
+**After writing:** Update the wiki index (see [wiki.md](wiki.md) for setup and index file location)
 
 #### Structure: Behavior First, Then Platform
 

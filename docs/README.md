@@ -1,5 +1,8 @@
 # Documentation
 
+<!-- This is the docs/ folder entry point for adopting projects.
+     The root README.md describes aiDocs itself. This file describes YOUR project's docs. -->
+
 Development guidelines and templates (lives in repo).
 
 **LLMs:** Start at [AGENTS.md](AGENTS.md)
@@ -73,7 +76,7 @@ gh repo clone [org]/[repo].wiki
 git clone https://github.com/[org]/[repo].wiki.git
 ```
 
-**Index file:** `_Sidebar.md` (GitHub Wiki) or platform-specific
+**Index file:** See [wiki.md](wiki.md) for wiki setup and index file location
 
 **File organization:**
 - File naming: `[section]-[topic].md` (e.g., `architecture-overview.md`, `features-authentication.md`)

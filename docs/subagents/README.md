@@ -45,7 +45,7 @@ Both are specialized instructions. Choose based on weight and trigger style:
 
 docs/subagents/                # Detailed reference documentation
 ├── VALIDATION_DOCS.md         #   Patterns, examples, checklists
-├── issue-writer.md
+├── project-manager.md
 └── ...
 ```
 

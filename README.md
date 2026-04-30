@@ -4,7 +4,7 @@ A **documentation and coding workflow framework** for AI-assisted development.
 
 For developers using AI coding assistants. Works with any language, platform, or AI tool.
 
-- **11-step coding workflow** — Structured process from feature branch to merged PR with clear LLM instructions
+- **10-step coding workflow** — Structured process from feature branch to merged PR with clear LLM instructions
 - **Information minimalism** — Only document what a seasoned developer or LLM couldn't figure out from the code alone
 - **Just-in-time information** — Read indexes upfront, load details only when needed
 - **3 documentation levels**
@@ -52,7 +52,7 @@ Read indexes upfront, read content only when you reach that situation. Documenta
 
 A structured development process designed for AI-assisted coding.
 
-- **11-Step Development Process** — From feature branch to merged PR: implement, test, review, document, ship. Each step has clear LLM behavioral instructions. See [CODING_GUIDELINES.md](docs/CODING_GUIDELINES.md).
+- **10-Step Development Process** — From feature branch to merged PR: implement, test, review, document, ship. Each step has clear LLM behavioral instructions. See [CODING_GUIDELINES.md](docs/CODING_GUIDELINES.md).
 - **Sub-Agents** — Specialized instruction sets for complex domain-specific tasks. Instead of one general-purpose AI handling everything, sub-agents provide focused expertise (testing, documentation, validation). See [subagents/](docs/subagents/index.md).
 
 ### Documentation Levels

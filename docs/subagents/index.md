@@ -7,11 +7,12 @@ Some subagents have companion **skills** (`.claude/skills/`) for auto-triggering
 
 ## Domain Agents
 
-| Agent | Purpose | Skill |
-|-------|---------|-------|
-| [`example-agent`](example-agent.md) | Example: describe what this agent does | — |
-
 > Add your domain-specific agents here (database, devices, UI patterns, etc.)
+>
+> Example entry:
+> | Agent | Purpose | Skill |
+> |-------|---------|-------|
+> | [`agent-name`](agent-name.md) | Describe what this agent does | `/skill-name` or — |
 
 
 ## Test Agents
@@ -20,14 +21,12 @@ Some subagents have companion **skills** (`.claude/skills/`) for auto-triggering
 |-------|---------|-------|
 | [`test-runner`](test-runner.md) | Execute tests by category | `/test-runner` |
 
-> Add test-writer agents as needed for your project.
-
 
 ## Project Management Agents
 
 | Agent | Purpose | Skill |
 |-------|---------|-------|
-| [`issue-writer`](issue-writer.md) | GitHub issue creation with correct type, labels, project fields | — |
+| [`project-manager`](project-manager.template.md) | Issue and project board management (template) | — |
 
 ## Documentation Agents
 
