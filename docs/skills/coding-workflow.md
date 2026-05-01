@@ -4,6 +4,10 @@ Development workflow for all code changes. Follow these steps in order.
 
 **Trigger:** Auto — when starting a development task or implementing features.
 
+## Step Tracking
+
+When this workflow triggers, create a task for each of the 10 steps below using your task system. Not all steps apply to every task — mark inapplicable steps as completed immediately (e.g., skip tests for docs-only changes). Before advancing to a new step, check that prior steps are either completed or explicitly marked not applicable. If a step was skipped without acknowledgment, ask the user before proceeding.
+
 ## 1. Create Feature Branch
 
 ```bash
