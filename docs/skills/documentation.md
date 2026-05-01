@@ -1,15 +1,17 @@
 # documentation
 
-Documentation writing following Information Minimalism. Use when creating or updating docs.
+Action checklist for writing or updating documentation.
+
+**Trigger:** When creating or updating docs, wiki pages, or code comments.
 
 ## Before Writing
 
-Run the 3-question Information Minimalism test (`docs/INFORMATION_MINIMALISM.md`):
-1. Does the reader need this? (No → don't write it)
-2. Is it already documented elsewhere? (Yes → reference, don't duplicate)
-3. Will it go stale? (Yes → put it closer to the code)
+Run the 3-question Information Minimalism test (full framework: [`INFORMATION_MINIMALISM.md`](../INFORMATION_MINIMALISM.md)):
+1. Would a skilled developer need this? (No → don't write it)
+2. Is it obvious from code, naming, or structure? (Yes → don't write it)
+3. Does it duplicate existing content? (Yes → reference instead)
 
-## Placement Rules
+## Determine Placement
 
 | Content type | Location |
 |-------------|----------|
@@ -17,10 +19,12 @@ Run the 3-question Information Minimalism test (`docs/INFORMATION_MINIMALISM.md`
 | Developer operations, platform guides | `docs/` |
 | How software functions, domain concepts | Wiki |
 
+For detailed conventions per level, see [`DOCUMENTATION_GUIDELINES.md`](../DOCUMENTATION_GUIDELINES.md).
+
 ## When Writing New Docs
 
 1. Apply the 3-question test
-2. Determine correct location using placement rules
+2. Determine correct location using placement rules above
 3. Write the content
 4. Update the relevant index (INDEX.md, [platform]-index.md, or wiki index)
 5. Add `**Last Updated:** YYYY-MM-DD` at the bottom
@@ -31,7 +35,3 @@ Run the 3-question Information Minimalism test (`docs/INFORMATION_MINIMALISM.md`
 2. Make targeted changes — don't rewrite surrounding text
 3. Update the Last Updated date
 4. Check if index entries still match
-
-## Full reference
-
-`docs/DOCUMENTATION_GUIDELINES.md`, `docs/INFORMATION_MINIMALISM.md`

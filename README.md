@@ -4,14 +4,14 @@ A **documentation and coding workflow framework** for AI-assisted development.
 
 For developers using AI coding assistants. Works with any language, platform, or AI tool.
 
-- **10-step coding workflow** — Structured process from feature branch to merged PR with clear LLM instructions
+- **10-step coding workflow** — Auto-triggered skill that guides feature branch to merged PR
 - **Information minimalism** — Only document what a seasoned developer or LLM couldn't figure out from the code alone
 - **Just-in-time information** — Read indexes upfront, load details only when needed
 - **3 documentation levels**
   - **Code** — Intent, rationale, edge cases (docstrings, inline "why" comments)
   - **/docs** — Developer operations (build, test, run, release)
   - **Wiki** — How the software works (features, architecture, domain concepts)
-- **Skills** — Lightweight auto-triggered and slash-command actions for Claude Code (job runners, architecture enforcement, documentation rules)
+- **Skills** — LLM-agnostic instructions in `docs/skills/`, with Claude Code wrappers for auto-triggering and slash commands
 - **Sub-agents** — Specialized instruction sets for testing, documentation, and validation
 - **Jobs registry** — Central list of runnable tasks with triggers for when to run each
 - **AI-tool independent** — One workflow for Claude, Copilot, Cursor, and Codex via a single [AGENTS.md](docs/AGENTS.md)
@@ -52,7 +52,7 @@ Read indexes upfront, read content only when you reach that situation. Documenta
 
 A structured development process designed for AI-assisted coding.
 
-- **10-Step Development Process** — From feature branch to merged PR: implement, test, review, document, ship. Each step has clear LLM behavioral instructions. See [CODING_GUIDELINES.md](docs/CODING_GUIDELINES.md).
+- **10-Step Development Process** — From feature branch to merged PR: implement, test, review, document, ship. Auto-triggered skill with clear LLM behavioral instructions. See [docs/skills/coding-workflow.md](docs/skills/coding-workflow.md).
 - **Sub-Agents** — Specialized instruction sets for complex domain-specific tasks. Instead of one general-purpose AI handling everything, sub-agents provide focused expertise (testing, documentation, validation). See [subagents/](docs/subagents/index.md).
 
 ### Documentation Levels
@@ -83,15 +83,15 @@ Two built-in validation agents keep the system healthy:
 ```
 docs/                                   # LLM-agnostic documentation (any AI tool reads these)
 ├── AGENTS.md                           # LLM entry point and workflow router
-├── CODING_GUIDELINES.md                # 10-step development process
-├── DOCUMENTATION_GUIDELINES.md         # What/where/how much to document
+├── DOCUMENTATION_GUIDELINES.md         # Documentation standards reference
 ├── INDEX.md                            # Navigation map
 ├── INFORMATION_MINIMALISM.md           # 3-question test
 ├── wiki.md                             # Wiki setup and configuration
 ├── skills/                             # Skill instructions (any LLM)
-│   ├── validate-docs.md
-│   ├── documentation.md
+│   ├── coding-workflow.md              #   10-step development workflow
 │   ├── architecture-rules.md
+│   ├── documentation.md
+│   ├── validate-docs.md
 │   ├── test-runner.template.md
 │   └── test-recommender.template.md
 ├── subagents/                          # Sub-agent instructions (any LLM)
@@ -107,11 +107,12 @@ docs/                                   # LLM-agnostic documentation (any AI too
 
 .claude/                                # Claude Code wrappers (thin redirects)
 ├── skills/                             # Slash commands + auto-triggers
-│   ├── validate-docs/SKILL.md
+│   ├── coding-workflow/SKILL.md
+│   ├── architecture-rules/SKILL.md.template
 │   ├── documentation/SKILL.md
+│   ├── validate-docs/SKILL.md
 │   ├── test-runner/SKILL.md.template
-│   ├── test-recommender/SKILL.md.template
-│   └── architecture-rules/SKILL.md.template
+│   └── test-recommender/SKILL.md.template
 └── agents/                             # Sub-agent wrappers
     └── agent-name.template.md
 ```

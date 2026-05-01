@@ -10,22 +10,6 @@ Quick navigation to all docs. Read only what you need, when you need it.
 - Situational References
 - Skills (lightweight auto-triggered and slash-command actions)
 - Sub-Agents (specialized task agents in `docs/subagents/`)
-- Workflow Overview
-
-
-## Development Process
-
-**[CODING_GUIDELINES.md](CODING_GUIDELINES.md)** - Development workflow
-- Development Workflow (10 steps)
-- Data Persistence
-
-**[DOCUMENTATION_GUIDELINES.md](DOCUMENTATION_GUIDELINES.md)** - What/where to document
-- Information Minimalism Test
-- Documentation Levels (Code, /docs, Wiki)
-- Diagrams (Mermaid conventions, when to use, placement)
-- Documenting in Code
-- Documenting in /docs (File Tree)
-- Documenting in Wiki
 
 
 ## Skills
@@ -34,25 +18,33 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 | File | Purpose |
 |------|---------|
-| [`validate-docs.md`](skills/validate-docs.md) | Documentation validation steps |
+| [`coding-workflow.md`](skills/coding-workflow.md) | 10-step development workflow (auto-triggered) |
+| [`architecture-rules.md`](skills/architecture-rules.md) | Layer boundaries and reuse enforcement (auto-triggered) |
 | [`documentation.md`](skills/documentation.md) | Writing rules and placement |
-| [`architecture-rules.md`](skills/architecture-rules.md) | Layer boundaries and reuse enforcement |
+| [`validate-docs.md`](skills/validate-docs.md) | Documentation validation steps |
 | [`test-runner.template.md`](skills/test-runner.template.md) | Test execution (template) |
 | [`test-recommender.template.md`](skills/test-recommender.template.md) | Test category recommendation (template) |
 
 
 ## Reference
 
-**[subagents/README.md](subagents/README.md)** - Creating specialized AI agents and skills
-- File Structure
-- The Cardinal Rule (wrappers point to docs)
-- Skills vs. Sub-Agents
-- Integrating with AGENTS.md
+**[DOCUMENTATION_GUIDELINES.md](DOCUMENTATION_GUIDELINES.md)** - Documentation standards reference
+- What to Document / What to Skip
+- Documentation Levels (Code, /docs, Wiki)
+- Wiki structure (behavior first, then platform)
+- Diagrams (Mermaid conventions)
+- Platform-Specific Marker
 
 **[INFORMATION_MINIMALISM.md](INFORMATION_MINIMALISM.md)** - 3-question test
 - The Test (3 questions)
 - Examples
 - When to Document
+
+**[subagents/README.md](subagents/README.md)** - Creating specialized AI agents and skills
+- File Structure
+- The Cardinal Rule (wrappers point to docs)
+- Skills vs. Sub-Agents
+- Integrating with AGENTS.md
 
 
 ## Design

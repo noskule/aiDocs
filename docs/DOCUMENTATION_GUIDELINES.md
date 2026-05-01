@@ -1,28 +1,14 @@
 # Documentation Guidelines
 
+Reference for documentation standards. For the action checklist when writing docs, see [`docs/skills/documentation.md`](skills/documentation.md).
+
 ## Core Principle
 
 > Document what a seasoned developer or LLM would need to **reconstruct** the project on the same platform, or **translate** it to another platform — skip what they already know.
 
-## Information Minimalism
+For the full decision framework, see [INFORMATION_MINIMALISM.md](INFORMATION_MINIMALISM.md).
 
-### The Test
-
-Before adding documentation, ask in order:
-
-1. **Would a skilled developer need this to reconstruct or port the feature?**
-    - NO → Don't document
-    - YES → Continue
-
-2. **Is it obvious from code, naming, or structure?**
-    - YES → Don't document
-    - NO → Continue
-
-3. **Does it duplicate existing content?**
-    - YES → Reference instead
-    - NO → Document it ✅
-
-### What to Document
+## What to Document
 
 | Type | When | Example |
 |------|------|---------|
@@ -33,14 +19,14 @@ Before adding documentation, ask in order:
 | **Quirks/workarounds** | Platform or device-specific | `// PLATFORM: Coospo BLE requires 500ms post-connect delay` |
 | **Complex behavior** | Signature doesn't tell the story | `@param windowMillis Sliding window; resets on new session` |
 
-### What to Skip
+## What to Skip
 
 - What the code does (read the code)
 - Obvious parameters (`@param id The ID`)
 - Standard patterns the platform expects (ViewModel lifecycle, Composable structure)
 - Commented-out code (delete it)
 
-### Platform-Specific Marker
+## Platform-Specific Marker
 
 Use one marker for platform-specific quirks that need evaluation when porting:
 
@@ -48,7 +34,7 @@ Use one marker for platform-specific quirks that need evaluation when porting:
 // PLATFORM: Coospo BLE requires 500ms post-connect delay before notifications work
 ```
 
-Everything *without* this marker is implicitly cross-platform intent. No separate INTENT marker needed — if it's not platform-specific, it's a requirement.
+Everything *without* this marker is implicitly cross-platform intent.
 
 ## Documentation Levels
 
@@ -174,4 +160,4 @@ Applies to both docs/ and wiki/.
 
 ---
 
-**Last Updated:** 2026-02-14
+**Last Updated:** 2026-05-01
