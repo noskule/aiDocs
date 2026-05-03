@@ -1,7 +1,0 @@
----
-name: architecture-rules
-description: Enforces architecture principles when implementing features or writing new code. Prevents code duplication and layer violations.
-user-invocable: false
----
-
-Follow the instructions in `docs/skills/architecture-rules.md`.

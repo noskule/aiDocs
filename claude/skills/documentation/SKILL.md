@@ -1,12 +1,15 @@
+---
+name: documentation
+description: Documentation writing following Information Minimalism. Use when creating or updating docs.
+---
+
 # documentation
 
 Action checklist for writing or updating documentation.
 
-**Trigger:** When creating or updating docs, wiki pages, or code comments.
-
 ## Before Writing
 
-Run the 3-question Information Minimalism test (full framework: [`INFORMATION_MINIMALISM.md`](../INFORMATION_MINIMALISM.md)):
+Run the 3-question Information Minimalism test (full framework: `docs/INFORMATION_MINIMALISM.md`):
 1. Would a skilled developer need this? (No → don't write it)
 2. Is it obvious from code, naming, or structure? (Yes → don't write it)
 3. Does it duplicate existing content? (Yes → reference instead)
@@ -19,7 +22,7 @@ Run the 3-question Information Minimalism test (full framework: [`INFORMATION_MI
 | Developer operations, platform guides | `docs/` |
 | How software functions, domain concepts | Wiki |
 
-For detailed conventions per level, see [`DOCUMENTATION_GUIDELINES.md`](../DOCUMENTATION_GUIDELINES.md).
+For detailed conventions per level, see `docs/DOCUMENTATION_GUIDELINES.md`.
 
 ## When Writing New Docs
 

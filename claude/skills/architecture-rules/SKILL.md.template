@@ -1,8 +1,12 @@
+---
+name: architecture-rules
+description: Enforces architecture principles when implementing features or writing new code. Prevents code duplication and layer violations.
+user-invocable: false
+---
+
 # architecture-rules
 
-Enforces architecture principles when implementing features or writing new code. Prevents code duplication and layer violations.
-
-**Trigger:** Automatically before writing new code or implementing features.
+Enforces architecture principles when implementing features or writing new code.
 
 ## Before Writing Code
 

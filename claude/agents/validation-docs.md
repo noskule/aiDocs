@@ -1,22 +1,12 @@
-# VALIDATION_DOCS
+---
+name: validation-docs
+description: Validates documentation structure and consistency across docs/ and wiki/
+tools: Read, Grep, Glob
+---
 
-Validates documentation structure and consistency across docs/ and wiki/.
-
-
-## Purpose
+# validation-docs
 
 Automated documentation auditing. Run before major releases or quarterly to catch broken links, orphan files, stale content, and structural issues.
-
-
-## Responsibilities
-
-- Verify index files match actual content
-- Find broken internal links
-- Detect orphan pages (unreachable from navigation)
-- Check for duplicated information
-- Validate file organization and naming
-- Report issues with actionable fixes
-
 
 ## When to Invoke
 
@@ -25,40 +15,25 @@ Automated documentation auditing. Run before major releases or quarterly to catc
 - After significant documentation changes
 - When user requests docs validation
 
-
 ## Validation Process
 
 ### Step 1: Choose Scope
 
 Ask user: Validate `docs/`, `wiki/`, or both?
 
-
 ### Step 2: Index Cross-Check
 
 **Check platform index matches actual sections:**
-```
 1. Read [platform]-index.md
 2. Read [platform]-development.md (and other platform files)
 3. Compare listed sections vs actual H2 headers
 4. Report missing or extra sections
-```
-
-**Check subagents index:**
-```
-1. Glob: docs/subagents/*.md
-2. Read subagents/index.md
-3. Compare listed agents vs actual files
-4. Report missing or unlisted agents
-```
 
 **Check wiki index:**
-```
 1. Read wiki location from docs/wiki.md
 2. Glob: ../[wiki-folder]/*.md
 3. Read wiki index (_Sidebar.md or similar)
 4. Compare listed pages vs actual files
-```
-
 
 ### Step 3: Link Validation
 
@@ -73,17 +48,13 @@ Grep pattern: \[.*\]\((?!http)[^)]+\)
 3. If anchor link (#section), verify section exists
 4. Report broken links with file:line
 
-
 ### Step 4: Orphan Detection
 
 **Find unreferenced files:**
-```
 1. Glob: docs/**/*.md
 2. For each file, grep all other files for references
 3. Files with zero references (except index files) are orphans
 4. Report orphans
-```
-
 
 ### Step 5: Duplicate Detection
 
@@ -92,25 +63,16 @@ Grep pattern: \[.*\]\((?!http)[^)]+\)
 - Same explanatory paragraphs
 - Tables with overlapping data
 
-**Common duplication locations:**
-- 3-question test (should be in INFORMATION_MINIMALISM.md only)
-- Test categories (should be in [platform]-testing.md only)
-- Workflow steps (should be in CODING_GUIDELINES.md only)
-
-
 ### Step 6: File Organization
 
 **Check file lengths:**
-```
-For docs/: warn if > 200 lines
-For wiki/: warn if > 600 lines
-```
+- For docs/: warn if > 200 lines
+- For wiki/: warn if > 600 lines
 
 **Check naming convention:**
 - UPPERCASE.md = templates/meta files
 - lowercase.md = content files
 - [platform]-*.md = platform-specific
-
 
 ### Step 7: Wiki Structure Check
 
@@ -119,15 +81,7 @@ For wiki/: warn if > 600 lines
 For each wiki page (except Home, README, _Sidebar):
 1. Check for "## What It Does" section near top
 2. Check for "## Why It Matters" section
-3. Check for "## Android Implementation" section (if platform content exists)
-4. Check for "## iOS Implementation" section (placeholder if Android exists)
-5. Grep for `INTENT:` or `PLATFORM:` in headings — should not exist
-
-**Report issues:**
-- Missing required sections
-- INTENT/PLATFORM markers still in headings
-- Platform content outside implementation sections
-
+3. Platform content should be in separate implementation sections
 
 ### Step 8: Staleness Check
 
@@ -138,7 +92,6 @@ Grep pattern: \*\*Last Updated:\*\* (\d{4}-\d{2}-\d{2})
 
 - Flag files not updated in 30+ days
 - Cross-reference with git log for actual changes
-
 
 ## Output Format
 
@@ -162,14 +115,12 @@ Grep pattern: \*\*Last Updated:\*\* (\d{4}-\d{2}-\d{2})
 - Warnings: N
 ```
 
-
 ## Post-Validation
 
 Ask user:
 1. Fix issues now?
 2. Save report to `docs/validation-report.md`?
-3. Create GitHub issues for each problem?
-
+3. Create issues for each problem?
 
 ## Key Files
 
@@ -177,8 +128,5 @@ Ask user:
 |------|---------|
 | `docs/INDEX.md` | Main docs navigation |
 | `docs/[platform]-index.md` | Platform docs index |
-| `docs/subagents/index.md` | Subagents index |
+| `docs/AGENTS.md` | Agent/skill registry |
 | `docs/wiki.md` | Wiki location reference |
-
-
-**Last Updated:** 2026-02-06

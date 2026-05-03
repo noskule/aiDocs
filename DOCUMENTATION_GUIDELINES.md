@@ -1,6 +1,6 @@
 # Documentation Guidelines
 
-Reference for documentation standards. For the action checklist when writing docs, see [`docs/skills/documentation.md`](skills/documentation.md).
+Reference for documentation standards. For the action checklist when writing docs, use the `/documentation` skill.
 
 ## Core Principle
 
@@ -154,8 +154,8 @@ Use [Mermaid](https://mermaid.js.org/) fenced code blocks — GitHub renders the
 
 ## Periodic Validation
 
-Invoke the [VALIDATION_DOCS](subagents/VALIDATION_DOCS.md) agent before major releases or quarterly.
-Invoke the [VALIDATION_LLM](subagents/VALIDATION_LLM.md) agent after major restructuring or new project setup.
+Invoke the `validation-docs` agent before major releases or quarterly.
+Invoke the `validation-llm` agent after major restructuring or new project setup.
 Applies to both docs/ and wiki/.
 
 ---

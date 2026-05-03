@@ -1,6 +1,12 @@
+---
+name: project-manager
+description: Issue and project board management — creates fully configured issues
+tools: Read, Grep, Glob, Bash
+---
+
 # project-manager
 
-Issue and project board management agent. Creates and manages issues following [issue-tracker.md](../issue-tracker.md) conventions.
+Issue and project board management agent. Creates and manages issues following `docs/issue-tracker.md` conventions.
 
 Adapt this template for your issue tracker (GitHub Issues, Linear, Jira, etc.).
 
@@ -14,7 +20,7 @@ Adapt this template for your issue tracker (GitHub Issues, Linear, Jira, etc.).
 
 ## Setup
 
-1. Copy this file (remove `.template` suffix) and `.claude/agents/project-manager.md` to your project
+1. Copy this file (remove `.template` suffix) to your project's `.claude/agents/`
 2. Add your tracker-specific IDs below
 
 ## IDs
