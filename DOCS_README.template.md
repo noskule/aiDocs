@@ -29,8 +29,7 @@ flowchart TD
 
     subgraph startup ["Always Read (startup, in order)"]
         M1["1. AGENTS.md"] --> M2["2. INDEX.md"]
-        M2 --> M3["3. CODING_GUIDELINES.md"]
-        M3 --> M4["4. subagents/index.md"]
+        M2 --> M4["3. subagents/index.md"]
         M4 -.->|if exists| M5["5. [platform]-index.md"]
         M4 -.->|if exists| M6["6. Wiki index"]
     end
@@ -52,7 +51,7 @@ flowchart TD
     classDef conditional fill:#bbdefb,stroke:#1976d2,color:#0d47a1
     classDef decision fill:#fff,stroke:#616161,color:#212121
 
-    class M1,M2,M3,M4 always
+    class M1,M2,M4 always
     class M5,M6 optional
     class CODE,TEST,DOCS,SETUP,VDOC,VLLM,AREADME,JOBS conditional
     class SIT decision

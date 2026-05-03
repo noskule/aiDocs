@@ -11,110 +11,101 @@ For developers using AI coding assistants. Works with any language, platform, or
   - **Code** — Intent, rationale, edge cases (docstrings, inline "why" comments)
   - **/docs** — Developer operations (build, test, run, release)
   - **Wiki** — How the software works (features, architecture, domain concepts)
-- **Skills** — LLM-agnostic instructions in `docs/skills/`, with Claude Code wrappers for auto-triggering and slash commands
+- **Skills** — LLM-agnostic instructions in `skills/`, with Claude Code wrappers in `claude/` for auto-triggering and slash commands
 - **Sub-agents** — Specialized instruction sets for testing, documentation, and validation
 - **Jobs registry** — Central list of runnable tasks with triggers for when to run each
-- **AI-tool independent** — One workflow for Claude, Copilot, Cursor, and Codex via a single [AGENTS.md](docs/AGENTS.md)
+- **AI-tool independent** — One workflow for Claude, Copilot, Cursor, and Codex via a single [AGENTS.md](AGENTS.md)
 
 
-## Quick Start
+## Integration
 
-1. Copy the `docs/` folder to your project
-2. Copy `.claude/skills/` to your project (for Claude Code users)
-3. Configure `docs/README.md` with project info and wiki location
-4. Create `[platform]-development.md`, `[platform]-index.md`, etc. for your platform
-5. Rename `.template` files in `.claude/skills/` to `SKILL.md` and customize for your project
-6. Keep UPPERCASE template files as-is
-7. Use wiki for feature documentation
+aiDocs is designed to be added to your project as a **git subtree** under `docs/`:
 
-**For AI Assistants:** Start at [docs/AGENTS.md](docs/AGENTS.md)
+```bash
+# Add aiDocs to your project
+git subtree add --prefix=docs https://github.com/noskule/aiDocs.git main --squash
 
-**Full Navigation:** See [docs/INDEX.md](docs/INDEX.md)
+# Update later
+git subtree pull --prefix=docs https://github.com/noskule/aiDocs.git main --squash
+```
+
+### Setup after adding
+
+1. Copy `docs/CLAUDE.md.template` → `CLAUDE.md` in your project root
+2. Copy `docs/claude/skills/` → `.claude/skills/` in your project root
+3. Copy `docs/claude/agents/` → `.claude/agents/` in your project root (optional)
+4. Rename `.template` files and customize for your project
+5. Configure `docs/DOCS_README.template.md` as your `docs/README.md`
+6. Create `[platform]-development.md`, `[platform]-index.md`, etc. as needed
+
+**For AI Assistants:** Start at [AGENTS.md](AGENTS.md)
+
+**Full Navigation:** See [INDEX.md](INDEX.md)
 
 
 ## Features
 
-### Skills (Claude Code)
+### Skills
 
-Lightweight instructions in `.claude/skills/` that extend Claude Code with project-specific capabilities:
+Lightweight instructions that auto-trigger or can be invoked as slash commands:
 
+- **Coding workflow** — Auto-triggered 10-step development process. See [skills/coding-workflow.md](skills/coding-workflow.md).
+- **Architecture enforcement** — Auto-triggered rules that prevent duplication and layer violations
+- **Documentation** — Writing rules following Information Minimalism
 - **Job skills** — Slash commands (`/validate-docs`) that run tools with one command
-- **Convention skills** — Auto-triggered or invokable rules for testing (`/test-runner`), documentation (`/documentation`), and test recommendations (`/test-recommender`)
-- **Architecture enforcement** — Auto-triggered skill reads `[platform]-architecture-rules.md` before writing new code, preventing duplication and layer violations
+- **Convention skills** — Test runner (`/test-runner`), test recommender (`/test-recommender`)
 
-Skills coexist with sub-agents: skills handle lightweight auto-triggered actions, sub-agents handle heavy isolated computation. See [subagents/README.md](docs/subagents/README.md) for the distinction.
+Skill instructions live in `skills/` (any LLM reads directly). Claude Code wrappers in `claude/skills/` provide auto-triggering and slash commands. See [subagents/README.md](subagents/README.md) for the pattern.
 
-### Just-in-Time Documentation
+### Sub-Agents
 
-Read indexes upfront, read content only when you reach that situation. Documentation is organized by situation, not by hierarchy — `AGENTS.md` routes you to the right file at the right time.
+Specialized instruction sets for complex domain-specific tasks. Instead of one general-purpose AI handling everything, sub-agents provide focused expertise (testing, documentation, validation). See [subagents/index.md](subagents/index.md).
 
-### LLM Coding Workflow
+### Documentation
 
-A structured development process designed for AI-assisted coding.
-
-- **10-Step Development Process** — From feature branch to merged PR: implement, test, review, document, ship. Auto-triggered skill with clear LLM behavioral instructions. See [docs/skills/coding-workflow.md](docs/skills/coding-workflow.md).
-- **Sub-Agents** — Specialized instruction sets for complex domain-specific tasks. Instead of one general-purpose AI handling everything, sub-agents provide focused expertise (testing, documentation, validation). See [subagents/](docs/subagents/index.md).
-
-### Documentation Levels
-
-| Level     | Contains                                              | Examples                          |
-|-----------|-------------------------------------------------------|-----------------------------------|
-| **Code**  | Intent, rationale, edge cases                         | Docstrings, inline "why" comments |
-| **/docs** | Developer operations, platform guides                 | Build, test, run, release         |
-| **Wiki**  | How software functions, architecture, domain concepts | Features, behavior, system design |
-
-- **Information Minimalism** — Before documenting, pass the 3-question test: Would a skilled developer need this? Is it obvious from the code? Does it duplicate existing content? If it fails any question, don't write it. See [INFORMATION_MINIMALISM.md](docs/INFORMATION_MINIMALISM.md).
-- **Behavior vs. Platform** — Documentation separates what the software does (cross-platform requirement) from how it's built on a specific platform. Platform-specific quirks are marked with `// PLATFORM:` — everything else is implicitly a requirement for any implementation. See [DOCUMENTATION_GUIDELINES.md](docs/DOCUMENTATION_GUIDELINES.md).
+- **Information Minimalism** — 3-question test: needed? obvious? duplicate? See [INFORMATION_MINIMALISM.md](INFORMATION_MINIMALISM.md).
+- **Behavior vs. Platform** — Separate what the software does from how it's built. See [DOCUMENTATION_GUIDELINES.md](DOCUMENTATION_GUIDELINES.md).
+- **Validation** — Two agents: `VALIDATION_DOCS` (structural checks) and `VALIDATION_LLM` (can a fresh LLM navigate the docs?).
 
 ### Jobs Registry
 
-A central registry of runnable tasks — validation, documentation checks — with clear triggers for when to run each. LLMs check [tools/JOBS.md](docs/tools/JOBS.md) to discover what's available.
-
-### Validation
-
-Two built-in validation agents keep the system healthy:
-
-- `VALIDATION_DOCS` — Structural checks: broken links, orphan pages, stale content, index consistency
-- `VALIDATION_LLM` — Effectiveness test: can a fresh LLM navigate the docs and correctly understand the project?
+Central registry of runnable tasks with triggers. See [tools/JOBS.md](tools/JOBS.md).
 
 
-## Project Structure
+## Repo Structure
 
 ```
-docs/                                   # LLM-agnostic documentation (any AI tool reads these)
-├── AGENTS.md                           # LLM entry point and workflow router
-├── DOCUMENTATION_GUIDELINES.md         # Documentation standards reference
-├── INDEX.md                            # Navigation map
-├── INFORMATION_MINIMALISM.md           # 3-question test
-├── wiki.md                             # Wiki setup and configuration
-├── skills/                             # Skill instructions (any LLM)
-│   ├── coding-workflow.md              #   10-step development workflow
-│   ├── architecture-rules.md
-│   ├── documentation.md
-│   ├── validate-docs.md
-│   ├── test-runner.template.md
-│   └── test-recommender.template.md
-├── subagents/                          # Sub-agent instructions (any LLM)
-│   ├── VALIDATION_DOCS.md
-│   └── VALIDATION_LLM.md
-├── features/                           # Feature documentation
-│   └── feature.template.md
-├── tools/
-│   └── JOBS.md                         # Runnable jobs registry
-├── platform-architecture-rules.template.md
-├── platform-development.template.md
-└── platform-index.template.md
+AGENTS.md                           # LLM entry point and workflow router
+INDEX.md                            # Navigation map
+DOCUMENTATION_GUIDELINES.md         # Documentation standards reference
+INFORMATION_MINIMALISM.md           # 3-question test
+wiki.md                             # Wiki setup and configuration
 
-.claude/                                # Claude Code wrappers (thin redirects)
-├── skills/                             # Slash commands + auto-triggers
-│   ├── coding-workflow/SKILL.md
-│   ├── architecture-rules/SKILL.md.template
-│   ├── documentation/SKILL.md
-│   ├── validate-docs/SKILL.md
-│   ├── test-runner/SKILL.md.template
-│   └── test-recommender/SKILL.md.template
-└── agents/                             # Sub-agent wrappers
-    └── agent-name.template.md
+skills/                             # Skill instructions (any LLM)
+├── coding-workflow.md              #   10-step development workflow
+├── architecture-rules.md           #   Layer boundaries and reuse enforcement
+├── documentation.md                #   Writing rules and placement
+├── validate-docs.md                #   Documentation validation steps
+├── test-runner.template.md         #   Test execution (template)
+└── test-recommender.template.md    #   Test category recommendation (template)
+
+subagents/                          # Sub-agent instructions (any LLM)
+├── README.md                       #   Guide for creating agents and skills
+├── VALIDATION_DOCS.md              #   Doc structure validation
+├── VALIDATION_LLM.md               #   LLM doc effectiveness test
+├── index.md                        #   Available agents registry
+└── project-manager.template.md     #   Issue management (template)
+
+claude/                             # Claude Code wrappers (copy to .claude/)
+├── skills/                         #   Thin redirects to skills/
+└── agents/                         #   Thin redirects to subagents/
+
+features/                           # Feature documentation
+tools/                              # Jobs registry
+platform-*.template.md              # Platform-specific templates
+CLAUDE.md.template                  # Copy to project root as CLAUDE.md
+CODEX.md.template                   # Copy to project root as CODEX.md
+DOCS_README.template.md             # Copy as docs/README.md in your project
 ```
 
 UPPERCASE = framework files (keep as-is) / lowercase = your project content
