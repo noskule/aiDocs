@@ -2,15 +2,12 @@
 
 **Audience:** AI coding assistants (LLMs) working on this project
 
-Behavioral instructions and workflow for AI assistants. This is a project-independent template.
-
 
 ## MANDATORY READING
 
 **You MUST read the following files BEFORE starting any task:**
-- This file (AGENTS.md) - workflow and situational references
+- This file (AGENTS.md) - situational references, available skills and agents
 - [INDEX.md](INDEX.md) - documentation map
-- [subagents/index.md](subagents/index.md) - available specialized agents
 - `[platform]-index.md` - platform documentation maps (if exists)
 - Wiki index (if exists) - see [wiki.md](wiki.md) for location
 
@@ -19,80 +16,67 @@ Behavioral instructions and workflow for AI assistants. This is a project-indepe
 
 Read these **when you reach that situation**, not upfront:
 
-| When you're...          | Read...                       |
-|-------------------------|-------------------------------|
-| Finding platform docs   | `[platform]-index.md`         |
-| Setting up / installing | `[platform]-installation.md`  |
+| When you're...          | Read...                                |
+|-------------------------|----------------------------------------|
+| Finding platform docs   | `[platform]-index.md`                  |
+| Setting up / installing | `[platform]-installation.md`           |
 | Writing code            | `[platform]-architecture-rules.md`, `[platform]-development.md` |
-| Writing tests           | `[platform]-testing.md`       |
-| Writing documentation   | `DOCUMENTATION_GUIDELINES.md` |
-| Validating docs         | `subagents/VALIDATION_DOCS.md`|
-| Testing docs for LLMs   | `subagents/VALIDATION_LLM.md` |
-| Creating sub-agents     | `subagents/README.md`         |
-| Creating issues         | `issue-tracker.md`            |
-| Running a job           | `tools/JOBS.md`               |
-| Syncing design ↔ code   | `design-sync.md`              |
-| Unsure about approach   | Ask the user                  |
+| Writing tests           | `[platform]-testing.md`                |
+| Writing documentation   | `docs/DOCUMENTATION_GUIDELINES.md`     |
+| Creating agents/skills  | `docs/creating-agents.md`              |
+| Creating issues         | `docs/issue-tracker.md`                |
+| Running a job           | `docs/tools/JOBS.md`                   |
+| Syncing design ↔ code   | `docs/design-sync.md`                  |
+| Unsure about approach   | Ask the user                           |
 
 **Don't know which doc?** Check [INDEX.md](INDEX.md) for section headers.
 
 
 ## Skills
 
-Lightweight instructions that auto-trigger or can be invoked as slash commands.
+Skills live in `.claude/skills/` with full instructions inline. They auto-trigger or are invoked as slash commands.
 
-**Instructions:** `docs/skills/` (any LLM reads these directly)
-**Claude Code wrappers:** `.claude/skills/` (thin redirects with YAML frontmatter)
+**Workflow skills** (auto-triggered):
 
-**Workflow skills** (auto-triggered, govern how you work):
+| Skill | Triggers when... |
+|-------|-------------------|
+| `coding-workflow` | Starting a development task |
+| `architecture-rules` | Implementing features or writing new code |
 
-| Skill | Instructions | Triggers when... |
-|-------|-------------|-------------------|
-| `coding-workflow` | [`docs/skills/coding-workflow.md`](skills/coding-workflow.md) | Starting a development task |
-| `architecture-rules` | [`docs/skills/architecture-rules.md`](skills/architecture-rules.md) | Implementing features or writing new code |
+**Job skills** (slash commands):
 
-**Job skills** (slash commands for runnable tasks):
-
-| Skill | Instructions | Purpose |
-|-------|-------------|---------|
-| `/validate-docs` | [`docs/skills/validate-docs.md`](skills/validate-docs.md) | Validate doc structure (forked) |
+| Skill | Purpose |
+|-------|---------|
+| `/validate-docs [scope]` | Validate doc structure (forked) |
 
 **Convention skills** (slash commands + auto-triggered):
 
-| Skill | Instructions | Purpose |
-|-------|-------------|---------|
-| `/test-runner [category]` | [`docs/skills/test-runner.md`](skills/test-runner.template.md) | Run tests by category |
-| `/test-recommender` | [`docs/skills/test-recommender.md`](skills/test-recommender.template.md) | Analyze changes, recommend test category |
-| `/documentation` | [`docs/skills/documentation.md`](skills/documentation.md) | Documentation writing rules |
+| Skill | Purpose |
+|-------|---------|
+| `/test-runner [category]` | Run tests by category |
+| `/test-recommender` | Analyze changes, recommend test category |
+| `/documentation` | Documentation writing rules |
 
-> **Customize:** Skills with `.template` suffix need project-specific configuration. Copy without the suffix and customize.
+> **Customize:** Skills with `.template` suffix need project-specific configuration.
 >
-> **Non-Claude LLMs:** Read the instructions file directly when the situation calls for it.
+> **Non-Claude LLMs:** Read `.claude/skills/*/SKILL.md` directly (ignore YAML frontmatter).
 
 
-## Sub-Agents
+## Agents
 
-Specialized agents for heavy, self-contained tasks that produce verbose output. Located in `docs/subagents/` with optional Claude agent wrappers in `.claude/agents/`.
+Agents live in `.claude/agents/` with full instructions inline. They run in isolated context for heavy tasks.
 
-Each agent reads its detailed instructions from `docs/subagents/` at invocation time.
+| Agent | Use when... |
+|-------|-------------|
+| `validation-docs` | Validating documentation structure |
+| `validation-llm` | Testing LLM documentation effectiveness |
+| `project-manager` | Issue management (template — customize first) |
 
-> **Setup:** See [subagents/README.md](subagents/README.md) for how to create and integrate agents.
-
-
-## Agent Triggers
-
-Quick lookup for when to invoke agents during workflow:
-
-| If you're doing...       | Invoke...        |
-|--------------------------|------------------|
-| `<domain-task>`          | `<agent-name>`   |
-| Writing tests            | `test-writer-*`  |
-| Creating issues          | `project-manager` |
-| Reviewing code health    | `architecture-rules` skill (auto-triggered) |
-| Validating documentation | `/validate-docs` or `VALIDATION_DOCS` agent |
-| Testing LLM readiness   | `VALIDATION_LLM` |
-
-> **Customize:** Replace examples with your project's agents from `docs/subagents/`.
+> **Customize:** Replace template agents and add your domain-specific agents.
+>
+> **Non-Claude LLMs:** Read `.claude/agents/*.md` directly (ignore YAML frontmatter).
+>
+> **Creating new agents:** See [creating-agents.md](creating-agents.md).
 
 
-**Last Updated:** 2026-05-01
+**Last Updated:** 2026-05-03

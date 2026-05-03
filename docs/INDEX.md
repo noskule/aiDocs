@@ -6,24 +6,32 @@ Quick navigation to all docs. Read only what you need, when you need it.
 ## LLM Entry Point
 
 **[AGENTS.md](AGENTS.md)** - Start here
-- Navigation
 - Situational References
-- Skills (lightweight auto-triggered and slash-command actions)
-- Sub-Agents (specialized task agents in `docs/subagents/`)
+- Skills and Agents (available actions)
 
 
-## Skills
+## Skills & Agents
 
-**`docs/skills/`** — LLM-agnostic skill instructions (any LLM reads directly)
+Full instructions live in `docs/claude/` (copy to `.claude/` at project root).
 
-| File | Purpose |
-|------|---------|
-| [`coding-workflow.md`](skills/coding-workflow.md) | 10-step development workflow (auto-triggered) |
-| [`architecture-rules.md`](skills/architecture-rules.md) | Layer boundaries and reuse enforcement (auto-triggered) |
-| [`documentation.md`](skills/documentation.md) | Writing rules and placement |
-| [`validate-docs.md`](skills/validate-docs.md) | Documentation validation steps |
-| [`test-runner.template.md`](skills/test-runner.template.md) | Test execution (template) |
-| [`test-recommender.template.md`](skills/test-recommender.template.md) | Test category recommendation (template) |
+**Skills** (`claude/skills/*/SKILL.md`):
+
+| Skill | Purpose |
+|-------|---------|
+| `coding-workflow` | 10-step development workflow (auto-triggered) |
+| `architecture-rules` | Layer boundaries and reuse enforcement (auto-triggered) |
+| `documentation` | Writing rules and placement |
+| `validate-docs` | Documentation validation (forked) |
+| `test-runner` | Test execution (template) |
+| `test-recommender` | Test category recommendation (template) |
+
+**Agents** (`claude/agents/*.md`):
+
+| Agent | Purpose |
+|-------|---------|
+| `validation-docs` | Documentation structure validation |
+| `validation-llm` | LLM documentation effectiveness test |
+| `project-manager` | Issue management (template) |
 
 
 ## Reference
@@ -40,11 +48,10 @@ Quick navigation to all docs. Read only what you need, when you need it.
 - Examples
 - When to Document
 
-**[subagents/README.md](subagents/README.md)** - Creating specialized AI agents and skills
-- File Structure
-- The Cardinal Rule (wrappers point to docs)
-- Skills vs. Sub-Agents
-- Integrating with AGENTS.md
+**[creating-agents.md](creating-agents.md)** - How to create skills and agents
+- Skills vs. Agents decision
+- File format and frontmatter
+- Step-by-step creation guide
 
 
 ## Design
@@ -83,12 +90,11 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 ## Project Management
 
-**[issue-tracker.md](issue-tracker.md)** - GitHub Issues and Projects v2
+**[issue-tracker.md](issue-tracker.md)** - Issue tracker conventions
 - Conventions (types, labels, sub-issues, project, estimates)
-- Issue Structure (required sections per type)
-- Wiki Mapping
+- Estimate Scale
 
-**[changelog.md](changelog.md)** - Release history → GitHub Releases (template: `changelog.template.md`)
+**[changelog.md](changelog.md)** - Release history (template: `changelog.template.md`)
 
 
 ## Wiki (External)
@@ -97,7 +103,6 @@ Quick navigation to all docs. Read only what you need, when you need it.
 - Fundamentals (domain concepts)
 - Architecture (system design)
 - Features (user-facing functionality)
-- Devices (hardware-specific findings)
 
 
 **Maintain this index:** When adding/removing sections, update this file.

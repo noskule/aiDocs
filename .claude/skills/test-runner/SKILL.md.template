@@ -1,9 +1,0 @@
----
-name: test-runner
-description: Runs tests by category after code changes. Use when tests need to be executed.
-argument-hint: "[category: <your-categories>]"
----
-
-Follow the instructions in `docs/skills/test-runner.md`.
-
-Category argument: $ARGUMENTS

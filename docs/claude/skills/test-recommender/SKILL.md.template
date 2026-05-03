@@ -1,3 +1,8 @@
+---
+name: test-recommender
+description: Analyzes changed files and recommends which test category to run.
+---
+
 # test-recommender
 
 Analyzes changed files and recommends which test category to run.

@@ -1,8 +1,12 @@
+---
+name: coding-workflow
+description: Development workflow for implementing features and making code changes. 10-step process from feature branch to merged PR.
+user-invocable: false
+---
+
 # coding-workflow
 
 Development workflow for all code changes. Follow these steps in order.
-
-**Trigger:** Auto — when starting a development task or implementing features.
 
 ## Step Tracking
 
@@ -20,7 +24,7 @@ Never commit directly to main/master.
 
 - Flag problematic patterns in existing code to the user
 - Keep changes focused and atomic
-- Read `docs/skills/architecture-rules.md` before writing code (if exists)
+- Read `[platform]-architecture-rules.md` before writing code (if exists)
 
 **Ask before proceeding when:**
 - Architecture decision or multiple valid approaches
@@ -63,11 +67,10 @@ Review the session for reusable knowledge:
 
 ## 8. Write Documentation
 
-Follow `docs/skills/documentation.md` for writing rules.
-
 - Update changelog with changes
 - Update wiki if feature-related
 - Apply Information Minimalism test
+- See `docs/DOCUMENTATION_GUIDELINES.md` for reference
 
 ## 9. Create Pull Request
 
