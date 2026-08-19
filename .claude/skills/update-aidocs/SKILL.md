@@ -55,10 +55,10 @@ Every shipped file classifies into exactly one of:
 6. **Apply, with 3-way safety** — for each upstream-owned change, compare the project copy against the OLD upstream version **ignoring line endings and trailing whitespace** (`diff --strip-trailing-cr -Z`); formatting-only drift is not a conflict:
    - Project copy matches old upstream → apply silently (copy new file / delete removed file)
    - Project copy genuinely differs → **conflict**: show both diffs (their local change, the upstream change), ask before touching
-   - File doesn't exist locally → add it
+   - File doesn't exist locally → add it, **except**: never add a `*.template.md` / `*.template` whose filled equivalent exists (templates are instantiate-and-delete; drift is diffed from the upstream clone), and never re-add a file the project deliberately deleted (check the project's git history when unsure)
    - **`.claude/` is strictly additive**: never overwrite an existing file that differs — always confirm first
 
-7. **Notify on template drift** — when a `*.template.md` changed and the project has a filled copy, don't touch the copy; report the template's diff so the user can port relevant changes manually.
+7. **Notify on template drift** — when a `*.template.md` changed upstream and the project has a filled copy, don't touch the copy; report the template's upstream old→new diff (from the clone — the template is not present in the project) so the user can port relevant changes manually.
 
 8. **Stamp and report** — write the new commit to `docs/.aidocs-version`, then summarize: updated / added / deleted / skipped (project-owned) / conflicts / template-drift notices. Recommend `/validate-docs`.
 
