@@ -39,4 +39,4 @@ Run the 3-question Information Minimalism test (`docs/INFORMATION_MINIMALISM.md`
 
 ## Full reference
 
-`docs/subagents/documentation.md`, `docs/DOCUMENTATION_GUIDELINES.md`
+`docs/DOCUMENTATION_GUIDELINES.md`

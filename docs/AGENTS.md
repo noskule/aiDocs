@@ -36,6 +36,8 @@ Read these **when you reach that situation**, not upfront:
 | Syncing design ↔ code   | `design-sync.md`              |
 | Unsure about approach   | Ask the user                  |
 
+**Project-specific situations** (threat model, special test docs, ...) are listed in [project-index.md](project-index.md), if it exists — never add rows to the table above.
+
 **Don't know which doc?** Check [INDEX.md](INDEX.md) for section headers.
 
 

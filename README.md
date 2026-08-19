@@ -75,7 +75,7 @@ A structured development process designed for AI-assisted coding.
 
 ### Jobs Registry
 
-A central registry of runnable tasks — validation, documentation checks — with clear triggers for when to run each. LLMs check [tools/jobs.md](docs/tools/jobs.md) to discover what's available.
+A central registry of runnable tasks — validation, documentation checks — with clear triggers for when to run each. LLMs check [tools/jobs.md](docs/tools/jobs.template.md) to discover what's available.
 
 ### Validation
 
@@ -105,7 +105,7 @@ docs/
 ├── DOCUMENTATION_GUIDELINES.md     # What/where/how much to document
 ├── INDEX.md                        # Navigation map
 ├── INFORMATION_MINIMALISM.md       # 3-question test
-├── wiki.md                         # Wiki setup and configuration
+├── wiki.template.md                # Wiki setup and configuration
 ├── features/                       # Feature documentation
 │   └── feature.template.md
 ├── project/                        # Worklog, changelog, tasks
@@ -116,7 +116,7 @@ docs/
 ├── architecture-rules.template.md
 ├── development.template.md
 ├── tools/
-│   └── jobs.md                     # Runnable jobs registry
+│   └── jobs.template.md            # Runnable jobs registry
 ```
 
 UPPERCASE = framework files (keep as-is) / lowercase = your project content / `*.template.md` = copy and fill, dropping the `.template` suffix

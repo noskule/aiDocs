@@ -57,7 +57,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 ## Tools
 
-**[tools/jobs.md](tools/jobs.md)** - Runnable jobs registry
+**[tools/jobs.md](tools/jobs.md)** - Runnable jobs registry (template: `tools/jobs.template.md`)
 
 - Available jobs with commands and triggers
 - When to run each job
@@ -83,7 +83,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 ## Project Management
 
-**[issue-tracker.md](issue-tracker.md)** - GitHub Issues and Projects v2
+**[issue-tracker.md](issue-tracker.md)** - GitHub Issues and Projects v2 (template: `issue-tracker.template.md`)
 
 - Conventions (types, labels, sub-issues, project, estimates)
 - Issue Structure (required sections per type)
@@ -93,6 +93,8 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 
 ## Wiki (External)
+
+**[wiki.md](wiki.md)** - Wiki location and access (template: `wiki.template.md`)
 
 **Wiki** - What software does
 

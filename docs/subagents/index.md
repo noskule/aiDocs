@@ -57,12 +57,6 @@ Some subagents have companion **skills** (`.claude/skills/`) for auto-triggering
 |-------|---------|-------|
 | [`issue-writer`](issue-writer.md) | GitHub issue creation with correct type, labels, project fields | — |
 
-## Documentation Agents
-
-| Agent | Purpose | Skill |
-|-------|---------|-------|
-| [`documentation`](documentation.md) | Write docs following project guidelines | `/documentation` |
-
 ## Validation Agents
 
 | Agent | Purpose | Skill |

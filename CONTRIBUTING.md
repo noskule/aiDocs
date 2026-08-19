@@ -4,7 +4,7 @@ This repo **is** the aiDocs standard: everything under `docs/` and `.claude/` is
 
 ## Workflow
 
-1. Open an issue describing the gap (templates in `.github/ISSUE_TEMPLATE/`, conventions in [docs/issue-tracker.md](docs/issue-tracker.md))
+1. Open an issue describing the gap (templates in `.github/ISSUE_TEMPLATE/`, conventions in [docs/issue-tracker.template.md](docs/issue-tracker.template.md))
 2. Make the change on a branch, open a PR — the PR template carries the checklist
 
 ## Rules for doc changes

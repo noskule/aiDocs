@@ -14,4 +14,4 @@ labels: bug
 
 ## Conventions
 
-See [issue-tracker.md](../../docs/issue-tracker.md) — imperative title, estimate in body, AI agents sign their posts.
+See [issue-tracker.template.md](../../docs/issue-tracker.template.md) — imperative title, estimate in body, AI agents sign their posts.
