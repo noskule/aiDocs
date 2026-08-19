@@ -8,6 +8,7 @@ How to create and integrate specialized AI sub-agents for your project.
 Sub-agents are specialized instruction sets for complex domain-specific tasks. Instead of one general-purpose AI, you define experts for specific areas (database, testing, UI, etc.).
 
 **Benefits:**
+
 - Domain expertise concentrated in one place
 - Consistent patterns across similar tasks
 - Context-efficient (loaded only when needed)
@@ -30,6 +31,7 @@ Both are specialized instructions. Choose based on weight and trigger style:
 **The cardinal rule: skills say "when and what", docs say "how".** A skill should never inline detailed tables, mappings, or examples that exist in `docs/subagents/`. Instead, the skill tells the LLM *when to act* and *what to do*, then delegates to `docs/subagents/` for the *how*. This eliminates duplication and ensures a single source of truth. If a mapping table or checklist changes, only the subagent doc needs updating.
 
 **When to create a skill vs. a sub-agent:**
+
 - **Skill only** — simple rule enforcement, slash command for a tool, lightweight knowledge
 - **Sub-agent only** — produces long output, needs full isolation, requires many tool calls
 - **Both** — domain knowledge that should auto-trigger (skill) but also supports deep implementation work (sub-agent)
@@ -75,6 +77,15 @@ One-line description of what this agent does.
 
 Brief explanation of the agent's role.
 
+## When to Invoke
+
+- Trigger condition 1
+- Trigger condition 2
+
+## Before Starting
+
+**Read first:** `path/to/prerequisite.md` — what it covers
+
 ## Responsibilities
 
 - Specific task 1
@@ -96,10 +107,18 @@ Code patterns and examples the agent should follow.
 - [ ] Step 1
 - [ ] Step 2
 
+## Related Agents
+
+| Agent | Relationship |
+|-------|--------------|
+| `agent-name` | Use together when... |
+
 ## References
 
 Links to relevant docs and files.
 ```
+
+Sections in order of value: **When to Invoke** makes the trigger explicit, **Before Starting** forces prerequisite reads so the agent respects project conventions, **Related Agents** aids discoverability between sibling agents. Omit a section only when it genuinely doesn't apply.
 
 
 ## Integrating with AGENTS.md
@@ -120,6 +139,7 @@ Specialized agents for complex domain-specific tasks. Located in `docs/subagents
 ```
 
 This gives the LLM:
+
 1. Awareness that sub-agents exist
 2. Quick lookup of which agent fits the task
 3. Pointer to detailed instructions
@@ -138,12 +158,14 @@ This gives the LLM:
 ## When to Create a Sub-Agent
 
 **Good candidates:**
+
 - Tasks with specific patterns (migrations, tests)
 - Areas requiring domain knowledge (BLE, Wear OS)
 - Repeatable workflows with checklists
 - Complex integrations (charts, responsive UI)
 
 **Skip if:**
+
 - One-off task
 - Simple, obvious implementation
 - Already covered by existing agent
@@ -152,6 +174,7 @@ This gives the LLM:
 ## Agent Naming
 
 Use lowercase, hyphenated names:
+
 - `db-expert` not `DatabaseExpert`
 - `unit-test` not `UnitTesting`
 - `device-ble` not `BLEDevice`
