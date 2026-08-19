@@ -35,7 +35,16 @@ For each answer, make the corresponding change:
 - If using a Projects v2 board: fill the IDs section in `docs/subagents/issue-writer.md` (discover via `gh api graphql`); if plain issues: note that in `docs/issue-tracker.md`
 - Activate the chosen root wrapper templates (rename, point them at `docs/AGENTS.md`)
 - Rename applicable `.claude/skills/*/SKILL.md.template` to `SKILL.md` and fill project specifics (test commands, architecture rules)
-- Update `docs/INDEX.md` and `docs/subagents/index.md` to match what actually exists now
+- Update `docs/subagents/index.md` (and `docs/project-index.md` if extra docs exist) to match what actually exists now — `INDEX.md` itself is a fixed standard file
+- Write the version stamp `docs/.aidocs-version` recording the adopted upstream commit:
+
+  ```text
+  commit: <full sha of the aiDocs commit these files came from>
+  source: https://github.com/noskule/aiDocs
+  updated: YYYY-MM-DD
+  ```
+
+  This is what `/update-aidocs` later diffs against.
 
 ## Step 3 — Validate
 
@@ -45,6 +54,7 @@ For each answer, make the corresponding change:
 
 ## Rules
 
+- **Installs are additive** — when copying into an existing project (especially `.claude/`), never overwrite a file that already exists; report the collision and let the user decide
 - Never overwrite content the user already customized — ask first
 - Apply Information Minimalism (`docs/INFORMATION_MINIMALISM.md`) to everything you generate: stubs stay stubs until there is real content
 - UPPERCASE files are the fixed standard — do not edit them during setup

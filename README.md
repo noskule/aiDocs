@@ -19,15 +19,19 @@ For developers using AI coding assistants. Works with any language, platform, or
 
 ## Quick Start
 
-1. Copy the `docs/` folder to your project
-2. Copy `.claude/skills/` to your project (for Claude Code users)
-3. Configure `docs/README.md` with project info and wiki location
-4. Create `development.md`, `installation.md`, etc. for your platform
-5. Rename `.template` files in `.claude/skills/` to `SKILL.md` and customize for your project
-6. Keep UPPERCASE template files as-is
-7. Use wiki for feature documentation
+### Install
 
-**Claude Code users:** run `/setup` instead of steps 3–7 — it walks through the whole setup in interview form.
+Works in fresh and existing projects — installs are **additive**, nothing that already exists gets overwritten.
+
+1. Copy the `docs/` folder into your project
+2. Copy the `.claude/` content into your project's `.claude/` (only add files that don't exist yet)
+3. Run `/setup` — it walks through the rest in interview form: project info, template instantiation, skill activation, and the version stamp (`docs/.aidocs-version`)
+
+Without Claude Code, do step 3 manually: configure `docs/README.md`, create `development.md` / `installation.md` etc. from the templates, rename `.template` files, keep UPPERCASE files as-is.
+
+### Update
+
+Run `/update-aidocs` — it diffs upstream against your version stamp and applies only upstream-owned changes: UPPERCASE standard files and `*.template.md` get updated, your filled copies and project files are never touched, and anything you modified is shown as a conflict before it's touched.
 
 **For AI Assistants:** Start at [docs/AGENTS.md](docs/AGENTS.md)
 
@@ -40,7 +44,7 @@ For developers using AI coding assistants. Works with any language, platform, or
 
 Lightweight instructions in `.claude/skills/` that extend Claude Code with project-specific capabilities:
 
-- **Job skills** — Slash commands (`/setup`, `/validate-docs`) that run tools with one command
+- **Job skills** — Slash commands (`/setup`, `/update-aidocs`, `/validate-docs`) that run tools with one command
 - **Convention skills** — Auto-triggered or invokable rules for testing (`/test-runner`), documentation (`/documentation`), and test recommendations (`/test-recommender`)
 - **Architecture enforcement** — Auto-triggered skill reads `architecture-rules.md` before writing new code, preventing duplication and layer violations
 - **Workflow tracking** — Auto-triggered `coding-workflow` skill creates a task per workflow step and blocks silent step-skipping
@@ -87,6 +91,7 @@ Two built-in validation agents keep the system healthy:
 .claude/
 └── skills/                             # Claude Code skills (auto-triggered + slash commands)
     ├── setup/SKILL.md                  # /setup — initial project setup (interview form)
+    ├── update-aidocs/SKILL.md          # /update-aidocs — pull upstream standard updates
     ├── validate-docs/SKILL.md          # /validate-docs — validate doc structure (forked)
     ├── documentation/SKILL.md          # /documentation — documentation writing rules
     ├── test-runner/SKILL.md.template   # /test-runner — run tests by category
