@@ -1,0 +1,50 @@
+---
+name: setup
+description: Interview-form initial setup of aiDocs in a project. Use after copying the aiDocs docs/ and .claude/ folders into a new project, or when the user asks to set up / initialize aiDocs.
+argument-hint: ""
+---
+
+Guide the user through the complete initial setup of aiDocs in this project. Work as an **interview**: ask one question at a time, apply each answer before moving on, and show a short summary of what you changed at the end.
+
+## Step 0 — Preflight
+
+Check what already exists and skip questions that are already answered:
+
+- `docs/` copied? Git repo? GitHub remote?
+- Which `*.template.md` files are still unfilled (placeholders like `[Your Project Name]`, `[Platform]`)?
+- Which `.claude/skills/*/SKILL.md.template` files are not yet activated?
+
+## Step 1 — Interview
+
+Ask in this order (skip what preflight already answered):
+
+1. **Project** — name and one-sentence description
+2. **Platform / tech stack** — language, framework, build tool, test runner
+3. **AI tools in use** — Claude Code, Copilot, Cursor, Codex? (decides which root wrapper templates to activate: `CLAUDE.md.template`, `copilot-instructions.md.template`, `.cursorrules.template`, `CODEX.md.template`)
+4. **Wiki** — GitHub Wiki, docs folder, external (Confluence/Notion), or none
+5. **Issue tracking** — GitHub Issues with Projects v2 board, plain issues, or none
+6. **Testing** — test categories and commands (feeds `testing.md` and the test-runner skill)
+
+## Step 2 — Apply
+
+For each answer, make the corresponding change:
+
+- Fill `docs/README.md` (project name, description, wiki section)
+- Instantiate templates by copying and dropping the `.template` suffix: `coding-guidelines`, `architecture-rules`, `development`, `changelog`; create `installation.md`, `testing.md`, `release.md` with real content where the user provided it, otherwise minimal TODO stubs
+- Fill `docs/wiki.md` with the chosen wiki location, or note "no wiki" in `docs/README.md`
+- If using a Projects v2 board: fill the IDs section in `docs/subagents/issue-writer.md` (discover via `gh api graphql`); if plain issues: note that in `docs/issue-tracker.md`
+- Activate the chosen root wrapper templates (rename, point them at `docs/AGENTS.md`)
+- Rename applicable `.claude/skills/*/SKILL.md.template` to `SKILL.md` and fill project specifics (test commands, architecture rules)
+- Update `docs/INDEX.md` and `docs/subagents/index.md` to match what actually exists now
+
+## Step 3 — Validate
+
+1. Run `/validate-docs` and fix what it reports
+2. Recommend running the `validation-llm` agent to verify a fresh LLM can navigate the result
+3. Summarize: files created, files filled, open TODOs
+
+## Rules
+
+- Never overwrite content the user already customized — ask first
+- Apply Information Minimalism (`docs/INFORMATION_MINIMALISM.md`) to everything you generate: stubs stay stubs until there is real content
+- UPPERCASE files are the fixed standard — do not edit them during setup

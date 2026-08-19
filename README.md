@@ -27,6 +27,8 @@ For developers using AI coding assistants. Works with any language, platform, or
 6. Keep UPPERCASE template files as-is
 7. Use wiki for feature documentation
 
+**Claude Code users:** run `/setup` instead of steps 3–7 — it walks through the whole setup in interview form.
+
 **For AI Assistants:** Start at [docs/AGENTS.md](docs/AGENTS.md)
 
 **Full Navigation:** See [docs/INDEX.md](docs/INDEX.md)
@@ -38,7 +40,7 @@ For developers using AI coding assistants. Works with any language, platform, or
 
 Lightweight instructions in `.claude/skills/` that extend Claude Code with project-specific capabilities:
 
-- **Job skills** — Slash commands (`/validate-docs`) that run tools with one command
+- **Job skills** — Slash commands (`/setup`, `/validate-docs`) that run tools with one command
 - **Convention skills** — Auto-triggered or invokable rules for testing (`/test-runner`), documentation (`/documentation`), and test recommendations (`/test-recommender`)
 - **Architecture enforcement** — Auto-triggered skill reads `architecture-rules.md` before writing new code, preventing duplication and layer violations
 
@@ -83,6 +85,7 @@ Two built-in validation agents keep the system healthy:
 ```
 .claude/
 └── skills/                             # Claude Code skills (auto-triggered + slash commands)
+    ├── setup/SKILL.md                  # /setup — initial project setup (interview form)
     ├── validate-docs/SKILL.md          # /validate-docs — validate doc structure (forked)
     ├── documentation/SKILL.md          # /documentation — documentation writing rules
     ├── test-runner/SKILL.md.template   # /test-runner — run tests by category

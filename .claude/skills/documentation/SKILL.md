@@ -9,6 +9,7 @@ Follow these rules when writing or updating documentation.
 ## Before Writing
 
 Run the 3-question Information Minimalism test (`docs/INFORMATION_MINIMALISM.md`):
+
 1. Does the reader need this? (No → don't write it)
 2. Is it already documented elsewhere? (Yes → reference, don't duplicate)
 3. Will it go stale? (Yes → put it closer to the code)
