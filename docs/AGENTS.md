@@ -63,6 +63,7 @@ Lightweight instructions that auto-trigger or can be invoked as slash commands. 
 | Skill | Triggers when... |
 |-------|-------------------|
 | `architecture-rules` | Implementing features or writing new code |
+| `coding-workflow` | Starting a development task (tracks the 10 steps) |
 
 > **Customize:** Convention and auto-triggered skills may need project-specific configuration. Check `.claude/skills/` for `.template` files.
 

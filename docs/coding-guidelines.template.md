@@ -2,6 +2,8 @@
 
 Scope: Applies to all code changes in this repository.
 
+> **Companion skill:** `.claude/skills/coding-workflow/SKILL.md` auto-triggers when a development task starts and tracks progress through the steps below.
+
 
 ## Development Workflow
 
