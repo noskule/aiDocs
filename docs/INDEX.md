@@ -47,7 +47,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 ## Design
 
-**`design-sync.template.md`** - Bidirectional design ↔ code sync (template)
+**[design-sync.md](design-sync.md)** - Bidirectional design ↔ code sync (template: `design-sync.template.md`)
 
 - File Map (Pencil frames → source files)
 - Token Translation Tables (colors, typography, shapes)
