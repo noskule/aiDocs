@@ -53,6 +53,16 @@ Ask user: Validate `docs/`, `wiki/`, or both?
 4. Report missing or unlisted agents
 ```
 
+**Check agent wrappers match subagents:**
+
+```
+1. Glob: .claude/agents/*.md
+2. Glob: docs/subagents/*.md (exclude index.md, README.md)
+3. Each docs/subagents/ file should have a matching .claude/agents/ wrapper
+4. Each .claude/agents/ wrapper should reference a valid docs/subagents/ file
+5. Report mismatches (missing wrappers or orphaned wrappers)
+```
+
 **Check wiki index:**
 
 ```
