@@ -1,8 +1,6 @@
 # The Information Minimalism Test
 
-**A 3-question framework to decide what to document**
-
-Inspired by "no part is the best part" - the best documentation is often no documentation.
+A 3-question framework to decide what to document. Inspired by "no part is the best part" - the best documentation is often no documentation.
 
 
 ## The Test
@@ -42,6 +40,7 @@ Before adding any documentation, ask these 3 questions in order:
 ## When to Document
 
 **Document:**
+
 - Project-specific decisions and rationale
 - Non-obvious architectural choices
 - Configuration that affects behavior
@@ -50,6 +49,7 @@ Before adding any documentation, ask these 3 questions in order:
 - Tribal knowledge a skilled developer would need
 
 **Don't document:**
+
 - Obvious things (standard commands, basic syntax)
 - Information already in structure/naming
 - Details any experienced engineer would know
@@ -75,11 +75,13 @@ This test operationalizes **Information Minimalism**: each piece of documentatio
 ## Integration
 
 **For projects:**
+
 - Add this test to your coding-guidelines.md or CONTRIBUTING guide
 - Use during code reviews: "Does this pass the 3-question test?"
 - Apply to existing docs during refactoring
 
 **For AI assistants:**
+
 - Reference this test when writing documentation
 - Apply during validation passes
 - Use as decision framework for what to generate

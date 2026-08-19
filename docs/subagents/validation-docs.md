@@ -36,6 +36,7 @@ Ask user: Validate `docs/`, `wiki/`, or both?
 ### Step 2: Index Cross-Check
 
 **Check platform index matches actual sections:**
+
 ```
 1. Read INDEX.md
 2. Read development.md (and other platform files)
@@ -44,6 +45,7 @@ Ask user: Validate `docs/`, `wiki/`, or both?
 ```
 
 **Check subagents index:**
+
 ```
 1. Glob: docs/subagents/*.md
 2. Read subagents/index.md
@@ -52,6 +54,7 @@ Ask user: Validate `docs/`, `wiki/`, or both?
 ```
 
 **Check wiki index:**
+
 ```
 1. Read wiki location from docs/wiki.md
 2. Glob: ../[wiki-folder]/*.md
@@ -63,11 +66,13 @@ Ask user: Validate `docs/`, `wiki/`, or both?
 ### Step 3: Link Validation
 
 **Find all internal links:**
+
 ```
 Grep pattern: \[.*\]\((?!http)[^)]+\)
 ```
 
 **For each link:**
+
 1. Extract target path
 2. Check if file exists
 3. If anchor link (#section), verify section exists
@@ -77,6 +82,7 @@ Grep pattern: \[.*\]\((?!http)[^)]+\)
 ### Step 4: Orphan Detection
 
 **Find unreferenced files:**
+
 ```
 1. Glob: docs/**/*.md
 2. For each file, grep all other files for references
@@ -88,11 +94,13 @@ Grep pattern: \[.*\]\((?!http)[^)]+\)
 ### Step 5: Duplicate Detection
 
 **Check for repeated content patterns:**
+
 - Same code blocks in multiple files
 - Same explanatory paragraphs
 - Tables with overlapping data
 
 **Common duplication locations:**
+
 - 3-question test (should be in INFORMATION_MINIMALISM.md only)
 - Test categories (should be in testing.md only)
 - Workflow steps (should be in coding-guidelines.md only)
@@ -101,12 +109,14 @@ Grep pattern: \[.*\]\((?!http)[^)]+\)
 ### Step 6: File Organization
 
 **Check file lengths:**
+
 ```
 For docs/: warn if > 200 lines
 For wiki/: warn if > 600 lines
 ```
 
 **Check naming convention:**
+
 - UPPERCASE.md = templates/meta files
 - lowercase.md = content files
 
@@ -116,6 +126,7 @@ For wiki/: warn if > 600 lines
 **Verify behavior-first structure (wiki only):**
 
 For each wiki page (except Home, README, _Sidebar):
+
 1. Check for "## What It Does" section near top
 2. Check for "## Why It Matters" section
 3. Check for "## Android Implementation" section (if platform content exists)
@@ -123,6 +134,7 @@ For each wiki page (except Home, README, _Sidebar):
 5. Grep for `INTENT:` or `PLATFORM:` in headings — should not exist
 
 **Report issues:**
+
 - Missing required sections
 - INTENT/PLATFORM markers still in headings
 - Platform content outside implementation sections
@@ -131,6 +143,7 @@ For each wiki page (except Home, README, _Sidebar):
 ### Step 8: Staleness Check
 
 **Check Last Updated dates:**
+
 ```
 Grep pattern: \*\*Last Updated:\*\* (\d{4}-\d{2}-\d{2})
 ```
@@ -165,6 +178,7 @@ Grep pattern: \*\*Last Updated:\*\* (\d{4}-\d{2}-\d{2})
 ## Post-Validation
 
 Ask user:
+
 1. Fix issues now?
 2. Save report to `docs/validation-report.md`?
 3. Create GitHub issues for each problem?

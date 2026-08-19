@@ -64,6 +64,7 @@ Skills also load their `SKILL.md` from `.claude/skills/` — see [AGENTS.md](AGE
 **Location:** [GitHub Wiki](../../wiki)
 
 **Access:**
+
 ```bash
 # Clone wiki for local editing (GitHub)
 gh repo clone [org]/[repo].wiki
@@ -75,10 +76,12 @@ git clone https://github.com/[org]/[repo].wiki.git
 **Index file:** `_Sidebar.md` (GitHub Wiki) or platform-specific
 
 **File organization:**
+
 - File naming: `[section]-[topic].md` (e.g., `architecture-overview.md`, `features-authentication.md`)
 - Sidebar uses H2 (`##`) for sections, links for pages
 
 **Alternative locations:**
+
 - GitHub Wiki: `../../wiki` or `https://github.com/[org]/[repo]/wiki`
 - Confluence: `https://[company].atlassian.net/wiki/spaces/[space]`
 - Notion: `https://notion.so/[workspace]/[page]`

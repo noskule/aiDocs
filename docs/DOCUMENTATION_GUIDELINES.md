@@ -63,6 +63,7 @@ Everything *without* this marker is implicitly cross-platform intent. No separat
 Apply Information Minimalism. Document only what isn't obvious from reading the code.
 
 **Technical Debt:**
+
 ```kotlin
 // TODO: Brief description of what's needed
 // TODO(#123): With issue reference if tracked
@@ -73,6 +74,7 @@ Apply Information Minimalism. Document only what isn't obvious from reading the 
 Documents platform-specific setup, development, and testing.
 
 **File Naming:**
+
 - **UPPERCASE** — Fixed standard files, kept as-is in every project (e.g. `AGENTS.md`, `DOCUMENTATION_GUIDELINES.md`)
 - **lowercase** — Project-specific content files (e.g. `development.md`, `issue-tracker.md`)
 - **`*.template.md`** — Templates to copy and fill per project (e.g. `coding-guidelines.template.md`); the filled copy drops the `.template` suffix
@@ -86,6 +88,7 @@ Documents platform-specific setup, development, and testing.
 Documents how software **functions** (user perspective), not how code **works** (implementation).
 
 **File Naming:** Section prefix + descriptive name
+
 ```
 architecture-overview.md
 features-heart_rate_zones.md
@@ -147,6 +150,7 @@ Use [Mermaid](https://mermaid.js.org/) fenced code blocks — GitHub renders the
 | `classDiagram` | Architecture overview (simplified) |
 
 **Conventions:**
+
 - Place inline in the markdown file where relevant
 - Add a brief caption sentence before each diagram
 - Keep under ~15 nodes — split or simplify if larger
@@ -155,6 +159,7 @@ Use [Mermaid](https://mermaid.js.org/) fenced code blocks — GitHub renders the
 ## Examples
 
 **Good** — rationale, platform quirk, domain knowledge:
+
 ```kotlin
 // 500ms debounce — faster causes UI jank on mid-range devices (Pixel 4a, Galaxy A52)
 // PLATFORM: Coospo H808S requires 500ms post-connect delay; Polar H10/Garmin work immediately
@@ -162,6 +167,7 @@ Use [Mermaid](https://mermaid.js.org/) fenced code blocks — GitHub renders the
 ```
 
 **Bad** — obvious or mechanics-only:
+
 ```kotlin
 // Get the heart rate        → obvious from name
 // Delays for 500ms          → says what, not why

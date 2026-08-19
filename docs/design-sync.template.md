@@ -62,6 +62,7 @@ All paths relative to `<!-- project source root -->`.
 **Trigger:** `sync design→code <ScreenName>`
 
 **Steps:**
+
 1. Read the named frame from `design/screens.pen`
 2. Read the corresponding source file
 3. Update ONLY: layout structure, spacing, colors, typography, corner radius, component choice
@@ -73,6 +74,7 @@ All paths relative to `<!-- project source root -->`.
 **Trigger:** `sync code→design <ScreenName>`
 
 **Steps:**
+
 1. Read the source file
 2. Read the current frame from `design/screens.pen`
 3. Update the frame to reflect current UI hierarchy
@@ -84,6 +86,7 @@ All paths relative to `<!-- project source root -->`.
 **Trigger:** `sync tokens`
 
 **Steps:**
+
 1. Read theme source files
 2. Update all variables in `design/tokens.pen` to match exactly
 3. Report any discrepancies found

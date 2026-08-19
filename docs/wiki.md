@@ -11,6 +11,7 @@ The software documentation (user-facing features, architecture, domain concepts)
 **Index file:** `_Sidebar.md` - contains the wiki navigation structure and page listing.
 
 The wiki is a Git repository cloned alongside the main project:
+
 - **GitHub URL:** `https://github.com/<org>/<project>.wiki.git`
 - **Local path:** `../<project-name>.wiki/` (relative to project root)
 

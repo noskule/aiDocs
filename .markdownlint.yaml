@@ -1,0 +1,27 @@
+# Markdown lint rules for the aiDocs standard (markdownlint-cli2)
+# Structural rules stay on; stylistic rules that fight readable prose are off.
+
+default: true
+
+# Line length — prose and tables read better unwrapped
+MD013: false
+
+# Multiple blank lines — two blanks separate major sections by convention
+MD012:
+  maximum: 2
+
+# Duplicate headings allowed when not siblings (e.g. per-platform "Quirks")
+MD024:
+  siblings_only: true
+
+# Inline HTML — needed for <br> in tables and mermaid labels
+MD033: false
+
+# Fenced code blocks without a language are fine (ASCII diagrams, file trees)
+MD040: false
+
+# First line need not be a top-level heading (templates, wrapper files)
+MD041: false
+
+# Table column style — keep authoring friction low
+MD060: false

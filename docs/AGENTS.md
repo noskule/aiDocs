@@ -8,6 +8,7 @@ Behavioral instructions and workflow for AI assistants. This is a project-indepe
 ## MANDATORY READING
 
 **You MUST read the following files BEFORE starting any task:**
+
 - This file (AGENTS.md) - workflow and situational references
 - [INDEX.md](INDEX.md) - documentation map
 - [coding-guidelines.md](coding-guidelines.md) - The Coding workflow you have to follow
@@ -46,6 +47,7 @@ Lightweight instructions that auto-trigger or can be invoked as slash commands. 
 
 | Skill | Purpose |
 |-------|---------|
+| `/setup` | Initial aiDocs setup in a project (interview form) |
 | `/validate-docs` | Validate doc structure (forked) |
 
 **Convention skills** (slash commands + auto-triggered):

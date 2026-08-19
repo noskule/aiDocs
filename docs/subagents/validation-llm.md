@@ -48,21 +48,25 @@ Compile a question-answer set from this content.
 Generate questions across these categories:
 
 **Navigation (can it find things?):**
+
 - "What's the tech stack?"
 - "Where are test commands documented?"
 - "What sub-agents are available?"
 
 **Workflow (does it understand the process?):**
+
 - "What steps do you follow when starting a new task?"
 - "When should you ask the user before proceeding?"
 - "How do you create a pull request?"
 
 **Documentation (does it know the rules?):**
+
 - "Where do you document a new feature?"
 - "What's the information minimalism test?"
 - "When should you use INTENT vs PLATFORM markers?"
 
 **Domain (does it understand the project?):**
+
 - Project-specific questions derived from wiki/feature docs
 - Architecture questions from development docs
 - Questions about constraints and rationale found in code
@@ -140,6 +144,7 @@ For each failed question, trace the navigation path:
 ## Post-Validation
 
 Ask user:
+
 1. Fix navigation gaps now?
 2. Save report to `docs/validation-llm-report.md`?
 3. Re-run after fixes to verify improvement?

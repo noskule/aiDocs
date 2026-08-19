@@ -18,11 +18,11 @@ git checkout -b feature/descriptive-name
 - Never commit directly to main/master
 
 **Ask before proceeding when:**
+
 - Architecture decision or multiple valid approaches
 - Requirements unclear or ambiguous
 - Breaking changes, new dependencies, or API changes
 - Unsure about expected behavior
-
 
 
 ### 3. **Write Tests**

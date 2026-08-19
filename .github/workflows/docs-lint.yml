@@ -1,0 +1,26 @@
+name: Docs Lint
+
+# Link checking is deliberately NOT done here: template docs intentionally
+# reference per-project files (development.md, testing.md, ...) that only
+# exist in consuming projects. The validate-docs agent checks links
+# context-aware instead.
+
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+      - ".markdownlint.yaml"
+  push:
+    branches: [main]
+    paths:
+      - "**/*.md"
+      - ".markdownlint.yaml"
+
+jobs:
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@v20
+        with:
+          globs: "**/*.md"

@@ -15,6 +15,7 @@ Review the auto-generated analysis report (`docs/code-index/analysis.md`) and pr
 ## Before Starting
 
 **Read first:**
+
 - `docs/code-index/analysis.md` — the findings report
 - `docs/tools/code-index/README.md` — how the index/analysis tool works
 
@@ -157,9 +158,11 @@ God class, parameter bloat, fat/thin interface, data class explosion, package im
    - Apply the fix (add doc summary, or move class)
    - Verify the fix compiles
 3. After all fixes, re-run analysis to verify findings are resolved:
+
    ```bash
    python docs/tools/code-index/analyze.py --config aidocs.yaml
    ```
+
 4. Output a summary of what was fixed and what remains
 
 **Fix rules:**
@@ -186,6 +189,7 @@ God class, parameter bloat, fat/thin interface, data class explosion, package im
 ## Checklist
 
 ### Review mode
+
 - [ ] Read the full analysis report
 - [ ] Classified every error as actionable
 - [ ] Reviewed all warnings — classified as actionable, acceptable, or deferred
@@ -194,6 +198,7 @@ God class, parameter bloat, fat/thin interface, data class explosion, package im
 - [ ] Grouped deferred items with revisit triggers
 
 ### Fix mode
+
 - [ ] Ran review mode first
 - [ ] Only fixed auto-fixable categories (documentation gap, layer violation)
 - [ ] Did not modify acceptable patterns
