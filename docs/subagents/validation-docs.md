@@ -117,8 +117,9 @@ For wiki/: warn if > 600 lines
 
 **Check naming convention:**
 
-- UPPERCASE.md = templates/meta files
-- lowercase.md = content files
+- UPPERCASE.md = fixed standard files (upstream-owned, unmodified)
+- lowercase.md = project content files
+- *.template.md = templates whose filled copy drops the suffix
 
 
 ### Step 7: Wiki Structure Check

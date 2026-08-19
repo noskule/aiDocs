@@ -2,7 +2,7 @@
 
 **Audience:** AI coding assistants (LLMs) working on this project
 
-Behavioral instructions and workflow for AI assistants. This is a project-independent template.
+Behavioral instructions and workflow for AI assistants. Fixed standard file — do not edit; project-specific skills and agents are listed in [subagents/index.md](subagents/index.md).
 
 
 ## MANDATORY READING
@@ -12,7 +12,7 @@ Behavioral instructions and workflow for AI assistants. This is a project-indepe
 - This file (AGENTS.md) - workflow and situational references
 - [INDEX.md](INDEX.md) - documentation map
 - [coding-guidelines.md](coding-guidelines.md) - The Coding workflow you have to follow
-- [subagents/index.md](subagents/index.md) - available specialized agents
+- [subagents/index.md](subagents/index.md) - available skills and specialized agents
 - Wiki index (if exists) - see [wiki.md](wiki.md) for location
 
 
@@ -39,58 +39,16 @@ Read these **when you reach that situation**, not upfront:
 **Don't know which doc?** Check [INDEX.md](INDEX.md) for section headers.
 
 
-## Skills
+## Skills and Sub-Agents
 
-Lightweight instructions that auto-trigger or can be invoked as slash commands. Located in `.claude/skills/`.
+Two kinds of specialized instructions:
 
-**Job skills** (slash commands for runnable tasks):
+- **Skills** (`.claude/skills/`) — lightweight, auto-triggered or invoked as slash commands
+- **Sub-agents** (`docs/subagents/`) — heavy, self-contained tasks with verbose output; optional Claude wrappers in `.claude/agents/`, each reads its reference doc at invocation time
 
-| Skill | Purpose |
-|-------|---------|
-| `/setup` | Initial aiDocs setup in a project (interview form) |
-| `/validate-docs` | Validate doc structure (forked) |
+**Which skill or agent fits the task?** Check [subagents/index.md](subagents/index.md) — it lists every available skill and agent with its trigger.
 
-**Convention skills** (slash commands + auto-triggered):
-
-| Skill | Purpose |
-|-------|---------|
-| `/test-runner [category]` | Run tests by category |
-| `/test-recommender` | Analyze changes, recommend test category |
-| `/documentation` | Documentation writing rules |
-
-**Auto-triggered skills** (no slash command, Claude invokes automatically):
-
-| Skill | Triggers when... |
-|-------|-------------------|
-| `architecture-rules` | Implementing features or writing new code |
-| `coding-workflow` | Starting a development task (tracks the 10 steps) |
-
-> **Customize:** Convention and auto-triggered skills may need project-specific configuration. Check `.claude/skills/` for `.template` files.
+> **Setup:** See [subagents/README.md](subagents/README.md) for how to create and integrate skills and agents.
 
 
-## Sub-Agents
-
-Specialized agents for heavy, self-contained tasks that produce verbose output. Located in `docs/subagents/` with optional Claude agent wrappers in `.claude/agents/`.
-
-Each agent reads its detailed instructions from `docs/subagents/` at invocation time.
-
-> **Setup:** See [subagents/README.md](subagents/README.md) for how to create and integrate agents.
-
-
-## Agent Triggers
-
-Quick lookup for when to invoke agents during workflow:
-
-| If you're doing...       | Invoke...        |
-|--------------------------|------------------|
-| `<domain-task>`          | `<agent-name>`   |
-| Writing tests            | `test-writer-*`  |
-| Creating GitHub issues   | `issue-writer`   |
-| Reviewing code health    | `architecture-rules` skill (auto-triggered) |
-| Validating documentation | `/validate-docs` or `validation-docs` agent |
-| Testing LLM readiness   | `validation-llm` |
-
-> **Customize:** Replace examples with your project's agents from `docs/subagents/`.
-
-
-**Last Updated:** 2026-02-21
+**Last Updated:** 2026-08-19

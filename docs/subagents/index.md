@@ -1,8 +1,36 @@
-# Sub-Agents Index
+# Skills & Agents Index
 
-Available specialized agents for this project. Read the agent file before use.
+All available skills and specialized agents for this project. **Project-owned:** extend this file as you add skills and agents.
 
 Some subagents have companion **skills** (`.claude/skills/`) for auto-triggering and slash command support. Their reference docs here remain the full knowledge source.
+
+
+## Skills
+
+**Job skills** (slash commands for runnable tasks):
+
+| Skill | Purpose |
+|-------|---------|
+| `/setup` | Initial aiDocs setup in a project (interview form) |
+| `/update-aidocs` | Pull upstream aiDocs standard updates into this project |
+| `/validate-docs` | Validate doc structure (forked) |
+
+**Convention skills** (slash commands + auto-triggered):
+
+| Skill | Purpose |
+|-------|---------|
+| `/test-runner [category]` | Run tests by category |
+| `/test-recommender` | Analyze changes, recommend test category |
+| `/documentation` | Documentation writing rules |
+
+**Auto-triggered skills** (no slash command, Claude invokes automatically):
+
+| Skill | Triggers when... |
+|-------|-------------------|
+| `architecture-rules` | Implementing features or writing new code |
+| `coding-workflow` | Starting a development task (tracks the 10 steps) |
+
+> Skills with a `.template` suffix in `.claude/skills/` need activation and project-specific configuration.
 
 
 ## Domain Agents
@@ -44,4 +72,4 @@ Some subagents have companion **skills** (`.claude/skills/`) for auto-triggering
 | [`code-analysis`](code-analysis.md) | Interpret the auto-generated code-index analysis report | — |
 
 
-**Last Updated:** 2026-02-21
+**Last Updated:** 2026-08-19

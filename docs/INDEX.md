@@ -7,11 +7,9 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 **[AGENTS.md](AGENTS.md)** - Start here
 
-- Navigation
+- Mandatory reading order
 - Situational References
-- Skills (lightweight auto-triggered and slash-command actions)
-- Sub-Agents (specialized task agents in `docs/subagents/`)
-- Workflow Overview
+- Skills and Sub-Agents (full listing: [subagents/index.md](subagents/index.md))
 
 
 ## Development Process
@@ -104,4 +102,9 @@ Quick navigation to all docs. Read only what you need, when you need it.
 - Devices (hardware-specific findings)
 
 
-**Maintain this index:** When adding/removing sections, update this file.
+## Project-Specific Additions
+
+**[project-index.md](project-index.md)** - Docs beyond the standard set (create when needed)
+
+
+**This index is a fixed standard file — do not edit.** It covers the standard docs by their standardized names. List additional project docs in `project-index.md`; skills and agents belong in `subagents/index.md`.

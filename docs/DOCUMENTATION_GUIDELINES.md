@@ -80,6 +80,8 @@ Documents platform-specific setup, development, and testing.
 - **`*.template.md`** — Templates to copy and fill per project (e.g. `coding-guidelines.template.md`); the filled copy drops the `.template` suffix
 - **Subagent reference docs** always use the agent's lowercase hyphenated name (e.g. `validation-docs.md`)
 
+The casing doubles as the update contract: `/update-aidocs` may overwrite UPPERCASE and `*.template.md` files (upstream-owned) but never lowercase project files.
+
 **Before writing:** Check `INDEX.md` to avoid duplication
 **After writing:** Update the index
 

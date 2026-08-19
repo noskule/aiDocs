@@ -121,28 +121,13 @@ Links to relevant docs and files.
 Sections in order of value: **When to Invoke** makes the trigger explicit, **Before Starting** forces prerequisite reads so the agent respects project conventions, **Related Agents** aids discoverability between sibling agents. Omit a section only when it genuinely doesn't apply.
 
 
-## Integrating with AGENTS.md
+## Registering Agents and Skills
 
-Add a Sub-Agents section to `docs/AGENTS.md`:
+`docs/AGENTS.md` is a fixed standard file — never edit it. It points the LLM to [`docs/subagents/index.md`](index.md), the **project-owned** registry of every skill and agent. Registering there is all the integration a new agent or skill needs:
 
-```markdown
-## Sub-Agents
-
-Specialized agents for complex domain-specific tasks. Located in `docs/subagents/`.
-
-| Agent | Use When... |
-|-------|-------------|
-| `agent-name` | Brief description of when to use |
-| `another-agent` | Another use case |
-
-**Read agent file before use** - contains patterns, examples, and checklists.
-```
-
-This gives the LLM:
-
-1. Awareness that sub-agents exist
-2. Quick lookup of which agent fits the task
-3. Pointer to detailed instructions
+1. Awareness that it exists
+2. Quick lookup of which one fits the task (purpose + trigger)
+3. Pointer to the detailed instructions
 
 
 ## Creating a New Agent
@@ -150,9 +135,8 @@ This gives the LLM:
 1. Identify a complex, repeatable task area
 2. Create `docs/subagents/agent-name.md` — reference doc
 3. Create `.claude/agents/agent-name.md` — wrapper (copy from template)
-4. Add entry to AGENTS.md Agent Triggers table
-5. Add entry to `docs/subagents/index.md`
-6. Test by invoking on a real task
+4. Add entry to `docs/subagents/index.md` (purpose, trigger, companion skill if any)
+5. Test by invoking on a real task
 
 
 ## When to Create a Sub-Agent
