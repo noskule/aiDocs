@@ -10,9 +10,8 @@ Behavioral instructions and workflow for AI assistants. This is a project-indepe
 **You MUST read the following files BEFORE starting any task:**
 - This file (AGENTS.md) - workflow and situational references
 - [INDEX.md](INDEX.md) - documentation map
-- [CODING_GUIDELINES.md](CODING_GUIDELINES.md) - The Coding workflow you have to follow
+- [coding-guidelines.md](coding-guidelines.md) - The Coding workflow you have to follow
 - [subagents/index.md](subagents/index.md) - available specialized agents
-- `[platform]-index.md` - platform documentation maps (if exists)
 - Wiki index (if exists) - see [wiki.md](wiki.md) for location
 
 
@@ -22,17 +21,17 @@ Read these **when you reach that situation**, not upfront:
 
 | When you're...          | Read...                       |
 |-------------------------|-------------------------------|
-| Finding platform docs   | `[platform]-index.md`         |
-| Setting up / installing | `[platform]-installation.md`  |
-| Writing code            | `[platform]-architecture-rules.md`, `[platform]-development.md` |
-| Writing tests           | `[platform]-testing.md`       |
+| Finding platform docs   | `INDEX.md`                   |
+| Setting up / installing | `installation.md`            |
+| Writing code            | `architecture-rules.md`, `development.md` |
+| Writing tests           | `testing.md`                 |
 | Writing documentation   | `DOCUMENTATION_GUIDELINES.md` |
-| Validating docs         | `subagents/VALIDATION_DOCS.md`|
-| Testing docs for LLMs   | `subagents/VALIDATION_LLM.md` |
-| Starting a task         | `CODING_GUIDELINES.md`        |
+| Validating docs         | `subagents/validation-docs.md`|
+| Testing docs for LLMs   | `subagents/validation-llm.md` |
+| Starting a task         | `coding-guidelines.md`        |
 | Creating sub-agents     | `subagents/README.md`         |
 | Creating GitHub issues  | `issue-tracker.md`            |
-| Running a job           | `tools/JOBS.md`               |
+| Running a job           | `tools/jobs.md`               |
 | Syncing design ↔ code   | `design-sync.md`              |
 | Unsure about approach   | Ask the user                  |
 
@@ -85,8 +84,8 @@ Quick lookup for when to invoke agents during workflow:
 | Writing tests            | `test-writer-*`  |
 | Creating GitHub issues   | `issue-writer`   |
 | Reviewing code health    | `architecture-rules` skill (auto-triggered) |
-| Validating documentation | `/validate-docs` or `VALIDATION_DOCS` agent |
-| Testing LLM readiness   | `VALIDATION_LLM` |
+| Validating documentation | `/validate-docs` or `validation-docs` agent |
+| Testing LLM readiness   | `validation-llm` |
 
 > **Customize:** Replace examples with your project's agents from `docs/subagents/`.
 

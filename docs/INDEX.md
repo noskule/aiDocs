@@ -15,7 +15,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 ## Development Process
 
-**[CODING_GUIDELINES.md](CODING_GUIDELINES.md)** - Development workflow
+**[coding-guidelines.md](coding-guidelines.md)** - Development workflow (template: `coding-guidelines.template.md`)
 - Development Workflow (10 steps)
 - Data Persistence
 
@@ -53,27 +53,25 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 ## Tools
 
-**[tools/JOBS.md](tools/JOBS.md)** - Runnable jobs registry
+**[tools/jobs.md](tools/jobs.md)** - Runnable jobs registry
 - Available jobs with commands and triggers
 - When to run each job
 
 
 ## Platform Specific
 
-**`[platform]-index.md`** - Platform documentation index (sections per file)
+**[installation.md](installation.md)** - First time setup
 
-**`[platform]-installation.md`** - First time setup
-
-**`[platform]-architecture-rules.md`** - Enforceable design principles
+**[architecture-rules.md](architecture-rules.md)** - Enforceable design principles
 - Layer Boundaries, Reuse Rules, Anti-Patterns, Extension Points
 
-**`[platform]-development.md`** - Writing code
+**[development.md](development.md)** - Writing code
 - Tech Stack, Architecture, Code Patterns, File Organization
 - Data Retention, Build Commands, Common Tasks
 
-**`[platform]-testing.md`** - Running/writing tests
+**[testing.md](testing.md)** - Running/writing tests
 
-**`[platform]-release.md`** - Publishing
+**[release.md](release.md)** - Publishing
 
 
 ## Project Management

@@ -75,7 +75,7 @@ This test operationalizes **Information Minimalism**: each piece of documentatio
 ## Integration
 
 **For projects:**
-- Add this test to your CODING_GUIDELINES or CONTRIBUTING guide
+- Add this test to your coding-guidelines.md or CONTRIBUTING guide
 - Use during code reviews: "Does this pass the 3-question test?"
 - Apply to existing docs during refactoring
 

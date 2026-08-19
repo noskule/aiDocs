@@ -26,22 +26,21 @@ flowchart TD
 
     subgraph startup ["Always Read (startup, in order)"]
         M1["1. AGENTS.md"] --> M2["2. INDEX.md"]
-        M2 --> M3["3. CODING_GUIDELINES.md"]
+        M2 --> M3["3. coding-guidelines.md"]
         M3 --> M4["4. subagents/index.md"]
-        M4 -.->|if exists| M5["5. [platform]-index.md"]
-        M4 -.->|if exists| M6["6. Wiki index"]
+        M4 -.->|if exists| M5["5. Wiki index"]
     end
 
     M4 --> SIT{{"What situation?"}}
 
-    SIT -->|"Writing code"| CODE["[platform]-architecture-rules.md<br>[platform]-development.md"]
-    SIT -->|"Writing tests"| TEST["[platform]-testing.md"]
+    SIT -->|"Writing code"| CODE["architecture-rules.md<br>development.md"]
+    SIT -->|"Writing tests"| TEST["testing.md"]
     SIT -->|"Writing docs"| DOCS["DOCUMENTATION_GUIDELINES.md<br>INFORMATION_MINIMALISM.md"]
-    SIT -->|"Setting up"| SETUP["[platform]-installation.md"]
-    SIT -->|"Validating docs"| VDOC["subagents/VALIDATION_DOCS.md"]
-    SIT -->|"LLM doc test"| VLLM["subagents/VALIDATION_LLM.md"]
+    SIT -->|"Setting up"| SETUP["installation.md"]
+    SIT -->|"Validating docs"| VDOC["subagents/validation-docs.md"]
+    SIT -->|"LLM doc test"| VLLM["subagents/validation-llm.md"]
     SIT -->|"Creating agents"| AREADME["subagents/README.md"]
-    SIT -->|"Running a job"| JOBS["tools/JOBS.md"]
+    SIT -->|"Running a job"| JOBS["tools/jobs.md"]
     SIT -->|"Unsure"| USER(["Ask the user"])
 
     classDef always fill:#c8e6c9,stroke:#4caf50,color:#1b5e20
@@ -50,7 +49,7 @@ flowchart TD
     classDef decision fill:#fff,stroke:#616161,color:#212121
 
     class M1,M2,M3,M4 always
-    class M5,M6 optional
+    class M5 optional
     class CODE,TEST,DOCS,SETUP,VDOC,VLLM,AREADME,JOBS conditional
     class SIT decision
 ```

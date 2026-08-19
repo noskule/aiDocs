@@ -1,4 +1,4 @@
-# VALIDATION_DOCS
+# validation-docs
 
 Validates documentation structure and consistency across docs/ and wiki/.
 
@@ -37,8 +37,8 @@ Ask user: Validate `docs/`, `wiki/`, or both?
 
 **Check platform index matches actual sections:**
 ```
-1. Read [platform]-index.md
-2. Read [platform]-development.md (and other platform files)
+1. Read INDEX.md
+2. Read development.md (and other platform files)
 3. Compare listed sections vs actual H2 headers
 4. Report missing or extra sections
 ```
@@ -94,8 +94,8 @@ Grep pattern: \[.*\]\((?!http)[^)]+\)
 
 **Common duplication locations:**
 - 3-question test (should be in INFORMATION_MINIMALISM.md only)
-- Test categories (should be in [platform]-testing.md only)
-- Workflow steps (should be in CODING_GUIDELINES.md only)
+- Test categories (should be in testing.md only)
+- Workflow steps (should be in coding-guidelines.md only)
 
 
 ### Step 6: File Organization
@@ -109,7 +109,6 @@ For wiki/: warn if > 600 lines
 **Check naming convention:**
 - UPPERCASE.md = templates/meta files
 - lowercase.md = content files
-- [platform]-*.md = platform-specific
 
 
 ### Step 7: Wiki Structure Check
@@ -176,7 +175,6 @@ Ask user:
 | File | Purpose |
 |------|---------|
 | `docs/INDEX.md` | Main docs navigation |
-| `docs/[platform]-index.md` | Platform docs index |
 | `docs/subagents/index.md` | Subagents index |
 | `docs/wiki.md` | Wiki location reference |
 

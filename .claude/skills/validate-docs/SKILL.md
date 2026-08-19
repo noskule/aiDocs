@@ -8,7 +8,7 @@ agent: general-purpose
 
 You are validating documentation quality. Follow these steps:
 
-1. **Read** `docs/subagents/VALIDATION_DOCS.md` for detailed validation instructions
+1. **Read** `docs/subagents/validation-docs.md` for detailed validation instructions
 2. **Determine scope:** validate `docs/`, `wiki/`, or both (check $ARGUMENTS, default to `docs/`)
 3. **Run the validation checklist:**
    - Index cross-check (INDEX.md, subagents/index.md, platform indexes)

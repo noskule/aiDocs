@@ -34,13 +34,13 @@ Test coverage is risk-driven. If a change requires documentation per `DOCUMENTAT
 
 ### 4. **Run Tests**
 
-See `[platform]-testing.md` for test commands.
+See `testing.md` for test commands.
 
 Verify all tests pass and coverage is appropriate for the risk level.
 
 ### 5. **Report to User for Review**
 
-**LLM Behavior:** Inform user with: what was implemented, test results, what to manually test and expected behavior, link to `[platform]-testing.md`.
+**LLM Behavior:** Inform user with: what was implemented, test results, what to manually test and expected behavior, link to `testing.md`.
 
 ### 6. **User Manually Tests and Reviews**
 
@@ -99,7 +99,7 @@ EOF
 
 ## Data Persistence
 
-**Persistence changes:** Follow platform-specific data retention rules in `[platform]-development.md`.
+**Persistence changes:** Follow platform-specific data retention rules in `development.md`.
 
 
 **Last Updated:** 2026-02-14

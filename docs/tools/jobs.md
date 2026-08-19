@@ -6,7 +6,7 @@ Runnable tasks for validation. This is the central registry — check here to se
 
 | Job | Command | Output | Skill |
 |-----|---------|--------|-------|
-| [Validate docs](#validate-docs) | Invoke `validation` agent | Pass/fail checklist | `/validate-docs` |
+| [Validate docs](#validate-docs) | Invoke `validation-docs` agent | Pass/fail checklist | `/validate-docs` |
 
 ## When to Run
 
@@ -20,6 +20,6 @@ Runnable tasks for validation. This is the central registry — check here to se
 
 Checks documentation structure and consistency.
 
-1. Invoke the `validation` agent (auto-discovered from `.claude/agents/`)
-2. The agent reads its detailed instructions from `docs/subagents/VALIDATION_DOCS.md` automatically
+1. Invoke the `validation-docs` agent (auto-discovered from `.claude/agents/`)
+2. The agent reads its detailed instructions from `docs/subagents/validation-docs.md` automatically
 3. Output: pass/fail checklist with issues to fix

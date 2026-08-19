@@ -33,7 +33,7 @@ UI -> Presentation -> Domain -> Data -> Core
 [install command]
 ```
 
-**Running tests?** See `[platform]-testing.md`
+**Running tests?** See `testing.md`
 
 
 ## Code Patterns

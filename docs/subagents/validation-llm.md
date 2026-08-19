@@ -1,11 +1,11 @@
-# VALIDATION_LLM
+# validation-llm
 
 Tests whether documentation actually works for LLMs by introducing a fresh agent to the project and verifying its understanding.
 
 
 ## Purpose
 
-Integration test for the documentation system. While VALIDATION_DOCS checks structural correctness (links, indexes, orphans), this agent tests **effectiveness** — can an LLM navigate the docs and come out with correct project understanding?
+Integration test for the documentation system. While validation-docs checks structural correctness (links, indexes, orphans), this agent tests **effectiveness** — can an LLM navigate the docs and come out with correct project understanding?
 
 
 ## Responsibilities
@@ -32,9 +32,9 @@ Integration test for the documentation system. While VALIDATION_DOCS checks stru
 Before testing, build expected answers from the documentation:
 
 ```
-1. Read [platform]-development.md → extract tech stack, architecture
-2. Read [platform]-testing.md → extract test commands, structure
-3. Read CODING_GUIDELINES.md → extract workflow steps
+1. Read development.md → extract tech stack, architecture
+2. Read testing.md → extract test commands, structure
+3. Read coding-guidelines.md → extract workflow steps
 4. Read DOCUMENTATION_GUIDELINES.md → extract documentation rules
 5. Read subagents/index.md → extract available agents
 6. Read wiki index (if exists) → extract domain concepts
@@ -151,7 +151,7 @@ Ask user:
 |------|---------|
 | `docs/AGENTS.md` | Entry point being tested |
 | `docs/INDEX.md` | Navigation map |
-| `docs/[platform]-*.md` | Platform docs (test targets) |
+| `docs/development.md` | Platform docs (test targets) |
 | `docs/subagents/index.md` | Agent registry |
 
 

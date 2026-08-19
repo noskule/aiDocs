@@ -22,7 +22,7 @@ For developers using AI coding assistants. Works with any language, platform, or
 1. Copy the `docs/` folder to your project
 2. Copy `.claude/skills/` to your project (for Claude Code users)
 3. Configure `docs/README.md` with project info and wiki location
-4. Create `[platform]-development.md`, `[platform]-index.md`, etc. for your platform
+4. Create `development.md`, `installation.md`, etc. for your platform
 5. Rename `.template` files in `.claude/skills/` to `SKILL.md` and customize for your project
 6. Keep UPPERCASE template files as-is
 7. Use wiki for feature documentation
@@ -40,7 +40,7 @@ Lightweight instructions in `.claude/skills/` that extend Claude Code with proje
 
 - **Job skills** — Slash commands (`/validate-docs`) that run tools with one command
 - **Convention skills** — Auto-triggered or invokable rules for testing (`/test-runner`), documentation (`/documentation`), and test recommendations (`/test-recommender`)
-- **Architecture enforcement** — Auto-triggered skill reads `[platform]-architecture-rules.md` before writing new code, preventing duplication and layer violations
+- **Architecture enforcement** — Auto-triggered skill reads `architecture-rules.md` before writing new code, preventing duplication and layer violations
 
 Skills coexist with sub-agents: skills handle lightweight auto-triggered actions, sub-agents handle heavy isolated computation. See [subagents/README.md](docs/subagents/README.md) for the distinction.
 
@@ -52,7 +52,7 @@ Read indexes upfront, read content only when you reach that situation. Documenta
 
 A structured development process designed for AI-assisted coding.
 
-- **11-Step Development Process** — From feature branch to merged PR: implement, test, review, document, ship. Each step has clear LLM behavioral instructions. See [CODING_GUIDELINES.md](docs/CODING_GUIDELINES.md).
+- **11-Step Development Process** — From feature branch to merged PR: implement, test, review, document, ship. Each step has clear LLM behavioral instructions. See [coding-guidelines.template.md](docs/coding-guidelines.template.md).
 - **Sub-Agents** — Specialized instruction sets for complex domain-specific tasks. Instead of one general-purpose AI handling everything, sub-agents provide focused expertise (testing, documentation, validation). See [subagents/](docs/subagents/index.md).
 
 ### Documentation Levels
@@ -68,14 +68,14 @@ A structured development process designed for AI-assisted coding.
 
 ### Jobs Registry
 
-A central registry of runnable tasks — validation, documentation checks — with clear triggers for when to run each. LLMs check [tools/JOBS.md](docs/tools/JOBS.md) to discover what's available.
+A central registry of runnable tasks — validation, documentation checks — with clear triggers for when to run each. LLMs check [tools/jobs.md](docs/tools/jobs.md) to discover what's available.
 
 ### Validation
 
 Two built-in validation agents keep the system healthy:
 
-- `VALIDATION_DOCS` — Structural checks: broken links, orphan pages, stale content, index consistency
-- `VALIDATION_LLM` — Effectiveness test: can a fresh LLM navigate the docs and correctly understand the project?
+- `validation-docs` — Structural checks: broken links, orphan pages, stale content, index consistency
+- `validation-llm` — Effectiveness test: can a fresh LLM navigate the docs and correctly understand the project?
 
 
 ## Project Structure
@@ -91,7 +91,7 @@ Two built-in validation agents keep the system healthy:
 
 docs/
 ├── AGENTS.md                       # LLM entry point and workflow router
-├── CODING_GUIDELINES.md            # 11-step development process
+├── coding-guidelines.template.md   # 11-step development process
 ├── DOCUMENTATION_GUIDELINES.md     # What/where/how much to document
 ├── INDEX.md                        # Navigation map
 ├── INFORMATION_MINIMALISM.md       # 3-question test
@@ -101,16 +101,15 @@ docs/
 ├── project/                        # Worklog, changelog, tasks
 │   └── changelog.template.md
 ├── subagents/                      # Specialized AI agents (knowledge reference)
-│   ├── VALIDATION_DOCS.md
-│   └── VALIDATION_LLM.md
+│   ├── validation-docs.md
+│   └── validation-llm.md
+├── architecture-rules.template.md
+├── development.template.md
 ├── tools/
-│   └── JOBS.md                     # Runnable jobs registry
-├── platform-architecture-rules.template.md
-├── platform-development.template.md
-└── platform-index.template.md
+│   └── jobs.md                     # Runnable jobs registry
 ```
 
-UPPERCASE = framework files (keep as-is) / lowercase = your project content
+UPPERCASE = framework files (keep as-is) / lowercase = your project content / `*.template.md` = copy and fill, dropping the `.template` suffix
 
 
 ## License

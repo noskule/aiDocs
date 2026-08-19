@@ -39,8 +39,9 @@ Some subagents have companion **skills** (`.claude/skills/`) for auto-triggering
 
 | Agent | Purpose | Skill |
 |-------|---------|-------|
-| [`VALIDATION_DOCS`](VALIDATION_DOCS.md) | Validate docs structure and consistency | `/validate-docs` |
-| [`VALIDATION_LLM`](VALIDATION_LLM.md) | Test docs effectiveness via LLM knowledge test | — |
+| [`validation-docs`](validation-docs.md) | Validate docs structure and consistency | `/validate-docs` |
+| [`validation-llm`](validation-llm.md) | Test docs effectiveness via LLM knowledge test | — |
+| [`code-analysis`](code-analysis.md) | Interpret the auto-generated code-index analysis report | — |
 
 
 **Last Updated:** 2026-02-21

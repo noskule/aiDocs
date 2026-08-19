@@ -73,10 +73,12 @@ Apply Information Minimalism. Document only what isn't obvious from reading the 
 Documents platform-specific setup, development, and testing.
 
 **File Naming:**
-- **UPPERCASE** — Template/meta/reference files (describe structure)
-- **lowercase** — Content files (actual project data)
+- **UPPERCASE** — Fixed standard files, kept as-is in every project (e.g. `AGENTS.md`, `DOCUMENTATION_GUIDELINES.md`)
+- **lowercase** — Project-specific content files (e.g. `development.md`, `issue-tracker.md`)
+- **`*.template.md`** — Templates to copy and fill per project (e.g. `coding-guidelines.template.md`); the filled copy drops the `.template` suffix
+- **Subagent reference docs** always use the agent's lowercase hyphenated name (e.g. `validation-docs.md`)
 
-**Before writing:** Check `[platform]-index.md` to avoid duplication
+**Before writing:** Check `INDEX.md` to avoid duplication
 **After writing:** Update the index
 
 ### Wiki
@@ -168,8 +170,8 @@ Use [Mermaid](https://mermaid.js.org/) fenced code blocks — GitHub renders the
 
 ## Periodic Validation
 
-Invoke the [VALIDATION_DOCS](subagents/VALIDATION_DOCS.md) agent before major releases or quarterly.
-Invoke the [VALIDATION_LLM](subagents/VALIDATION_LLM.md) agent after major restructuring or new project setup.
+Invoke the [validation-docs](subagents/validation-docs.md) agent before major releases or quarterly.
+Invoke the [validation-llm](subagents/validation-llm.md) agent after major restructuring or new project setup.
 Applies to both docs/ and wiki/.
 
 ---
