@@ -12,7 +12,7 @@ For developers using AI coding assistants. Works with any language, platform, or
   - **/docs** — Developer operations (build, test, run, release)
   - **Wiki** — How the software works (features, architecture, domain concepts)
 - **Skills** — Lightweight auto-triggered and slash-command actions for Claude Code (job runners, architecture enforcement, documentation rules)
-- **Sub-agents** — Specialized instruction sets for testing, documentation, and validation
+- **Sub-agents** — Specialized instruction sets for issue writing, code analysis, and documentation validation
 - **Jobs registry** — Central list of runnable tasks with triggers for when to run each
 - **AI-tool independent** — One workflow for Claude, Copilot, Cursor, and Codex via a single [AGENTS.md](docs/AGENTS.md)
 
@@ -60,7 +60,7 @@ Read indexes upfront, read content only when you reach that situation. Documenta
 A structured development process designed for AI-assisted coding.
 
 - **10-Step Development Process** — From feature branch to merged PR: implement, test, review, document, ship. Each step has clear LLM behavioral instructions. See [coding-guidelines.template.md](docs/coding-guidelines.template.md). The auto-triggered `coding-workflow` skill tracks progress through the steps.
-- **Sub-Agents** — Specialized instruction sets for complex domain-specific tasks. Instead of one general-purpose AI handling everything, sub-agents provide focused expertise (testing, documentation, validation). See [subagents/](docs/subagents/index.md).
+- **Sub-Agents** — Specialized instruction sets for complex domain-specific tasks. Instead of one general-purpose AI handling everything, sub-agents provide focused expertise (issue writing, code analysis, validation). See [subagents/](docs/subagents/index.md).
 
 ### Documentation Levels
 
@@ -90,6 +90,11 @@ Mechanical checks run as a script, judgment stays with agents:
 
 ```
 .claude/
+├── agents/                             # Thin agent wrappers (auto-discovered by Claude Code)
+│   ├── agent-name.template.md          #   Blueprint for new agents
+│   ├── issue-writer.md
+│   ├── validation-docs.md
+│   └── validation-llm.md
 └── skills/                             # Claude Code skills (auto-triggered + slash commands)
     ├── setup/SKILL.md                  # /setup — initial project setup (interview form)
     ├── update-aidocs/SKILL.md          # /update-aidocs — pull upstream standard updates
@@ -101,21 +106,32 @@ Mechanical checks run as a script, judgment stays with agents:
     └── coding-workflow/SKILL.md.template   # auto-triggered — track the 10-step workflow
 
 docs/
-├── AGENTS.md                       # LLM entry point and workflow router
-├── coding-guidelines.template.md   # 10-step development process
+├── AGENTS.md                       # LLM entry point and workflow router (fixed)
+├── INDEX.md                        # Navigation map (fixed)
 ├── DOCUMENTATION_GUIDELINES.md     # What/where/how much to document
-├── INDEX.md                        # Navigation map
 ├── INFORMATION_MINIMALISM.md       # 3-question test
+├── coding-guidelines.template.md   # 10-step development process
+├── architecture-rules.template.md  # Enforceable design principles
+├── development.template.md         # Tech stack, patterns, commands
+├── issue-tracker.template.md       # Issue tracker conventions
 ├── wiki.template.md                # Wiki setup and configuration
 ├── changelog.template.md           # Release history template
-├── subagents/                      # Specialized AI agents (knowledge reference)
+├── design-sync.template.md         # Design ↔ code sync (Pencil)
+├── subagents/                      # Agent reference docs (knowledge source)
+│   ├── README.md                   #   How to create skills and agents
+│   ├── index.md                    #   Skills & agents registry (project-owned)
+│   ├── code-analysis.md
+│   ├── issue-writer.md
 │   ├── validation-docs.md
 │   └── validation-llm.md
-├── architecture-rules.template.md
-├── development.template.md
-├── tools/
-│   ├── check-docs.py               # Mechanical structural checks (CI + local)
-│   └── jobs.template.md            # Runnable jobs registry
+└── tools/
+    ├── check-docs.py               # Mechanical structural checks (CI + local)
+    ├── code-index/                 # Code analysis tooling (feeds code-analysis agent)
+    └── jobs.template.md            # Runnable jobs registry
+
+CLAUDE.md.template, CODEX.md.template,      # Root wrappers pointing each AI tool
+.cursorrules.template,                      # at docs/AGENTS.md — rename to activate
+.github/copilot-instructions.md.template
 ```
 
 UPPERCASE = framework files (keep as-is) / lowercase = your project content / `*.template.md` = copy and fill, dropping the `.template` suffix
