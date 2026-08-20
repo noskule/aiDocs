@@ -35,6 +35,8 @@ Run `/update-aidocs` — it diffs upstream against your version stamp and applie
 
 **For AI Assistants:** Start at [docs/AGENTS.md](docs/AGENTS.md)
 
+**For you:** [MANUAL.md](MANUAL.md) — the one-page guide to daily use
+
 **Full Navigation:** See [docs/INDEX.md](docs/INDEX.md)
 
 
