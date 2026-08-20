@@ -20,15 +20,12 @@ PER_PROJECT = {
     "installation.md", "development.md", "testing.md", "release.md",
     "changelog.md", "coding-guidelines.md", "architecture-rules.md",
     "issue-tracker.md", "wiki.md", "design-sync.md", "project-index.md",
-    "tools/jobs.md",
-    # placeholder rows shipped in subagents/index.md
-    "subagents/example-agent.md", "subagents/test-runner.md",
-    "subagents/test-recommender.md", "subagents/documentation.md",
+    "skills-and-agents.md", "tools/jobs.md",
 }
 
 # Entry points and registries are never orphans.
 NON_ORPHANS = {"INDEX.md", "AGENTS.md", "README.md", "project-index.md",
-               "subagents/index.md"}
+               "skills-and-agents.md"}
 
 SKIP_DIRS = {".venv", "venv", "__pycache__", "node_modules", "site-packages"}
 
@@ -39,7 +36,6 @@ def md_files(base: Path):
             yield md
 
 LINK_RE = re.compile(r"\[[^\]]*\]\(([^)\s]+)\)")
-WRAPPER_REF_RE = re.compile(r"docs/subagents/([\w.-]+\.md)")
 
 errors, warnings = [], []
 
@@ -119,49 +115,32 @@ def check_orphans(docs: Path, linked: set):
         warn(f"docs/{r}: orphan - not linked from any other doc")
 
 
-def check_bindings(root: Path, docs: Path):
-    """Agent wrappers and subagent reference docs point at each other."""
-    agents_dir = root / ".claude" / "agents"
-    sub_dir = docs / "subagents"
-    wrappers = {}
-    if agents_dir.is_dir():
-        for w in agents_dir.glob("*.md"):
-            if ".template." in w.name or w.name.endswith(".template"):
-                continue
-            refs = WRAPPER_REF_RE.findall(w.read_text(encoding="utf-8", errors="replace"))
-            wrappers[w.name] = refs
-            for ref in refs:
-                if not (sub_dir / ref).exists():
-                    error(f".claude/agents/{w.name}: references missing "
-                          f"docs/subagents/{ref}")
-    if sub_dir.is_dir():
-        wrapped = {r for refs in wrappers.values() for r in refs}
-        for doc in sub_dir.glob("*.md"):
-            if doc.name in ("index.md", "README.md"):
-                continue
-            if doc.name not in wrapped:
-                warn(f"docs/subagents/{doc.name}: no .claude/agents/ wrapper "
-                     f"(fine if skill-backed or invoked manually)")
-
-
 def check_registration(root: Path, docs: Path):
-    """Subagent docs and active skills are listed in subagents/index.md."""
-    index = docs / "subagents" / "index.md"
-    if not index.exists():
-        error("docs/subagents/index.md missing")
+    """Agents and active skills are listed in the skills-and-agents registry.
+
+    The filled registry is docs/skills-and-agents.md; the standard repo only
+    carries the template, which serves as fallback."""
+    registry = docs / "skills-and-agents.md"
+    if not registry.exists():
+        registry = docs / "skills-and-agents.template.md"
+    if not registry.exists():
+        error("docs/skills-and-agents.md missing (and no template)")
         return
-    text = index.read_text(encoding="utf-8", errors="replace")
-    for doc in (docs / "subagents").glob("*.md"):
-        if doc.name in ("index.md", "README.md"):
-            continue
-        if doc.name not in text:
-            error(f"docs/subagents/{doc.name}: not listed in subagents/index.md")
+    text = registry.read_text(encoding="utf-8", errors="replace")
+    reg_name = rel(root, registry)
+    agents_dir = root / ".claude" / "agents"
+    if agents_dir.is_dir():
+        for agent in agents_dir.glob("*.md"):
+            if ".template" in agent.name:
+                continue
+            if agent.name not in text and agent.stem not in text:
+                error(f".claude/agents/{agent.name}: not listed in {reg_name}")
     skills_dir = root / ".claude" / "skills"
     if skills_dir.is_dir():
         for skill in skills_dir.glob("*/SKILL.md"):
             if skill.parent.name not in text:
                 warn(f".claude/skills/{skill.parent.name}: active skill not "
-                     f"listed in subagents/index.md")
+                     f"listed in {reg_name}")
 
 
 def check_template_copies(root: Path, docs: Path):
@@ -189,7 +168,6 @@ def main():
 
     linked = check_links(root, docs)
     check_orphans(docs, linked)
-    check_bindings(root, docs)
     check_registration(root, docs)
     check_template_copies(root, docs)
 

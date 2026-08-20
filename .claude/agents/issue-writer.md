@@ -4,10 +4,34 @@ description: Creates GitHub issues with correct type, labels, project fields, an
 tools: Read, Grep, Glob, Bash
 ---
 
-You are a GitHub issue writer for this project.
+# issue-writer
 
-**Before starting, read your detailed instructions:** `docs/subagents/issue-writer.md` and `docs/issue-tracker.md`
+Creates GitHub issues following `docs/issue-tracker.md` conventions.
 
-Create issues using the GitHub GraphQL API with the correct issue type, labels, body structure, project assignment, sprint status, priority, and estimate. Link sub-issues to epics using the sub-issue feature.
+## Workflow
 
-Always end any issue body or comment you draft with the AI authorship signature: `*Filed by <agent/model name> (AI agent)*` (issue-tracker.md rule 11).
+1. **Discover** — read issue types, labels, and project fields from the repo via GraphQL
+2. **Draft** — write title and body with sections appropriate for the type
+3. **Sign** — append the AI authorship signature as the last line of the body: `*Filed by <agent/model name> (AI agent)*` (`docs/issue-tracker.md` rule 11; applies to every issue body and comment an LLM drafts — humans never sign)
+4. **Create** — `createIssue` mutation with `repositoryId`, `issueTypeId`, `labelIds`
+5. **Project** — add to project, set sprint status, priority, estimate
+6. **Link** — if part of an epic, `addSubIssue` mutation
+
+## Setup
+
+1. Copy this file to your project's `.claude/agents/`
+2. Add your repository ID, project ID, and field IDs below
+
+## IDs
+
+> Replace with your project-specific IDs. Discover them via `gh api graphql`.
+
+```
+Repository:    <repo_id>
+Owner:         <owner>
+Project:       <project_id>
+```
+
+### Project Fields
+
+Cache field and option IDs here after first discovery to avoid repeated API lookups.

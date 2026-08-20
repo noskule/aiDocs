@@ -9,7 +9,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 - Mandatory reading order
 - Situational References
-- Skills and Sub-Agents (full listing: [subagents/index.md](subagents/index.md))
+- Skills and Agents (full listing: [skills-and-agents.md](skills-and-agents.md), template: `skills-and-agents.template.md`)
 
 
 ## Development Process
@@ -31,12 +31,11 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 ## Reference
 
-**[subagents/README.md](subagents/README.md)** - Creating specialized AI agents and skills
+**[CREATING_AGENTS.md](CREATING_AGENTS.md)** - Creating specialized AI skills and agents
 
-- File Structure
+- Skills vs. Agents
 - Agent File Format
-- Skills vs. Sub-Agents
-- Integrating with AGENTS.md
+- Creating and registering
 
 **[INFORMATION_MINIMALISM.md](INFORMATION_MINIMALISM.md)** - 3-question test
 
@@ -109,4 +108,4 @@ Quick navigation to all docs. Read only what you need, when you need it.
 **[project-index.md](project-index.md)** - Docs beyond the standard set (create when needed)
 
 
-**This index is a fixed standard file — do not edit.** It covers the standard docs by their standardized names. List additional project docs in `project-index.md`; skills and agents belong in `subagents/index.md`.
+**This index is a fixed standard file — do not edit.** It covers the standard docs by their standardized names. List additional project docs in `project-index.md`; skills and agents belong in `skills-and-agents.md`.

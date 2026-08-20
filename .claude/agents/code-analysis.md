@@ -1,3 +1,9 @@
+---
+name: code-analysis
+description: Interprets the code-index analysis report and recommends structural improvements
+tools: Read, Grep, Glob, Bash
+---
+
 # code-analysis
 
 Interprets code analysis findings and recommends structural improvements.

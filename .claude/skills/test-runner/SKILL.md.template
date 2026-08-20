@@ -24,4 +24,4 @@ Run the appropriate test suite. Category is optional — omit for full suite.
 
 ## Full reference
 
-`docs/subagents/test-runner.md`
+`docs/testing.md`

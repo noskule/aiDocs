@@ -27,7 +27,7 @@ flowchart TD
     subgraph startup ["Always Read (startup, in order)"]
         M1["1. AGENTS.md"] --> M2["2. INDEX.md"]
         M2 --> M3["3. coding-guidelines.md"]
-        M3 --> M4["4. subagents/index.md"]
+        M3 --> M4["4. skills-and-agents.md"]
         M4 -.->|if exists| M5["5. Wiki index"]
     end
 
@@ -37,9 +37,9 @@ flowchart TD
     SIT -->|"Writing tests"| TEST["testing.md"]
     SIT -->|"Writing docs"| DOCS["DOCUMENTATION_GUIDELINES.md<br>INFORMATION_MINIMALISM.md"]
     SIT -->|"Setting up"| SETUP["installation.md"]
-    SIT -->|"Validating docs"| VDOC["subagents/validation-docs.md"]
-    SIT -->|"LLM doc test"| VLLM["subagents/validation-llm.md"]
-    SIT -->|"Creating agents"| AREADME["subagents/README.md"]
+    SIT -->|"Validating docs"| VDOC[".claude/agents/validation-docs.md"]
+    SIT -->|"LLM doc test"| VLLM[".claude/agents/validation-llm.md"]
+    SIT -->|"Creating agents"| AREADME["CREATING_AGENTS.md"]
     SIT -->|"Running a job"| JOBS["tools/jobs.md"]
     SIT -->|"Unsure"| USER(["Ask the user"])
 

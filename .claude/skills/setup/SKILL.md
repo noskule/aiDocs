@@ -30,12 +30,12 @@ Ask in this order (skip what preflight already answered):
 For each answer, make the corresponding change:
 
 - Fill `docs/README.md` (project name, description, wiki section)
-- Instantiate templates by **renaming** them (drop the `.template` suffix): `coding-guidelines`, `architecture-rules`, `development`, `changelog`, `issue-tracker`, `wiki`, `tools/jobs` — the template file must not remain next to its filled copy (the template lives upstream; `/update-aidocs` reports drift from there). Create `installation.md`, `testing.md`, `release.md` with real content where the user provided it, otherwise minimal TODO stubs. Delete shipped templates the project declines (e.g. `design-sync.template.md` when not using Pencil)
+- Instantiate templates by **renaming** them (drop the `.template` suffix): `coding-guidelines`, `architecture-rules`, `development`, `changelog`, `issue-tracker`, `wiki`, `skills-and-agents`, `tools/jobs` — the template file must not remain next to its filled copy (the template lives upstream; `/update-aidocs` reports drift from there). Create `installation.md`, `testing.md`, `release.md` with real content where the user provided it, otherwise minimal TODO stubs. Delete shipped templates the project declines (e.g. `design-sync.template.md` when not using Pencil)
 - Fill the instantiated `docs/wiki.md` with the chosen wiki location, or note "no wiki" in `docs/README.md`
-- If using a Projects v2 board: fill the IDs section in `docs/subagents/issue-writer.md` (discover via `gh api graphql`); if plain issues: note that in the instantiated `docs/issue-tracker.md`
+- If using a Projects v2 board: fill the IDs section in `.claude/agents/issue-writer.md` (discover via `gh api graphql`); if plain issues: note that in the instantiated `docs/issue-tracker.md`
 - Activate the chosen root wrapper templates (rename, point them at `docs/AGENTS.md`)
 - Rename applicable `.claude/skills/*/SKILL.md.template` to `SKILL.md` and fill project specifics (test commands, architecture rules)
-- Update `docs/subagents/index.md` (and `docs/project-index.md` if extra docs exist) to match what actually exists now — `INDEX.md` itself is a fixed standard file
+- Update the instantiated `docs/skills-and-agents.md` (and `docs/project-index.md` if extra docs exist) to match what actually exists now — `INDEX.md` itself is a fixed standard file
 - Write the version stamp `docs/.aidocs-version` recording the adopted upstream commit:
 
   ```text

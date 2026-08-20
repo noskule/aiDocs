@@ -49,7 +49,7 @@ Lightweight instructions in `.claude/skills/` that extend Claude Code with proje
 - **Architecture enforcement** — Auto-triggered skill reads `architecture-rules.md` before writing new code, preventing duplication and layer violations
 - **Workflow tracking** — Auto-triggered `coding-workflow` skill creates a task per workflow step and blocks silent step-skipping
 
-Skills coexist with sub-agents: skills handle lightweight auto-triggered actions, sub-agents handle heavy isolated computation. See [subagents/README.md](docs/subagents/README.md) for the distinction.
+Skills coexist with agents: skills handle lightweight auto-triggered actions, agents handle heavy isolated computation. See [CREATING_AGENTS.md](docs/CREATING_AGENTS.md) for the distinction.
 
 ### Just-in-Time Documentation
 
@@ -60,7 +60,7 @@ Read indexes upfront, read content only when you reach that situation. Documenta
 A structured development process designed for AI-assisted coding.
 
 - **10-Step Development Process** — From feature branch to merged PR: implement, test, review, document, ship. Each step has clear LLM behavioral instructions. See [coding-guidelines.template.md](docs/coding-guidelines.template.md). The auto-triggered `coding-workflow` skill tracks progress through the steps.
-- **Sub-Agents** — Specialized instruction sets for complex domain-specific tasks. Instead of one general-purpose AI handling everything, sub-agents provide focused expertise (issue writing, code analysis, validation). See [subagents/](docs/subagents/index.md).
+- **Agents** — Specialized instruction sets for complex domain-specific tasks. Instead of one general-purpose AI handling everything, agents provide focused expertise (issue writing, code analysis, validation). Full instructions live in `.claude/agents/`; the registry [skills-and-agents](docs/skills-and-agents.template.md) routes every AI tool there.
 
 ### Documentation Levels
 
@@ -90,8 +90,9 @@ Mechanical checks run as a script, judgment stays with agents:
 
 ```
 .claude/
-├── agents/                             # Thin agent wrappers (auto-discovered by Claude Code)
-│   ├── agent-name.template.md          #   Blueprint for new agents
+├── agents/                             # Full agent instructions (auto-discovered by Claude Code,
+│   ├── agent-name.template.md          #   readable by any AI tool via the registry)
+│   ├── code-analysis.md
 │   ├── issue-writer.md
 │   ├── validation-docs.md
 │   └── validation-llm.md
@@ -117,21 +118,16 @@ docs/
 ├── wiki.template.md                # Wiki setup and configuration
 ├── changelog.template.md           # Release history template
 ├── design-sync.template.md         # Design ↔ code sync (Pencil)
-├── subagents/                      # Agent reference docs (knowledge source)
-│   ├── README.md                   #   How to create skills and agents
-│   ├── index.md                    #   Skills & agents registry (project-owned)
-│   ├── code-analysis.md
-│   ├── issue-writer.md
-│   ├── validation-docs.md
-│   └── validation-llm.md
+├── skills-and-agents.template.md   # Registry routing every AI tool to .claude/
+├── CREATING_AGENTS.md              # How to create and register skills and agents
 └── tools/
     ├── check-docs.py               # Mechanical structural checks (CI + local)
     ├── code-index/                 # Code analysis tooling (feeds code-analysis agent)
     └── jobs.template.md            # Runnable jobs registry
 
-CLAUDE.md.template, CODEX.md.template,      # Root wrappers pointing each AI tool
-.cursorrules.template,                      # at docs/AGENTS.md — rename to activate
-.github/copilot-instructions.md.template
+AGENTS.md.template,                         # Root wrappers pointing each AI tool at
+CLAUDE.md.template, .cursorrules.template,  # docs/AGENTS.md — rename to activate.
+.github/copilot-instructions.md.template    # AGENTS.md (agents.md spec) covers Codex, Cursor & co.
 ```
 
 UPPERCASE = framework files (keep as-is) / lowercase = your project content / `*.template.md` = copy and fill, dropping the `.template` suffix

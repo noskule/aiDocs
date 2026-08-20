@@ -8,14 +8,14 @@ Pull upstream changes of the aiDocs standard into this project without touching 
 
 ## Ownership Contract
 
-Only shipped paths participate at all: `docs/`, `.claude/`, and the root wrapper templates (`CLAUDE.md.template`, `CODEX.md.template`, `.cursorrules.template`, `.github/copilot-instructions.md.template`). Everything else in the upstream repo is repo-only (its own `README.md`, `AGENTS.md`, CI config, lint config) — never copy it.
+Only shipped paths participate at all: `docs/`, `.claude/`, and the root wrapper templates (`AGENTS.md.template`, `CLAUDE.md.template`, `.cursorrules.template`, `.github/copilot-instructions.md.template`). Everything else in the upstream repo is repo-only (its own `README.md`, `AGENTS.md`, CI config, lint config) — never copy it.
 
 Every shipped file classifies into exactly one of:
 
 | Class | Files | On update |
 |-------|-------|-----------|
-| **Upstream-owned** | UPPERCASE `.md` in `docs/` (except `README.md`), `*.template.md` / `*.template`, `docs/subagents/*.md` (except `index.md`), upstream-shipped files under `.claude/` | apply changes |
-| **Project-owned** | Filled template copies (`coding-guidelines.md`, `issue-tracker.md`, `wiki.md`, `tools/jobs.md`, ...), `docs/README.md`, `docs/project-index.md`, `docs/subagents/index.md`, project's own docs/skills/agents, `docs/.aidocs-version` | never touch |
+| **Upstream-owned** | UPPERCASE `.md` in `docs/` (except `README.md`), `*.template.md` / `*.template`, upstream-shipped files under `.claude/` | apply changes |
+| **Project-owned** | Filled template copies (`coding-guidelines.md`, `issue-tracker.md`, `wiki.md`, `skills-and-agents.md`, `tools/jobs.md`, ...), `docs/README.md`, `docs/project-index.md`, project's own docs/skills/agents, `docs/.aidocs-version` | never touch |
 
 **Shipped-active skills** (e.g. `documentation`, `validate-docs`) are upstream-owned, but projects may customize them (platform wording, extra rules). That's allowed — the 3-way check below turns upstream changes to a customized skill into a conflict for manual merge instead of an overwrite.
 
@@ -45,10 +45,14 @@ Every shipped file classifies into exactly one of:
    | Legacy name in project | Becomes |
    |------------------------|---------|
    | `docs/CODING_GUIDELINES.md` | rename to `docs/coding-guidelines.md` — it IS the filled copy (project-owned); template added alongside |
-   | `docs/SUBAGENTS.md` | replaced by `docs/subagents/README.md` |
-   | `docs/subagents/VALIDATION.md` + `.claude/agents/validation.md` | split into `validation-docs` + `validation-llm` (docs and wrappers) |
+   | `docs/SUBAGENTS.md` | replaced by `docs/CREATING_AGENTS.md` |
+   | `docs/subagents/VALIDATION.md` + `.claude/agents/validation.md` | split into `.claude/agents/validation-docs.md` + `validation-llm.md` (full-bodied) |
    | `docs/tools/JOBS.md` | rename to `docs/tools/jobs.md` — filled copy; template added alongside |
    | `docs/issue-tracker.md`, `docs/wiki.md` (pre-template era) | already the filled copies — keep as-is; templates added alongside |
+   | `docs/subagents/<name>.md` + thin `.claude/agents/<name>.md` wrapper | merge into one full-bodied `.claude/agents/<name>.md` (wrapper frontmatter + doc body) — applies to the project's own agents too |
+   | `docs/subagents/index.md` | becomes the filled `docs/skills-and-agents.md` (project-owned registry; links point into `.claude/`) |
+   | `docs/subagents/README.md` | replaced by `docs/CREATING_AGENTS.md` |
+   | root `CODEX.md` | superseded by root `AGENTS.md` (agents.md spec — read natively by Codex, Cursor and others) |
 
 5. **Compute the delta** — `git diff --name-status <old>..<new>` in the clone. Classify each path by the ownership contract.
 

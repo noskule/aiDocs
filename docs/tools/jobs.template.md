@@ -30,5 +30,5 @@ Mechanical structural checks: link resolution (case-sensitive), orphan pages, in
 Judgment checks a script can't do: duplicated knowledge, stale content, wiki structure, file focus.
 
 1. Invoke the `validation-docs` agent (auto-discovered from `.claude/agents/`)
-2. The agent runs check-docs.py first, then reads `docs/subagents/validation-docs.md` for the judgment checklist
+2. The agent's instructions (`.claude/agents/validation-docs.md`) run check-docs.py first, then the judgment checklist
 3. Output: report with issues to fix

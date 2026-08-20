@@ -35,4 +35,4 @@ Analyze the current changes and recommend which tests to run.
 
 ## Full reference
 
-`docs/subagents/test-recommender.md`
+`docs/testing.md`

@@ -9,7 +9,7 @@ agent: general-purpose
 You are validating documentation quality. Follow these steps:
 
 1. **Run** `python docs/tools/check-docs.py` — the mechanical half (links, orphans, index consistency, wrapper bindings, template hygiene). Report its errors and warnings; don't re-check what it covers.
-2. **Read** `docs/subagents/validation-docs.md` for the judgment half's detailed instructions
+2. **Read** `.claude/agents/validation-docs.md` for the judgment half's detailed instructions
 3. **Determine scope:** validate `docs/`, `wiki/`, or both (check $ARGUMENTS, default to `docs/`)
 4. **Run the judgment checklist:**
    - Duplicate content detection
