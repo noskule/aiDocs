@@ -12,3 +12,6 @@ CODEX.md
 
 # Temp files
 tmpclaude-*
+
+# Git Bash (MSYS2) crash artifacts
+*.stackdump
