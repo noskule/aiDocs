@@ -8,7 +8,7 @@ Pull upstream changes of the aiDocs standard into this project without touching 
 
 ## Ownership Contract
 
-Only shipped paths participate at all: `docs/`, `.claude/`, and the root wrapper templates (`CLAUDE.md.template`, `CODEX.md.template`, `.cursorrules.template`, `.github/copilot-instructions.md.template`). Everything else in the upstream repo is repo-only (its own `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, CI config, lint config) — never copy it.
+Only shipped paths participate at all: `docs/`, `.claude/`, and the root wrapper templates (`CLAUDE.md.template`, `CODEX.md.template`, `.cursorrules.template`, `.github/copilot-instructions.md.template`). Everything else in the upstream repo is repo-only (its own `README.md`, `AGENTS.md`, CI config, lint config) — never copy it.
 
 Every shipped file classifies into exactly one of:
 

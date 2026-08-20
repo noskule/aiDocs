@@ -9,3 +9,4 @@ This repo **is** the aiDocs standard. Everything under `docs/` and the `.claude/
 
 - **Issues:** plain GitHub issues, no Projects v2 board. Issue types are unavailable (user-owned repo) — classify with labels. Put the estimate in the issue body. AI agents sign posts per rule 11 in `docs/issue-tracker.template.md`.
 - **File naming:** see the File Naming rule in `docs/DOCUMENTATION_GUIDELINES.md` — UPPERCASE = fixed standard files, lowercase = project-specific content, `*.template.md` = copy-and-fill templates.
+- **Checks before committing docs:** `npx markdownlint-cli2 "**/*.md"` and `python docs/tools/check-docs.py` — CI runs both on every doc-touching push/PR.
