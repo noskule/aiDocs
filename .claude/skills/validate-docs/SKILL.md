@@ -8,14 +8,13 @@ agent: general-purpose
 
 You are validating documentation quality. Follow these steps:
 
-1. **Read** `docs/subagents/validation-docs.md` for detailed validation instructions
-2. **Determine scope:** validate `docs/`, `wiki/`, or both (check $ARGUMENTS, default to `docs/`)
-3. **Run the validation checklist:**
-   - Index cross-check (INDEX.md, subagents/index.md, platform indexes)
-   - Internal link validation
-   - Orphan file detection
+1. **Run** `python docs/tools/check-docs.py` — the mechanical half (links, orphans, index consistency, wrapper bindings, template hygiene). Report its errors and warnings; don't re-check what it covers.
+2. **Read** `docs/subagents/validation-docs.md` for the judgment half's detailed instructions
+3. **Determine scope:** validate `docs/`, `wiki/`, or both (check $ARGUMENTS, default to `docs/`)
+4. **Run the judgment checklist:**
    - Duplicate content detection
-   - File organization check
-   - Staleness check (Last Updated dates)
-4. **Output** a pass/fail checklist with issues to fix
-5. **Ask** the user: fix now, save report, or create GitHub issues?
+   - Content staleness (claims vs. reality, unreviewed drift)
+   - Wiki behavior-first structure check
+   - File length and focus
+5. **Output** a report: mechanical results + judgment findings with issues to fix
+6. **Ask** the user: fix now, save report, or create GitHub issues?

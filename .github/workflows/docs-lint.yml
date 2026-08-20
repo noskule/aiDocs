@@ -10,11 +10,13 @@ on:
     paths:
       - "**/*.md"
       - ".markdownlint.yaml"
+      - "docs/tools/check-docs.py"
   push:
     branches: [main]
     paths:
       - "**/*.md"
       - ".markdownlint.yaml"
+      - "docs/tools/check-docs.py"
 
 jobs:
   markdownlint:
@@ -24,3 +26,10 @@ jobs:
       - uses: DavidAnson/markdownlint-cli2-action@v20
         with:
           globs: "**/*.md"
+
+  check-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Structural doc checks
+        run: python docs/tools/check-docs.py

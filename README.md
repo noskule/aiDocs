@@ -79,9 +79,10 @@ A central registry of runnable tasks — validation, documentation checks — wi
 
 ### Validation
 
-Two built-in validation agents keep the system healthy:
+Mechanical checks run as a script, judgment stays with agents:
 
-- `validation-docs` — Structural checks: broken links, orphan pages, stale content, index consistency
+- `tools/check-docs.py` — Structural checks on every push: link resolution (case-sensitive), orphan pages, index consistency, agent-wrapper bindings, template hygiene
+- `validation-docs` — Judgment checks: duplicated knowledge, stale content, wiki structure
 - `validation-llm` — Effectiveness test: can a fresh LLM navigate the docs and correctly understand the project?
 
 
@@ -116,6 +117,7 @@ docs/
 ├── architecture-rules.template.md
 ├── development.template.md
 ├── tools/
+│   ├── check-docs.py               # Mechanical structural checks (CI + local)
 │   └── jobs.template.md            # Runnable jobs registry
 ```
 

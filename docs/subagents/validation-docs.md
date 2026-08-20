@@ -1,107 +1,32 @@
 # validation-docs
 
-Validates documentation structure and consistency across docs/ and wiki/.
-
+Validates documentation quality across docs/ and wiki/ — the judgment half. The mechanical half (links, orphans, index consistency, bindings, template hygiene) is `docs/tools/check-docs.py`, which runs in CI on every push; do not re-check what it covers.
 
 ## Purpose
 
-Automated documentation auditing. Run before major releases or quarterly to catch broken links, orphan files, stale content, and structural issues.
-
-
-## Responsibilities
-
-- Verify index files match actual content
-- Find broken internal links
-- Detect orphan pages (unreachable from navigation)
-- Check for duplicated information
-- Validate file organization and naming
-- Report issues with actionable fixes
-
+Documentation auditing that needs judgment. Run before major releases or quarterly to catch content drift a script can't see: duplicated knowledge, stale claims, misleading prose, structure violations.
 
 ## When to Invoke
 
-- Before major releases
-- Quarterly maintenance
-- After significant documentation changes
-- When user requests docs validation
-
+- Before major releases, or quarterly
+- After large documentation changes (the script gates structure; this agent judges content)
+- When the user asks to validate or audit the docs
 
 ## Validation Process
 
-### Step 1: Choose Scope
+### Step 1: Run the Mechanical Checks
+
+```bash
+python docs/tools/check-docs.py
+```
+
+Fix or report its errors first; carry its warnings into your report. Everything below assumes structure is sound.
+
+### Step 2: Choose Scope
 
 Ask user: Validate `docs/`, `wiki/`, or both?
 
-
-### Step 2: Index Cross-Check
-
-**Check platform index matches actual sections:**
-
-```
-1. Read INDEX.md
-2. Read development.md (and other platform files)
-3. Compare listed sections vs actual H2 headers
-4. Report missing or extra sections
-```
-
-**Check subagents index:**
-
-```
-1. Glob: docs/subagents/*.md
-2. Read subagents/index.md
-3. Compare listed agents vs actual files
-4. Report missing or unlisted agents
-```
-
-**Check agent wrappers match subagents:**
-
-```
-1. Glob: .claude/agents/*.md
-2. Glob: docs/subagents/*.md (exclude index.md, README.md)
-3. Each docs/subagents/ file should have a matching .claude/agents/ wrapper
-4. Each .claude/agents/ wrapper should reference a valid docs/subagents/ file
-5. Report mismatches (missing wrappers or orphaned wrappers)
-```
-
-**Check wiki index:**
-
-```
-1. Read wiki location from docs/wiki.md
-2. Glob: ../[wiki-folder]/*.md
-3. Read wiki index (_Sidebar.md or similar)
-4. Compare listed pages vs actual files
-```
-
-
-### Step 3: Link Validation
-
-**Find all internal links:**
-
-```
-Grep pattern: \[.*\]\((?!http)[^)]+\)
-```
-
-**For each link:**
-
-1. Extract target path
-2. Check if file exists
-3. If anchor link (#section), verify section exists
-4. Report broken links with file:line
-
-
-### Step 4: Orphan Detection
-
-**Find unreferenced files:**
-
-```
-1. Glob: docs/**/*.md
-2. For each file, grep all other files for references
-3. Files with zero references (except index files) are orphans
-4. Report orphans
-```
-
-
-### Step 5: Duplicate Detection
+### Step 3: Duplicate Detection
 
 **Check for repeated content patterns:**
 
@@ -115,24 +40,15 @@ Grep pattern: \[.*\]\((?!http)[^)]+\)
 - Test categories (should be in testing.md only)
 - Workflow steps (should be in coding-guidelines.md only)
 
+### Step 4: Content Staleness
 
-### Step 6: File Organization
+For each doc, judge whether the content still matches reality:
 
-**Check file lengths:**
+- Claims about the code (commands, file paths, component names) — spot-check against the codebase
+- `**Last Updated:**` dates far behind the file's git history suggest unreviewed drift
+- Instructions that reference tools, versions, or processes no longer in use
 
-```
-For docs/: warn if > 200 lines
-For wiki/: warn if > 600 lines
-```
-
-**Check naming convention:**
-
-- UPPERCASE.md = fixed standard files (upstream-owned, unmodified)
-- lowercase.md = project content files
-- *.template.md = templates whose filled copy drops the suffix
-
-
-### Step 7: Wiki Structure Check
+### Step 5: Wiki Structure Check
 
 **Verify behavior-first structure (wiki only):**
 
@@ -140,51 +56,31 @@ For each wiki page (except Home, README, _Sidebar):
 
 1. Check for "## What It Does" section near top
 2. Check for "## Why It Matters" section
-3. Check for "## Android Implementation" section (if platform content exists)
-4. Check for "## iOS Implementation" section (placeholder if Android exists)
-5. Grep for `INTENT:` or `PLATFORM:` in headings — should not exist
+3. Platform implementation sections present where platform content exists
+4. Grep for `INTENT:` or `PLATFORM:` in headings — should not exist
 
-**Report issues:**
+### Step 6: File Length and Focus
 
-- Missing required sections
-- INTENT/PLATFORM markers still in headings
-- Platform content outside implementation sections
-
-
-### Step 8: Staleness Check
-
-**Check Last Updated dates:**
-
-```
-Grep pattern: \*\*Last Updated:\*\* (\d{4}-\d{2}-\d{2})
-```
-
-- Flag files not updated in 30+ days
-- Cross-reference with git log for actual changes
-
+- docs/ pages over ~200 lines, wiki pages over ~600 lines: judge whether they should split
+- Pages mixing concerns that belong to different documentation levels (code / docs / wiki)
 
 ## Output Format
 
 ```markdown
 ## Validation Report
 
-**Scope:** docs/ | wiki/ | both
 **Date:** YYYY-MM-DD
+**Scope:** docs | wiki | both
 
-### Critical Issues
-- [ ] Issue 1 (file:line)
-- [ ] Issue 2 (file:line)
+### Mechanical (check-docs.py)
+- Errors: N, Warnings: N (attach output)
 
-### Warnings
-- [ ] Warning 1
-- [ ] Warning 2
+### Judgment Findings
+- [file]: [duplication | stale content | structure | focus] — [what and where]
 
 ### Summary
-- Files checked: N
 - Issues found: N
-- Warnings: N
 ```
-
 
 ## Post-Validation
 
@@ -194,14 +90,13 @@ Ask user:
 2. Save report to `docs/validation-report.md`?
 3. Create GitHub issues for each problem?
 
-
 ## Key Files
 
 | File | Purpose |
 |------|---------|
+| `docs/tools/check-docs.py` | Mechanical checks (run first) |
 | `docs/INDEX.md` | Main docs navigation |
-| `docs/subagents/index.md` | Subagents index |
+| `docs/subagents/index.md` | Skills & agents registry |
 | `docs/wiki.md` | Wiki location reference |
 
-
-**Last Updated:** 2026-02-06
+**Last Updated:** 2026-08-20
