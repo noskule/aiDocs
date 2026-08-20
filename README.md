@@ -107,10 +107,7 @@ docs/
 ├── INDEX.md                        # Navigation map
 ├── INFORMATION_MINIMALISM.md       # 3-question test
 ├── wiki.template.md                # Wiki setup and configuration
-├── features/                       # Feature documentation
-│   └── feature.template.md
-├── project/                        # Worklog, changelog, tasks
-│   └── changelog.template.md
+├── changelog.template.md           # Release history template
 ├── subagents/                      # Specialized AI agents (knowledge reference)
 │   ├── validation-docs.md
 │   └── validation-llm.md
