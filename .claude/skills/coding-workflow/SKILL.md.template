@@ -18,6 +18,7 @@ When a development task starts, create a task for each step using your task syst
 6. User manually tests and reviews
 7. Capture technical discoveries
 8. Write documentation
+8.5 Run maintenance (`/maintain change`, diff-scoped)
 9. Create pull request
 10. User merges PR
 

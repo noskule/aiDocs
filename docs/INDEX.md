@@ -59,8 +59,8 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 **[tools/jobs.md](tools/jobs.md)** - Runnable jobs registry (template: `tools/jobs.template.md`)
 
-- Available jobs with commands and triggers
-- When to run each job
+- Available jobs with commands and trigger classes (per-change / cycle-end)
+- Cycle-end binding; `/maintain` dispatches from this table
 
 **[tools/evals.md](tools/evals.md)** - Triage eval cases (template: `tools/evals.template.md`)
 

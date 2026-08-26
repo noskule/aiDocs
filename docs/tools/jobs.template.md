@@ -1,27 +1,31 @@
 # Jobs
 
-Runnable tasks for validation. This is the central registry — check here to see what's available.
+Runnable tasks for validation. This is the central registry — check here to see what's available. `/maintain` dispatches from this table; add project jobs here with their trigger class, never to the skill.
+
+## Cycle-End Binding
+
+Full maintenance (`/maintain full`) fires on a real project event, never a calendar date:
+
+- **Cycle-end event:** [sprint end | milestone close | pre-release]
 
 ## Available Jobs
 
-| Job | Command | Output | Skill |
-|-----|---------|--------|-------|
-| [Check docs (mechanical)](#check-docs) | `python docs/tools/check-docs.py` | Errors/warnings, exit code | — |
-| [Validate docs (judgment)](#validate-docs) | Invoke `validation-docs` agent | Pass/fail checklist | `/validate-docs` |
-| [Triage evals](#triage-evals) | Invoke `validation-llm` agent (Triage Eval Mode) | Hit-rate report | — |
+| Job | Command | Trigger class | Runs when |
+|-----|---------|---------------|-----------|
+| [Check docs (mechanical)](#check-docs) | `python docs/tools/check-docs.py` | per-change | any doc or feature-map change (also runs in CI) |
+| [Validate docs (judgment)](#validate-docs) | Invoke `validation-docs` agent | cycle-end | docs/ or wiki changed since last run |
+| [Triage evals](#triage-evals) | Invoke `validation-llm` agent (Triage Eval Mode) | cycle-end | feature-map, evals, or routing docs changed since last run |
 
-## When to Run
+**Trigger classes:**
 
-| After... | Run... |
-|----------|--------|
-| Any documentation change (also runs in CI) | Check docs |
-| Before major releases, or quarterly | Validate docs |
+- **per-change** — diff-conditional; dispatched by `/maintain change` before each PR (coding workflow step 8.5)
+- **cycle-end** — judgment and eval battery; dispatched by `/maintain full` at the bound event, scoped to changes since the last-run stamp (`docs/.maintain-last-run`)
 
 ## Job Details
 
 ### Check docs
 
-Mechanical structural checks: link resolution (case-sensitive), orphan pages, index consistency, agent-wrapper bindings, template hygiene, standard-set references.
+Mechanical structural checks: link resolution (case-sensitive), orphan pages, index consistency, agent-wrapper bindings, template hygiene, standard-set references, feature-map entry-point resolution.
 
 1. Run `python docs/tools/check-docs.py`
 2. Exit code non-zero on errors; warnings don't fail the build
