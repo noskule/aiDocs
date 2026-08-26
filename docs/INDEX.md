@@ -7,9 +7,11 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 **[AGENTS.md](AGENTS.md)** - Start here
 
-- Mandatory reading order
+- Mandatory reading order (with reading-order diagram)
 - Situational References
 - Skills and Agents (full listing: [skills-and-agents.md](skills-and-agents.md), template: `skills-and-agents.template.md`)
+
+**[README.md](README.md)** - Project identity: name, description, wiki location (template: `README.template.md`)
 
 
 ## Development Process

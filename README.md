@@ -112,6 +112,7 @@ Mechanical checks run as a script, judgment stays with agents:
 docs/
 ├── AGENTS.md                       # LLM entry point and workflow router (fixed)
 ├── INDEX.md                        # Navigation map (fixed)
+├── README.template.md              # Project identity (name, description, wiki location)
 ├── DOCUMENTATION_GUIDELINES.md     # What/where/how much to document
 ├── INFORMATION_MINIMALISM.md       # 3-question test
 ├── coding-guidelines.template.md   # 10-step development process
