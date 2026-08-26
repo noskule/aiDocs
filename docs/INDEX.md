@@ -23,6 +23,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 - Information Minimalism Test
 - Documentation Levels (Code, /docs, Wiki)
+- Doc-System Layer Model (content axes, layers, verification diagram)
 - Diagrams (Mermaid conventions, when to use, placement)
 - Documenting in Code
 - Documenting in /docs (File Tree)
@@ -58,8 +59,12 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 **[tools/jobs.md](tools/jobs.md)** - Runnable jobs registry (template: `tools/jobs.template.md`)
 
-- Available jobs with commands and triggers
-- When to run each job
+- Available jobs with commands and trigger classes (per-change / cycle-end)
+- Cycle-end binding; `/maintain` dispatches from this table
+
+**[tools/evals.md](tools/evals.md)** - Triage eval cases (template: `tools/evals.template.md`)
+
+- Bug-report-phrased questions with expected entry points; run by `validation-llm`
 
 
 ## Platform Specific
@@ -74,6 +79,10 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 - Tech Stack, Architecture, Code Patterns, File Organization
 - Data Retention, Build Commands, Common Tasks
+
+**[feature-map.md](feature-map.md)** - Feature → code routing for triage (template: `feature-map.template.md`)
+
+- Per feature: entry point, gotchas, failure-mode hints; behavior links to the wiki
 
 **[testing.md](testing.md)** - Running/writing tests
 

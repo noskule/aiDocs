@@ -25,6 +25,7 @@ Read these **when you reach that situation**, not upfront:
 | Finding platform docs   | `INDEX.md`                   |
 | Setting up / installing | `installation.md`            |
 | Writing code            | `architecture-rules.md`, `development.md` |
+| Triaging a bug / locating a feature | `feature-map.md` (if it exists) |
 | Writing tests           | `testing.md`                 |
 | Writing documentation   | `DOCUMENTATION_GUIDELINES.md` |
 | Validating docs         | `.claude/agents/validation-docs.md` |
@@ -53,4 +54,4 @@ Two kinds of specialized instructions:
 > **Setup:** See [CREATING_AGENTS.md](CREATING_AGENTS.md) for how to create and register skills and agents.
 
 
-**Last Updated:** 2026-08-19
+**Last Updated:** 2026-08-26

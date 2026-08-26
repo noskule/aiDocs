@@ -68,6 +68,10 @@ Update documentation per `DOCUMENTATION_GUIDELINES.md`:
 - Update wiki if feature-related
 - Apply Information Minimalism test
 
+### 8.5 **Run Maintenance (diff-scoped)**
+
+`/maintain change` — dispatches only the checks the branch diff triggers (registry: `tools/jobs.md`). Fix what it reports before creating the PR. This is the workflow's single maintenance reference; individual checks are never listed here.
+
 ### 9. **Create Pull Request**
 
 **LLM Behavior:** Create PR using GitHub CLI:
@@ -104,4 +108,4 @@ EOF
 **Persistence changes:** Follow platform-specific data retention rules in `development.md`.
 
 
-**Last Updated:** 2026-02-14
+**Last Updated:** 2026-08-26

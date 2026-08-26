@@ -46,7 +46,7 @@ Run `/update-aidocs` — it diffs upstream against your version stamp and applie
 
 Lightweight instructions in `.claude/skills/` that extend Claude Code with project-specific capabilities:
 
-- **Job skills** — Slash commands (`/setup`, `/update-aidocs`, `/validate-docs`) that run tools with one command
+- **Job skills** — Slash commands (`/setup`, `/update-aidocs`, `/validate-docs`, `/maintain`) that run tools with one command
 - **Convention skills** — Auto-triggered or invokable rules for testing (`/test-runner`), documentation (`/documentation`), and test recommendations (`/test-recommender`)
 - **Architecture enforcement** — Auto-triggered skill reads `architecture-rules.md` before writing new code, preventing duplication and layer violations
 - **Workflow tracking** — Auto-triggered `coding-workflow` skill creates a task per workflow step and blocks silent step-skipping
@@ -77,15 +77,15 @@ A structured development process designed for AI-assisted coding.
 
 ### Jobs Registry
 
-A central registry of runnable tasks — validation, documentation checks — with clear triggers for when to run each. LLMs check [tools/jobs.md](docs/tools/jobs.template.md) to discover what's available.
+A central registry of runnable tasks — validation, documentation checks, evals — with a trigger class per job (**per-change** or **cycle-end**). The `/maintain` skill dispatches from the registry: `change` runs diff-scoped checks before each PR, `full` runs the judgment/eval battery at the project's cycle-end event (sprint end, milestone close, or pre-release), incrementally scoped to what changed since the last run. LLMs check [tools/jobs.md](docs/tools/jobs.template.md) to discover what's available.
 
 ### Validation
 
 Mechanical checks run as a script, judgment stays with agents:
 
-- `tools/check-docs.py` — Structural checks on every push: link resolution (case-sensitive), orphan pages, index consistency, agent-wrapper bindings, template hygiene
+- `tools/check-docs.py` — Structural checks on every push: link resolution (case-sensitive), orphan pages, index consistency, agent-wrapper bindings, template hygiene, standard-set references (every template reachable from `INDEX.md` and `/setup`)
 - `validation-docs` — Judgment checks: duplicated knowledge, stale content, wiki structure
-- `validation-llm` — Effectiveness test: can a fresh LLM navigate the docs and correctly understand the project?
+- `validation-llm` — Effectiveness test: can a fresh LLM navigate the docs and correctly understand the project? Its triage eval mode measures routing hit-rate from bug-report-phrased questions (`tools/evals.md`)
 
 
 ## Project Structure
@@ -100,6 +100,7 @@ Mechanical checks run as a script, judgment stays with agents:
 │   └── validation-llm.md
 └── skills/                             # Claude Code skills (auto-triggered + slash commands)
     ├── setup/SKILL.md                  # /setup — initial project setup (interview form)
+    ├── maintain/SKILL.md               # /maintain — dispatch maintenance jobs (change | full)
     ├── update-aidocs/SKILL.md          # /update-aidocs — pull upstream standard updates
     ├── validate-docs/SKILL.md          # /validate-docs — validate doc structure (forked)
     ├── documentation/SKILL.md          # /documentation — documentation writing rules
@@ -116,6 +117,7 @@ docs/
 ├── coding-guidelines.template.md   # 10-step development process
 ├── architecture-rules.template.md  # Enforceable design principles
 ├── development.template.md         # Tech stack, patterns, commands
+├── feature-map.template.md         # Feature → code routing for triage
 ├── issue-tracker.template.md       # Issue tracker conventions
 ├── wiki.template.md                # Wiki setup and configuration
 ├── changelog.template.md           # Release history template
@@ -125,6 +127,7 @@ docs/
 └── tools/
     ├── check-docs.py               # Mechanical structural checks (CI + local)
     ├── code-index/                 # Code analysis tooling (feeds code-analysis agent)
+    ├── evals.template.md           # Triage eval cases (run by validation-llm)
     └── jobs.template.md            # Runnable jobs registry
 
 AGENTS.md.template,                         # Root wrappers pointing each AI tool at

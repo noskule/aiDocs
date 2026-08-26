@@ -69,7 +69,7 @@ Generate questions across these categories:
 
 - "Where do you document a new feature?"
 - "What's the information minimalism test?"
-- "When should you use INTENT vs PLATFORM markers?"
+- "When should you use the PLATFORM marker?"
 
 **Domain (does it understand the project?):**
 
@@ -115,6 +115,18 @@ For each failed question, trace the navigation path:
 4. What fix would close the gap?
 ```
 
+
+## Triage Eval Mode
+
+Runs when `docs/tools/evals.md` exists. Measures **routing effectiveness**: does a fresh agent land on the right entry point from a bug report?
+
+1. Read the cases from `docs/tools/evals.md`
+2. For each case, spawn a fresh agent with only: *"Read docs/AGENTS.md and follow its instructions. Then: [question]. Name the file/class/function where you would start reading, and how you navigated there."*
+3. Score each answer: **Hit** (named the expected entry point), **Near** (right file, wrong symbol), **Miss**
+4. **A/B when `docs/feature-map.md` exists:** run the set once normally and once with the added instruction "do not read feature-map.md" — the hit-rate difference is the feature map's measured contribution
+5. Report hit rates per mode; diagnose each Miss with the navigation-path trace from Step 5 above
+
+Efficiency rule: run at cycle-end, and only when `feature-map.md`, the evals file, or routing docs changed since the last run — `/maintain` dispatches this; don't run it per task.
 
 ## Output Format
 
@@ -166,4 +178,4 @@ Ask user:
 | `docs/skills-and-agents.md` | Skills & agents registry |
 
 
-**Last Updated:** 2026-08-20
+**Last Updated:** 2026-08-26

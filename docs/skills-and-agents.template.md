@@ -12,6 +12,7 @@ All available skills and specialized agents for this project. **Project-owned:**
 | [`/setup`](../.claude/skills/setup/SKILL.md) | Initial aiDocs setup in a project (interview form) |
 | [`/update-aidocs`](../.claude/skills/update-aidocs/SKILL.md) | Pull upstream aiDocs standard updates |
 | [`/validate-docs`](../.claude/skills/validate-docs/SKILL.md) | Validate doc structure (forked) |
+| [`/maintain`](../.claude/skills/maintain/SKILL.md) | Dispatch maintenance jobs (`change`: diff-scoped pre-PR; `full`: cycle-end) |
 
 **Convention skills** (slash commands + auto-triggered):
 
