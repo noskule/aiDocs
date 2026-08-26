@@ -6,21 +6,7 @@
 
 ## Information Minimalism
 
-### The Test
-
-Before adding documentation, ask in order:
-
-1. **Would a skilled developer need this to reconstruct or port the feature?**
-    - NO → Don't document
-    - YES → Continue
-
-2. **Is it obvious from code, naming, or structure?**
-    - YES → Don't document
-    - NO → Continue
-
-3. **Does it duplicate existing content?**
-    - YES → Reference instead
-    - NO → Document it ✅
+Before adding documentation, run the 3-question test — *needed? obvious from code? duplicate?* — defined once in [INFORMATION_MINIMALISM.md](INFORMATION_MINIMALISM.md). Fail any question → don't write it.
 
 ### What to Document
 
