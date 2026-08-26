@@ -141,6 +141,34 @@ def check_registration(root: Path, docs: Path):
             if skill.parent.name not in text:
                 warn(f".claude/skills/{skill.parent.name}: active skill not "
                      f"listed in {reg_name}")
+        for skill in skills_dir.glob("*/SKILL.md.template"):
+            if skill.parent.name not in text:
+                warn(f".claude/skills/{skill.parent.name}: template skill "
+                     f"not listed in {reg_name}")
+
+
+def check_standard_references(root: Path, docs: Path):
+    """Every shipped docs template is referenced from INDEX.md and the setup
+    skill, so a new standard file cannot be orphaned inside the standard
+    itself (issue #38). No-ops in consuming projects, where templates are
+    deleted on instantiation."""
+    index = docs / "INDEX.md"
+    setup = root / ".claude" / "skills" / "setup" / "SKILL.md"
+    index_text = index.read_text(encoding="utf-8", errors="replace") \
+        if index.exists() else ""
+    setup_text = setup.read_text(encoding="utf-8", errors="replace") \
+        if setup.exists() else ""
+    for tpl in md_files(docs):
+        if ".template." not in tpl.name:
+            continue
+        filled = tpl.name.replace(".template", "")
+        stem = filled.rsplit(".", 1)[0]
+        where = rel(root, tpl)
+        if index_text and filled not in index_text:
+            error(f"{where}: filled name '{filled}' not referenced "
+                  f"in docs/INDEX.md")
+        if setup_text and stem not in setup_text:
+            error(f"{where}: '{stem}' not referenced in the setup skill")
 
 
 def check_template_copies(root: Path, docs: Path):
@@ -169,6 +197,7 @@ def main():
     linked = check_links(root, docs)
     check_orphans(docs, linked)
     check_registration(root, docs)
+    check_standard_references(root, docs)
     check_template_copies(root, docs)
 
     for w in warnings:

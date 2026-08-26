@@ -20,7 +20,7 @@ Runnable tasks for validation. This is the central registry — check here to se
 
 ### Check docs
 
-Mechanical structural checks: link resolution (case-sensitive), orphan pages, index consistency, agent-wrapper bindings, template hygiene.
+Mechanical structural checks: link resolution (case-sensitive), orphan pages, index consistency, agent-wrapper bindings, template hygiene, standard-set references.
 
 1. Run `python docs/tools/check-docs.py`
 2. Exit code non-zero on errors; warnings don't fail the build

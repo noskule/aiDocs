@@ -83,7 +83,7 @@ A central registry of runnable tasks — validation, documentation checks — wi
 
 Mechanical checks run as a script, judgment stays with agents:
 
-- `tools/check-docs.py` — Structural checks on every push: link resolution (case-sensitive), orphan pages, index consistency, agent-wrapper bindings, template hygiene
+- `tools/check-docs.py` — Structural checks on every push: link resolution (case-sensitive), orphan pages, index consistency, agent-wrapper bindings, template hygiene, standard-set references (every template reachable from `INDEX.md` and `/setup`)
 - `validation-docs` — Judgment checks: duplicated knowledge, stale content, wiki structure
 - `validation-llm` — Effectiveness test: can a fresh LLM navigate the docs and correctly understand the project?
 
