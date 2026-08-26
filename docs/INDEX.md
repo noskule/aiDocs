@@ -23,6 +23,7 @@ Quick navigation to all docs. Read only what you need, when you need it.
 
 - Information Minimalism Test
 - Documentation Levels (Code, /docs, Wiki)
+- Doc-System Layer Model (content axes, layers, verification diagram)
 - Diagrams (Mermaid conventions, when to use, placement)
 - Documenting in Code
 - Documenting in /docs (File Tree)

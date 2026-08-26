@@ -58,6 +58,51 @@ Everything *without* this marker is implicitly cross-platform intent. No separat
 | **/docs folder** | Developer operations, platform guides, contribution workflow | Build, test, run, release, agent behavior |
 | **Wiki** | How software functions (user perspective), architecture, domain concepts | Features, behavior, system design |
 
+## Doc-System Layer Model
+
+The documentation set is partitioned by **content, not audience**. Every audience (LLM, developer, user) follows references into every source, so audience cannot be the partitioning key — instead, each content type has exactly one home and everything else links to it (single source of truth).
+
+**Two content axes:**
+
+| Axis | Home | Organized by | Answers |
+|------|------|--------------|---------|
+| **Feature/behavior** | Wiki | user-facing features | "What does the software do, and why?" |
+| **Operations/code** | `/docs` | developer operations and code structure | "How do I build, test, navigate, and release?" |
+
+Within the axes, every file belongs to exactly one **layer**, which decides who maintains it and what verifies it:
+
+| Layer | Files | Maintained by | Verified by |
+|-------|-------|---------------|-------------|
+| **Fixed standard** | UPPERCASE files | upstream aiDocs, via `/update-aidocs` | `check-docs.py` |
+| **Curated** | filled templates and lowercase project files | the project, by hand | `check-docs.py` + `validation-docs` |
+| **Generated** | code-index reports, code maps | tooling in `docs/tools/` — never hand-edited | regeneration |
+| **Wiki** | wiki pages | the project, by hand | `validation-docs` (wiki scope) |
+
+**Derivable content is generated, non-derivable content is curated.** If tooling can produce it from code (structure overviews, dependency maps), don't hand-write it — it fails Q2 of the minimalism test and rots. Hand-curate only what code cannot reveal (rationale, feature→code mapping, failure modes).
+
+How the pieces route and verify each other:
+
+```mermaid
+flowchart TB
+    CODE["Code<br/>intent comments, docstrings"]
+    subgraph DOCS["docs/ — operations/code axis"]
+        FIXED["Fixed standard (UPPERCASE)<br/>AGENTS, INDEX, guidelines"]
+        CURATED["Curated (lowercase)<br/>development, testing, ..."]
+        GENERATED["Generated<br/>code-index reports"]
+    end
+    subgraph WIKI["Wiki — feature/behavior axis"]
+        PAGES["features-*, architecture-*,<br/>domain pages"]
+    end
+    FIXED -->|"routes: INDEX,<br/>situational refs"| CURATED
+    CURATED -->|"behavior?<br/>link, don't restate"| PAGES
+    PAGES -->|"implementation?<br/>link back"| CURATED
+    GENERATED -.->|"regenerated from"| CODE
+    CHECK["check-docs.py (CI)"] -.->|verifies| DOCS
+    VDOCS["validation-docs"] -.->|verifies| DOCS
+    VDOCS -.->|verifies| WIKI
+    VLLM["validation-llm"] -.->|"tests entry path"| FIXED
+```
+
 ### Code Documentation
 
 Apply Information Minimalism. Document only what isn't obvious from reading the code.
@@ -184,4 +229,4 @@ Applies to both docs/ and wiki/.
 
 ---
 
-**Last Updated:** 2026-02-14
+**Last Updated:** 2026-08-26

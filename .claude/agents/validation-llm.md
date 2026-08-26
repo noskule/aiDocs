@@ -69,7 +69,7 @@ Generate questions across these categories:
 
 - "Where do you document a new feature?"
 - "What's the information minimalism test?"
-- "When should you use INTENT vs PLATFORM markers?"
+- "When should you use the PLATFORM marker?"
 
 **Domain (does it understand the project?):**
 
@@ -166,4 +166,4 @@ Ask user:
 | `docs/skills-and-agents.md` | Skills & agents registry |
 
 
-**Last Updated:** 2026-08-20
+**Last Updated:** 2026-08-26
