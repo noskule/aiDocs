@@ -53,6 +53,7 @@ Every shipped file classifies into exactly one of:
    | `docs/subagents/index.md` | becomes the filled `docs/skills-and-agents.md` (project-owned registry; links point into `.claude/`) |
    | `docs/subagents/README.md` | replaced by `docs/CREATING_AGENTS.md` |
    | root `CODEX.md` | superseded by root `AGENTS.md` (agents.md spec — read natively by Codex, Cursor and others) |
+   | `docs/tools/jobs.md` without trigger classes (pre-2026-08 format) | rebuild in the trigger-class format from `docs/tools/jobs.template.md` (per-change / cycle-end column, Cycle-End Binding), preserving the project's own jobs — confirm with user. Not a mere drift notice: `/maintain` cannot dispatch without this format |
 
 5. **Compute the delta** — `git diff --name-status <old>..<new>` in the clone. Classify each path by the ownership contract.
 
@@ -64,7 +65,9 @@ Every shipped file classifies into exactly one of:
 
 7. **Notify on template drift** — when a `*.template.md` changed upstream and the project has a filled copy, don't touch the copy; report the template's upstream old→new diff (from the clone — the template is not present in the project) so the user can port relevant changes manually.
 
-8. **Stamp and report** — write the new commit to `docs/.aidocs-version`, then summarize: updated / added / deleted / skipped (project-owned) / conflicts / template-drift notices. Recommend `/validate-docs`.
+8. **Verify** — run `python docs/tools/check-docs.py`; fix errors the update introduced before proceeding.
+
+9. **Stamp and report** — write the new commit to `docs/.aidocs-version`, then summarize: updated / added / deleted / skipped (project-owned) / conflicts / template-drift notices. Recommend `/maintain full` — it surfaces the judgment-level drift (stale filled copies, unported template changes) that the update deliberately cannot touch.
 
 ## Rules
 
