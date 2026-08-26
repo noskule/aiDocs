@@ -85,7 +85,7 @@ Mechanical checks run as a script, judgment stays with agents:
 
 - `tools/check-docs.py` — Structural checks on every push: link resolution (case-sensitive), orphan pages, index consistency, agent-wrapper bindings, template hygiene, standard-set references (every template reachable from `INDEX.md` and `/setup`)
 - `validation-docs` — Judgment checks: duplicated knowledge, stale content, wiki structure
-- `validation-llm` — Effectiveness test: can a fresh LLM navigate the docs and correctly understand the project?
+- `validation-llm` — Effectiveness test: can a fresh LLM navigate the docs and correctly understand the project? Its triage eval mode measures routing hit-rate from bug-report-phrased questions (`tools/evals.md`)
 
 
 ## Project Structure
@@ -126,6 +126,7 @@ docs/
 └── tools/
     ├── check-docs.py               # Mechanical structural checks (CI + local)
     ├── code-index/                 # Code analysis tooling (feeds code-analysis agent)
+    ├── evals.template.md           # Triage eval cases (run by validation-llm)
     └── jobs.template.md            # Runnable jobs registry
 
 AGENTS.md.template,                         # Root wrappers pointing each AI tool at

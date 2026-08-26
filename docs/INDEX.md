@@ -62,6 +62,10 @@ Quick navigation to all docs. Read only what you need, when you need it.
 - Available jobs with commands and triggers
 - When to run each job
 
+**[tools/evals.md](tools/evals.md)** - Triage eval cases (template: `tools/evals.template.md`)
+
+- Bug-report-phrased questions with expected entry points; run by `validation-llm`
+
 
 ## Platform Specific
 
