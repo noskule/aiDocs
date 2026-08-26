@@ -20,7 +20,8 @@ PER_PROJECT = {
     "installation.md", "development.md", "testing.md", "release.md",
     "changelog.md", "coding-guidelines.md", "architecture-rules.md",
     "issue-tracker.md", "wiki.md", "design-sync.md", "project-index.md",
-    "skills-and-agents.md", "tools/jobs.md",
+    "skills-and-agents.md", "tools/jobs.md", "feature-map.md",
+    "tools/evals.md",
 }
 
 # Entry points and registries are never orphans.
@@ -28,6 +29,13 @@ NON_ORPHANS = {"INDEX.md", "AGENTS.md", "README.md", "project-index.md",
                "skills-and-agents.md"}
 
 SKIP_DIRS = {".venv", "venv", "__pycache__", "node_modules", "site-packages"}
+
+# Feature-map entry points are verified against these source files.
+SOURCE_EXT = {".kt", ".kts", ".java", ".swift", ".ts", ".tsx", ".js",
+              ".jsx", ".py", ".cs", ".go", ".rs", ".cpp", ".cc", ".c",
+              ".h", ".m", ".mm", ".dart", ".rb", ".php", ".vue"}
+SOURCE_SKIP = SKIP_DIRS | {".git", "build", "dist", "out", "target",
+                           ".gradle", ".idea", "docs"}
 
 
 def md_files(base: Path):
@@ -147,6 +155,46 @@ def check_registration(root: Path, docs: Path):
                      f"not listed in {reg_name}")
 
 
+def check_feature_map(root: Path, docs: Path):
+    """Entry points named in feature-map.md still resolve in the source tree
+    (issue #35): a stale anchor becomes a CI failure, not a quarterly
+    discovery. Backticked names in the 'Entry point' column are split on
+    dots and each segment must appear in some source file."""
+    fmap = docs / "feature-map.md"
+    if not fmap.exists():
+        return
+    wanted = {}  # identifier segment -> [(lineno, raw entry point)]
+    for lineno, line in enumerate(
+            fmap.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
+        if not line.lstrip().startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) < 2 or set(cells[1]) <= set("-: "):
+            continue  # separator row or malformed
+        for ident in re.findall(r"`([^`]+)`", cells[1]):
+            if "[" in ident:
+                continue  # unfilled placeholder
+            base = re.split(r"[(<]", ident)[0]
+            for seg in re.split(r"[.:#/]", base):
+                if seg.strip():
+                    wanted.setdefault(seg.strip(), []).append((lineno, ident))
+    unresolved = set(wanted)
+    for src in root.rglob("*"):
+        if not unresolved:
+            break
+        if src.suffix not in SOURCE_EXT or SOURCE_SKIP & set(src.parts):
+            continue
+        try:
+            text = src.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        unresolved = {n for n in unresolved if n not in text}
+    for name in sorted(unresolved):
+        for lineno, ident in wanted[name]:
+            error(f"docs/feature-map.md:{lineno}: entry point '{ident}' - "
+                  f"'{name}' not found in any source file (stale anchor?)")
+
+
 def check_standard_references(root: Path, docs: Path):
     """Every shipped docs template is referenced from INDEX.md and the setup
     skill, so a new standard file cannot be orphaned inside the standard
@@ -197,6 +245,7 @@ def main():
     linked = check_links(root, docs)
     check_orphans(docs, linked)
     check_registration(root, docs)
+    check_feature_map(root, docs)
     check_standard_references(root, docs)
     check_template_copies(root, docs)
 

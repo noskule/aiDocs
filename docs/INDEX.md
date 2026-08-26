@@ -76,6 +76,10 @@ Quick navigation to all docs. Read only what you need, when you need it.
 - Tech Stack, Architecture, Code Patterns, File Organization
 - Data Retention, Build Commands, Common Tasks
 
+**[feature-map.md](feature-map.md)** - Feature → code routing for triage (template: `feature-map.template.md`)
+
+- Per feature: entry point, gotchas, failure-mode hints; behavior links to the wiki
+
 **[testing.md](testing.md)** - Running/writing tests
 
 **[release.md](release.md)** - Publishing

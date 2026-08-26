@@ -80,6 +80,8 @@ Within the axes, every file belongs to exactly one **layer**, which decides who 
 
 **Derivable content is generated, non-derivable content is curated.** If tooling can produce it from code (structure overviews, dependency maps), don't hand-write it — it fails Q2 of the minimalism test and rots. Hand-curate only what code cannot reveal (rationale, feature→code mapping, failure modes).
 
+**Feature map vs wiki:** `feature-map.md` (curated, in `/docs`) is a *routing table* — feature → entry point, gotchas, failure-mode hints — for triage by agents working in-repo. The wiki feature page owns behavior and rationale; the map links to it and never restates it, and the wiki never carries entry points.
+
 How the pieces route and verify each other:
 
 ```mermaid

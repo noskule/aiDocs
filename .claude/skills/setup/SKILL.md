@@ -24,13 +24,14 @@ Ask in this order (skip what preflight already answered):
 4. **Wiki** — GitHub Wiki, docs folder, external (Confluence/Notion), or none
 5. **Issue tracking** — GitHub Issues with Projects v2 board, plain issues, or none
 6. **Testing** — test categories and commands (feeds `testing.md` and the test-runner skill)
+7. **Feature map** — is the codebase organized by feature folders (feature→code mapping obvious from structure → decline) or by layers (instantiate `feature-map`, see `docs/feature-map.template.md`)?
 
 ## Step 2 — Apply
 
 For each answer, make the corresponding change:
 
 - Fill `docs/README.md` (project name, description, wiki section)
-- Instantiate templates by **renaming** them (drop the `.template` suffix): `coding-guidelines`, `architecture-rules`, `development`, `changelog`, `issue-tracker`, `wiki`, `skills-and-agents`, `tools/jobs` — the template file must not remain next to its filled copy (the template lives upstream; `/update-aidocs` reports drift from there). Create `installation.md`, `testing.md`, `release.md` with real content where the user provided it, otherwise minimal TODO stubs. Delete shipped templates the project declines (e.g. `design-sync.template.md` when not using Pencil)
+- Instantiate templates by **renaming** them (drop the `.template` suffix): `coding-guidelines`, `architecture-rules`, `development`, `changelog`, `issue-tracker`, `wiki`, `skills-and-agents`, `tools/jobs`, plus `feature-map` when the user opted in — the template file must not remain next to its filled copy (the template lives upstream; `/update-aidocs` reports drift from there). Create `installation.md`, `testing.md`, `release.md` with real content where the user provided it, otherwise minimal TODO stubs. Delete shipped templates the project declines (e.g. `design-sync.template.md` when not using Pencil, `feature-map.template.md` when structure already reveals the mapping)
 - Fill the instantiated `docs/wiki.md` with the chosen wiki location, or note "no wiki" in `docs/README.md`
 - If using a Projects v2 board: fill the IDs section in `.claude/agents/issue-writer.md` (discover via `gh api graphql`); if plain issues: note that in the instantiated `docs/issue-tracker.md`
 - Activate the chosen root wrapper templates (rename, point them at `docs/AGENTS.md`)

@@ -116,6 +116,7 @@ docs/
 ├── coding-guidelines.template.md   # 10-step development process
 ├── architecture-rules.template.md  # Enforceable design principles
 ├── development.template.md         # Tech stack, patterns, commands
+├── feature-map.template.md         # Feature → code routing for triage
 ├── issue-tracker.template.md       # Issue tracker conventions
 ├── wiki.template.md                # Wiki setup and configuration
 ├── changelog.template.md           # Release history template
