@@ -21,7 +21,7 @@ PER_PROJECT = {
     "changelog.md", "coding-guidelines.md", "architecture-rules.md",
     "issue-tracker.md", "wiki.md", "design-sync.md", "project-index.md",
     "skills-and-agents.md", "tools/jobs.md", "feature-map.md",
-    "tools/evals.md", "README.md",
+    "tools/evals.md",
 }
 
 # Entry points and registries are never orphans.

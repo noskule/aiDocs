@@ -31,9 +31,9 @@ Ask in this order (skip what preflight already answered):
 
 For each answer, make the corresponding change:
 
-- Instantiate `docs/README.template.md` → `docs/README.md` and fill it (project name, description, wiki section)
+- Ensure the root `README.md` states the project name and description — the fixed `docs/README.md` routes humans there
 - Instantiate templates by **renaming** them (drop the `.template` suffix): `coding-guidelines`, `architecture-rules`, `development`, `changelog`, `issue-tracker`, `wiki`, `skills-and-agents`, `tools/jobs`, plus `feature-map` and `tools/evals` when the user opted in — the template file must not remain next to its filled copy (the template lives upstream; `/update-aidocs` reports drift from there). Create `installation.md`, `testing.md`, `release.md` with real content where the user provided it, otherwise minimal TODO stubs. Delete shipped templates the project declines (e.g. `design-sync.template.md` when not using Pencil, `feature-map.template.md` and `tools/evals.template.md` when structure already reveals the mapping)
-- Fill the instantiated `docs/wiki.md` with the chosen wiki location, or note "no wiki" in `docs/README.md`
+- Fill the instantiated `docs/wiki.md` with the chosen wiki location, or instantiate it with a "no wiki" note
 - Fill the Cycle-End Binding in the instantiated `docs/tools/jobs.md` with the chosen event
 - If using a Projects v2 board: fill the IDs section in `.claude/agents/issue-writer.md` (discover via `gh api graphql`); if plain issues: note that in the instantiated `docs/issue-tracker.md`
 - Activate the chosen root wrapper templates (rename, point them at `docs/AGENTS.md`)

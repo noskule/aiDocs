@@ -14,8 +14,8 @@ Every shipped file classifies into exactly one of:
 
 | Class | Files | On update |
 |-------|-------|-----------|
-| **Upstream-owned** | UPPERCASE `.md` in `docs/` (except `README.md`), `*.template.md` / `*.template`, upstream-shipped files under `.claude/` | apply changes |
-| **Project-owned** | Filled template copies (`coding-guidelines.md`, `issue-tracker.md`, `wiki.md`, `skills-and-agents.md`, `tools/jobs.md`, ...), `docs/README.md`, `docs/project-index.md`, project's own docs/skills/agents, `docs/.aidocs-version` | never touch |
+| **Upstream-owned** | UPPERCASE `.md` in `docs/` (incl. `README.md`), `*.template.md` / `*.template`, upstream-shipped files under `.claude/` | apply changes |
+| **Project-owned** | Filled template copies (`coding-guidelines.md`, `issue-tracker.md`, `wiki.md`, `skills-and-agents.md`, `tools/jobs.md`, ...), `docs/project-index.md`, project's own docs/skills/agents, `docs/.aidocs-version` | never touch |
 
 **Shipped-active skills** (e.g. `documentation`, `validate-docs`) are upstream-owned, but projects may customize them (platform wording, extra rules). That's allowed — the 3-way check below turns upstream changes to a customized skill into a conflict for manual merge instead of an overwrite.
 
@@ -54,6 +54,7 @@ Every shipped file classifies into exactly one of:
    | `docs/subagents/README.md` | replaced by `docs/CREATING_AGENTS.md` |
    | root `CODEX.md` | superseded by root `AGENTS.md` (agents.md spec — read natively by Codex, Cursor and others) |
    | `docs/tools/jobs.md` without trigger classes (pre-2026-08 format) | rebuild in the trigger-class format from `docs/tools/jobs.template.md` (per-change / cycle-end column, Cycle-End Binding), preserving the project's own jobs — confirm with user. Not a mere drift notice: `/maintain` cannot dispatch without this format |
+   | filled `docs/README.md` (project-identity page) | replaced by the fixed standard `README.md` (generic orientation routing) — identity lives in the root README, wiki location in `wiki.md`; port anything unique to those homes first, confirm with user |
 
 5. **Compute the delta** — `git diff --name-status <old>..<new>` in the clone. Classify each path by the ownership contract.
 
