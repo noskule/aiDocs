@@ -174,6 +174,13 @@ If someone reads only "What It Does" and "Why It Matters", they have everything 
 
 Use [Mermaid](https://mermaid.js.org/) fenced code blocks — GitHub renders these natively in repo markdown and wiki pages. Apply Information Minimalism: only add diagrams that pass the 3-question test.
 
+**Colour: strokes, never fills.** Readers render markdown in both light and dark themes. A
+`classDef ... fill:#c8e6c9,color:#1b5e20` is a light-mode assumption — the fill is applied, but
+the renderer's dark theme supplies its own label colour and wins on specificity, so the text
+washes out to near-invisible. Set `stroke`, `stroke-width` and `stroke-dasharray` and leave
+`fill` and `color` alone; the theme then always supplies a contrasting label. The reading-order
+diagram in [AGENTS.md](AGENTS.md) is the worked example.
+
 **Good fit:** state machines, multi-component interactions, data flow across layers, DB schema.
 
 | Mermaid type | Use for |
