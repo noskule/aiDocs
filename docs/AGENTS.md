@@ -66,10 +66,13 @@ flowchart TD
     SIT -->|"Running a job"| JOBS["tools/jobs.md"]
     SIT -->|"Unsure"| USER(["Ask the user"])
 
-    classDef always fill:#c8e6c9,stroke:#4caf50,color:#1b5e20
-    classDef optional fill:#fff9c4,stroke:#fbc02d,color:#f57f17
-    classDef conditional fill:#bbdefb,stroke:#1976d2,color:#0d47a1
-    classDef decision fill:#fff,stroke:#616161,color:#212121
+    %% Stroke only - never fill/color. A hardcoded fill is a light-mode
+    %% assumption: the renderer's dark theme still supplies a light label
+    %% color, and the label washes out. Strokes read in both themes.
+    classDef always stroke:#2e7d32,stroke-width:3px
+    classDef optional stroke:#f9a825,stroke-width:3px,stroke-dasharray:5 3
+    classDef conditional stroke:#1565c0,stroke-width:3px
+    classDef decision stroke:#616161,stroke-width:2px
 
     class M1,M2,M3,M4 always
     class M5 optional
@@ -77,7 +80,7 @@ flowchart TD
     class SIT decision
 ```
 
-Green = always read | Yellow = read if exists | Blue = read when situation occurs
+Green outline = always read | Yellow dashed = read if exists | Blue outline = read when situation occurs
 
 
 ## Skills and Sub-Agents
